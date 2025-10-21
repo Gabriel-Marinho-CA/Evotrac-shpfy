@@ -1,0 +1,102 @@
+{{ 'banner-mosaic.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_top }}px;
+  }
+  @media (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.55 |  round }}px;
+      padding-bottom: {{ section.settings.padding_top | times: 0.55 | round }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="section-{{ section.id }}-padding banner-mosaico">
+  <div class="page-width">
+    <div class="wrapper">
+      {% for item in section.blocks %}
+        <div class="banner-wrapper">
+
+
+          {% assign b = item.settings %}
+          {% if b.banner != blank %}
+            {% assign alt_banner = b.banner.alt | default: b.alt %}
+
+            <picture>
+              <source media="(min-width:767px)" srcset="{{ b.banner | image_url }}">
+              <source media="(max-width:766px)" srcset="{{ b.banner_mob |  default: b.banner | image_url }}">
+              <img
+                src="{{ b.banner | image_url}}"
+                alt="{{ alt_banner }}"
+                width="{{  b.banner.width }}"
+                height="{{ b.banner.height }}"
+                loading="lazy">
+            </picture>
+          {% endif %}
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Banner mosaico",
+    "class": "banners-mosaic",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner",
+            "label": "Banner"
+          }, {
+            "type": "image_picker",
+            "id": "banner_mob",
+            "label": "Banner moobile"
+          }, {
+
+            "type": "text",
+            "id": "alt",
+            "label": "Alt",
+            "default": "Banner"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner mosaico"
+      }
+    ]
+  }
+{% endschema %}

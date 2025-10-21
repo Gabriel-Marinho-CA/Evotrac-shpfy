@@ -1,0 +1,18 @@
+<menu-mob class="mobile menu-mob">
+    <div class="trigger-side-bar svg-wrapper big">
+        {{- 'ico-menu.svg' | inline_asset_content -}}    
+    </div>
+    <div class="side-bar-menu">
+        <div class="close-menu-mob">
+            <div class="svg-wrapper">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+            </div>
+        </div>
+          {% render 'menu-departments', menu: section.settings.menu.links %}
+          <div class="revendedor">
+          <a title="Seja um revendedor" class="button button-secondary" href="#">
+            Seja um revendedor
+          </a>
+        </div>
+    </div>
+</menu-mob>

@@ -1,0 +1,46 @@
+{% liquid
+    assign target = product.selected_or_first_available_variant
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price
+    assign available =  target.available | default: false
+
+    assign installment_number = 8
+    assign installment_price = price | divided_by: installment_number
+
+    assign pix_discount_value = settings.pix_discount_value 
+    assign pix_discount_value_formatted = pix_discount_value| divided_by: 100.00 
+    assign price_pix_discounted = price |  times: pix_discount_value_formatted | minus: price | abs
+
+%}
+
+<div class="price-shelf">
+
+    {% if compare_at_price > price %}
+        <div class="list-price">
+            <p>
+                De <span>{{ price | money }}</span>
+            </p>
+        </div>
+        <div class="spot-price">
+            <p>
+                Por: <span>{{ compare_at_price | money }}</span>
+            </p>
+        </div>
+        {% else %}
+        <div class="spot-price">
+            <p>
+                Por: <span>{{ price | money }}</span>
+            </p>
+        </div>
+    {% endif %}
+    <div class="pix-price">
+            <p>
+                {{ price_pix_discounted | money }}
+            </p>
+            <p>à vista com {{pix_discount_value}}% de desconto no PIX</p>
+    </div>
+    <div class="installments">
+        <p>Ou <span>{{ price | money }}</span> em {{ installment_number }}x de {{ installment_price| money }} sem juros </p>
+    </div>
+
+</div>

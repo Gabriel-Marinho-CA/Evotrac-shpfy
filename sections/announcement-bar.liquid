@@ -1,0 +1,113 @@
+{{ 'announcment-bar.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{section.settings.padding_top}}px;
+    padding-bottom: {{section.settings.padding_top}}px;
+  }
+  @media (max-width:768px) {
+     .section-{{ section.id }}-padding {
+    padding-top: {{section.settings.padding_top | times: 0.55 |  round}}px;
+    padding-bottom: {{section.settings.padding_top | times: 0.55 | round}}px;
+  }
+  }
+{% endstyle %}
+
+<div class="section-{{ section.id }}-padding announcement-bar color-{{ section.settings.section_color_scheme }}">
+  <div class="{% if section.settings.full_w %} page-width-full{% else %}page-width{% endif %} scroll-trigger animate--fade-in">
+    <swiper-instance
+      class="swiper"
+      space-between-desk="0"
+      space-between-mob="0"
+      loop="true"
+      autoplay-speed="3000"
+      autoplay="true"
+    >
+      <div class="swiper-wrapper">
+        {% for item in section.blocks %}
+          <div class="swiper-slide">
+            {% if item.settings.link_content != blank %}
+              <a href="{{ item.settings.link_content }}" title="{{ item.settings.content }}">
+                {{- item.settings.content -}}
+              </a>
+            {% else %}
+              <p>{{ item.settings.content }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </swiper-instance>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Barra de avisos",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_w",
+      "label": "Tamanho máximo da tela"
+    },
+    {
+      "type": "header",
+      "content": "Cores"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom-group",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Texto informativo",
+          "id": "content",
+          "default": "FRETE GRÁTIS"
+        },
+        {
+          "type": "url",
+          "id": "link_content",
+          "label": "Link conteudo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de avisos"
+    }
+  ]
+}
+{% endschema %}

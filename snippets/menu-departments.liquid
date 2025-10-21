@@ -1,0 +1,38 @@
+
+{{ 'menu-departments.css' |  asset_url | stylesheet_tag}}
+
+
+<nav class="category-menu">
+  <div class="menu-first-level">
+    {% for link in menu %}
+      <div class="wrapper-menu-first-level">
+        <a
+          class=""
+          href="{{ link.url }}"
+          title="{{ link.title }}"
+        >
+          {{ link.title -}}
+
+          {% if link.links.size > 0 %}
+           {{ 'ico-arrow-d-b.svg' | inline_asset_content }}
+          {% endif %}
+        </a>
+        {% if link.links.size > 0 %}
+          <ul class="menu-second-level">
+            {% for subLink in link.links %}
+              <li>
+                <a
+                  href="{{ subLink.url }}"
+                  class=""
+                  title="{{ subLink.title  }}"
+                >
+                  {{- subLink.title -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</nav>

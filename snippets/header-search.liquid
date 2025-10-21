@@ -1,0 +1,99 @@
+{% comment %}
+  Renders a header search modal. Should be used with 'header.liquid'
+
+  Accepts:
+  - input_id: {String} Id for the search input element (required)
+
+  Usage:
+  {% render 'header-search', input_id: 'My-Id'%}
+{% endcomment %}
+
+{% comment %}
+  <div
+    class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle"
+    aria-haspopup="dialog"
+    aria-label="{{ 'general.search.search' | t }}"
+  >
+    <span>
+      <span class="svg-wrapper">
+        {{- 'search-icp.svg' | inline_asset_content -}}
+      </span>
+      <span class="svg-wrapper header__icon-close">
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </span>
+  </div>
+{% endcomment %}
+<div
+  class="search-modal modal__content gradient"
+  role="dialog"
+  aria-modal="true"
+  aria-label="{{ 'general.search.search' | t }}"
+>
+  <div class="modal-overlay"></div>
+  <div
+    class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
+    tabindex="-1"
+  >
+    <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="{{ input_id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="O que você está procurando?"
+            role="combobox"
+            aria-expanded="false"
+            aria-owns="predictive-search-results"
+            aria-controls="predictive-search-results"
+            aria-haspopup="listbox"
+            aria-autocomplete="list"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+          >
+
+          <input type="hidden" name="options[prefix]" value="last">
+
+          <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <span class="svg-wrapper">
+              {% render 'icon-search' %}
+            </span>
+          </button>
+        </div>
+
+        <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+          {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+        </div>
+
+        <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        <button
+    type="reset"
+    class="reset__button field__button search-modal__close-button{% if search.terms == blank %} hidden{% endif %}"
+    aria-label="{{ 'general.search.reset' | t }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-reset.svg' | inline_asset_content -}}
+    </span> 
+  </button>
+      </form>
+    </predictive-search>
+
+    {% comment %}
+      <button
+       type="reset"
+        type="button"
+        class="search-modal__close-button modal__close-button link link--text focus-inset"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        <span class="svg-wrapper small">
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    {% endcomment %}
+  </div>
+</div>

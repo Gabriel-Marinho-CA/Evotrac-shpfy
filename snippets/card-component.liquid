@@ -1,0 +1,34 @@
+{%- assign product_form_id = 'product-form-' | append: section_id-%}
+<div class="shelf-component">
+    <a href="{{ product.url }}" title="{{ product.title }}">
+
+ 
+    <div class="img-wrapper">     
+        {% if product.featured_image != blank %}
+            {{ product.featured_image | image_url: width: 220 |  image_tag: loading:'lazy', alt: product.title  }}
+        {% endif %}
+    </div>
+    {% if product.metafields.custom.nivel_resistencia != blank %}
+        <div class="resistence-level">
+            <p>Nivel de resistência</p>
+            <div class="img-resistence">
+                <img src="#" alt="Nivel de resistência" width="120" height="20" loading="lazy">
+            </div>
+        </div>
+    {% endif %}
+    <div class="title-product">
+        <p>{{ product.title }} </p>
+    </div>
+    <div class="price">
+        {% render 'price-shelf' , product: product %}
+    </div>
+</a>
+<div class="quick-add">
+    
+    {% render 'buy-button' product:product, product_form_id:product_form_id, section_id: section_id%}
+    {% comment %} <button class="button button-primary" aria-label="Adicionar ao carrinho"  data-product-url="{{ product.url }}">
+        COMPRAR
+    </button> {% endcomment %}
+</div>
+
+</div>

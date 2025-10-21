@@ -1,0 +1,15 @@
+.announcement-bar {
+    border-bottom: 1px solid #E8E1DB;
+
+    a,
+    p {
+        display: block;
+        font-family: "Effra";
+        font-weight: 400;
+        font-size: clamp(12px, 1.5vw, 14px); 
+        line-height: 1.5;
+        letter-spacing: 0;
+        text-align: center;
+ 
+    }
+}

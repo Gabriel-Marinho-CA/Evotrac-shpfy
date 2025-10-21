@@ -1,0 +1,106 @@
+{{ 'banner-image.css' | asset_url | stylesheet_tag }}
+<div class="{{ section.id }} banner-hero banner" id="main-banner-{{ section.id }}">
+  <swiper-instance
+    class="swiper"
+    space-between-desk="0"
+    space-between-mob="0"
+    have-arrow="true"
+    have-dots="true"
+    loop=true
+    autoplay=true>
+    <div class="swiper-wrapper">
+      {% for slide in section.blocks %}
+        {% case slide.type %}
+          {% when 'custom-group' %}
+            {% if slide.settings.image_slide != blank %}
+              <div class="swiper-slide">
+                <a
+                  href="{{ slide.settings.link_banner }}"
+                  {% if slide.settings.image_slide.alt != blank %}
+                  title="{{ slide.settings.image_slide.alt  }}"
+                  {% else %}
+                  title="Banner"
+                  {% endif %}>
+                  {% if forloop.first %}
+                    {% assign alt_banner = slide.settings.image_slide.alt | default: slide.settings.alt %}
+
+                    {% if slide.settings.image_slide_mob != blank %}
+                      {{ slide.settings.image_slide_mob | image_url: width: 412 | image_tag: loading: 'eager', class: 'mobile', preload: true, alt: alt_banner, fetchpriority: 'high', sizes: '(min-width:1600px) 1920px, (min-width: 750px) (min-width: 750px) 60vw, 120vw' }}
+                    {% endif %}
+
+                    {% if slide.settings.image_slide != blank %}
+                      {{ slide.settings.image_slide | image_url: width: 1920 | image_tag: loading: 'eager', class: 'desktop', preload: true, alt: alt_banner, fetchpriority: 'high', sizes: '(min-width:1600px) 960px, (min-width: 750px) (min-width: 750px) 60vw, 120vw' }}
+                    {% endif %}
+
+
+                  {% else %}
+                    <picture>
+                      <source media="(min-width:767px)" srcset="{{ slide.settings.image_slide | image_url }}">
+                      <source media="(max-width:766px)" srcset="{{ slide.settings.image_slide_mob | image_url }}">
+                      <img
+                        class="w-full"
+                        src="{{ slide.settings.image_slide | image_url}}"
+                        {% if slide.settings.image_slide.alt != blank %}
+                        alt="{{ slide.settings.image_slide.alt }}"
+                        {% else %}
+                        alt={{ slide.settings.alt }}
+                        {% endif %}
+                        width="{{  slide.settings.image_slide.width }}"
+                        height="{{ slide.settings.image_slide.height }}"
+                        loading="lazy">
+                    </picture>
+                  {% endif %}
+                </a>
+              </div>
+            {% endif %}
+        {% else %}
+
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next">.</div>
+      <div class="swiper-button-prev">.</div>
+
+    </swiper-instance>
+
+  </div>
+
+  {% schema %}
+    {
+      "name": "Banner principal",
+      "tag": "section",
+      "settings": [],
+      "blocks": [
+        {
+          "type": "custom-group",
+          "name": "Slide",
+          "settings": [
+            {
+              "type": "text",
+              "label": "Texto informativo image ( ALT )",
+              "id": "alt",
+              "default": "Banner"
+            }, {
+              "type": "image_picker",
+              "id": "image_slide",
+              "label": "Slider image desktop"
+            }, {
+              "type": "image_picker",
+              "id": "image_slide_mob",
+              "label": "Slider image mobile"
+            }, {
+              "type": "url",
+              "id": "link_banner",
+              "label": "Link banner desktop"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Banner Hero"
+        }
+      ]
+    }
+  {% endschema %}

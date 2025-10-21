@@ -1,0 +1,113 @@
+{{ 'deals-with-icons.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_top }}px;
+  }
+  @media (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.55 |  round }}px;
+      padding-bottom: {{ section.settings.padding_top | times: 0.55 | round }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="section-{{ section.id }}-padding deals-with-icons">
+  <div class="page-width ">
+    <swiper-instance
+      class="swiper"
+      slide-desktop="6"
+      slide-mobile="1"
+      space-between-desk="0"
+      space-between-mob="5"
+      arrows-outside="true"
+      have-arrow="true">
+
+      <div class="wrapper swiper-wrapper color-{{ section.settings.section_color_scheme }}">
+        {% for item in section.blocks %}
+          {% assign b = item.settings %}
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="img">
+                {% if b.icon != blank %}
+                  {% assign alt = b.content | strip_html %}
+                  {{ b.icon | image_url: width: b.icon.width | image_tag: loading: 'lazy', alt: alt }}
+                {% endif %}
+              </div>
+              <div class="content">
+                {{ b.content }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </swiper-instance>
+
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ofertas",
+    "class": "deals-with-icons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cores"
+      },
+      {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icone"
+          }, {
+            "type": "richtext",
+            "id": "content",
+            "label": "Conteudo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ofertass"
+      }
+    ]
+  }
+{% endschema %}

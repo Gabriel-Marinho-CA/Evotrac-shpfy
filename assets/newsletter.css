@@ -1,0 +1,87 @@
+.newsletter-section {
+    .wrapper {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        justify-content: space-between;
+
+        @media (max-width:768px) {
+            flex-direction: column;
+            gap: 1.35rem;
+        }
+
+        .title {
+            padding-bottom: 0;
+
+            * {
+                text-align: center;
+                font-size: clamp(14px, 2.5vw, 18px);
+                color: rgb(var(--color-foreground));
+
+                strong {
+                    font-size: clamp(16px, 3vw, 22px);
+                }
+
+                line-height: 1;
+            }
+        }
+
+        .newsletter-subscribe {
+            flex: 1;
+            max-width: 624px;
+
+            .footer-block__newsletter {
+                .field {
+                    display: flex;
+                    align-items: center;
+                    height: 52px;
+
+                    input {
+                        width: 100%;
+                        flex: 1;
+                        height: 100%;
+                        border-top-left-radius: 12px;
+                        border-bottom-left-radius: 12px;
+                        background: transparent;
+                        padding-inline: 2rem;
+                        border: 1px solid #C9C6C5;
+                        border-right: none;
+                        color: rgb(var(--color-foreground));
+                        font-size: 16px;
+                    }
+
+                    button {
+                        height: 100%;
+                        border-top-right-radius: 12px;
+                        border-bottom-right-radius: 12px;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                }
+
+                .newsletter-form__message {
+                    text-align: center;
+                    padding-top: .5rem;
+                }
+            }
+        }
+
+        .wrapper-social {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            @media (max-width:768px) {
+                order: -1;
+            }
+
+            .social {
+                transition: all .3s ease;
+
+                &:hover {
+                    transform: scale(1.08);
+                }
+            }
+        }
+    }
+}

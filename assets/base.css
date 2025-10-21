@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'effra';
+    src: url('https://cdn.shopify.com/s/files/1/0622/0565/7163/files/Effra_Trial_Rg.woff2?v=1757614125');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'effra-b';
+    src: url('https://cdn.shopify.com/s/files/1/0622/0565/7163/files/Effra_Trial_Bd.woff2?v=1757614125');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'effra-th';
+    src: url('https://cdn.shopify.com/s/files/1/0622/0565/7163/files/Effra_Trial_Lt.woff2?v=1757614125');
+    font-weight: 300;
+    font-display: swap;
+}
+
+
+
+/* ///////////////////////// */
+
+body {
+    margin: 0 !important;
+    overflow-x: hidden;
+    transform: translate3d(0, 0, 0);
+    background-color: #F4F4F4;
+
+    &:has(.drawer.active) {
+        overflow-y: hidden;
+    }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    margin: 0;
+    color: rgb(var(--color-foreground));
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'effra';
+    letter-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+
+    &:not(.button) {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0 1rem;
+    transition: all .32s ease;
+    color: var(--color-button-text);
+    border: 1px solid var(--color-button);
+
+    &:disabled {
+        background: #cecece;
+        color: #000;
+        border: none;
+        cursor: not-allowed;
+
+        .svg-wrapper {
+            display: none;
+        }
+    }
+}
+
+.button-primary:not(:disabled) {
+    background: var(--color-button);
+
+    &:hover {
+        background: transparent;
+        color: var(--color-button);
+
+        svg {
+            path {
+                stroke: var(--color-button);
+            }
+        }
+    }
+}
+
+.button-secondary:not(:disabled) {
+
+    &:hover {
+        background: var(--color-button);
+
+        color: var(--color-secondary-button);
+
+    }
+}
+
+.page-width {
+    width: 100%;
+    max-width: var(--page-width);
+    margin-inline: auto;
+    padding-inline: var(--padding-horizontal);
+
+    @media (max-width:1000px) {
+        padding-inline: calc(var(--padding-horizontal) / 2);
+    }
+}
+
+.svg-wrapper {
+    display: inline-flex;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+
+    &.big {
+        width: 30px;
+        height: 30px;
+    }
+
+    &.small {
+        width: 15px;
+        height: 15px;
+    }
+
+    svg {
+        height: auto;
+        width: 100%;
+    }
+}
+
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal !important;
+}
+
+.visually-hidden--inline {
+    margin: 0;
+    height: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.link {
+    color: #5f5fff;
+    text-decoration: underline;
+}
+
+.arrows-outside {
+
+
+    @media (min-width:1023px) {
+        max-width: calc(var(--page-width) + 80px);
+        margin-inline: auto;
+        padding-inline: var(--padding-horizontal);
+        position: relative;
+    }
+}
+
+
+.swiper-slide {
+    height: auto !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    font-size: 0;
+    color: #000 !important;
+    height: 72px !important;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px #0000001C;
+    border-radius: 4px;
+    padding-inline: 1.25rem;
+
+    &::after {
+        font-size: 20px !important;
+
+    }
+}
+
+.title {
+    font-weight: 700;
+    font-family: 'effra-b';
+    font-size: 28px;
+    padding-bottom: 2rem;
+
+
+    * {
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        color: #e6722c;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+    opacity: 0.3;
+
+    &.active {
+        display: block;
+    }
+}
+
+.desktop {
+    @media (max-width:1000px) {
+        display: none !important;
+    }
+}
+
+.mobile {
+    @media (min-width:1001px) {
+        display: none !important;
+    }
+}

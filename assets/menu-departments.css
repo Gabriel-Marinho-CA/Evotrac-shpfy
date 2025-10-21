@@ -1,0 +1,26 @@
+.wrapper-menu-categories {
+    margin-bottom: 1rem;
+
+    .category-menu {
+        background: #2D2A26;
+        color: #fff;
+        padding: .85rem 0;
+
+        a {
+            color: inherit;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .menu-first-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12rem;
+
+        }
+
+
+    }
+}

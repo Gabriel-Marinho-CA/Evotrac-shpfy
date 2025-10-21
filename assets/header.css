@@ -1,0 +1,181 @@
+header {
+
+    @media (max-width:1000px) {
+        box-shadow: 4px 4px 5px 0px #00000014;
+        margin-bottom: 1rem;
+    }
+
+    .wrapper-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+
+        @media (max-width:1000px) {
+            flex-wrap: wrap;
+            gap: .85rem;
+        }
+
+        .logo {
+            flex-basis: 28%;
+
+            @media (max-width:1000px) {
+                flex-basis: 50%;
+            }
+        }
+
+        .header__heading-logo-wrapper {
+            img {
+                height: auto;
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 47px;
+
+            @media (min-width:1001px) {
+                min-width: 400px;
+            }
+
+            @media (max-width:1000px) {
+                height: fit-content;
+                gap: .35rem;
+
+                .svg-wrapper {
+                    width: 23px;
+                }
+            }
+
+            >div {
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .revendedor {
+                @media (max-width:1000px) {
+                    display: none;
+                }
+
+                a {
+                    border-radius: 12px;
+                    font-size: clamp(12px, 1.6vw, 16px);
+                    height: 100%;
+                }
+            }
+
+            .login {
+                display: flex;
+                align-items: center;
+                gap: .3rem;
+
+                .login-link {
+                    @media (max-width:1000px) {
+                        display: none;
+                    }
+                }
+            }
+
+            .minicart {
+                cursor: pointer;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                #cart-icon-bubble {
+                    position: relative;
+                    display: flex;
+
+                    .cart-count-bubble {
+                        position: absolute;
+                        right: -8px;
+                        top: -6px;
+                        background-color: #52AE32;
+                        color: #fff;
+                        font-size: 13px;
+                        border-radius: 50%;
+                        width: 22px;
+                        height: 22px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+        }
+
+        .menu-mob {
+            .close-menu-mob {
+                text-align: end;
+            }
+
+            .side-bar-menu {
+                transform: translateX(-150%);
+                position: fixed;
+                inset: 0;
+                height: 100%;
+                width: 100%;
+                max-width: 88dvw;
+                background-color: #fff;
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+                padding: 1.5em;
+                z-index: 2;
+                box-shadow: 0px 3px 6px #cecece;
+                transition: all .3s ease;
+
+                &.active {
+                    transform: translateX(0);
+                }
+
+                .category-menu {
+                    .menu-first-level {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                    }
+
+                    .wrapper-menu-first-level {
+                        padding-left: 1rem;
+                        padding-top: 1rem;
+
+                        &:has(.menu-second-level) {
+                            >a {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                            }
+                        }
+
+                        &:has(.menu-second-level.active) {
+                            background: #eee;
+                            border-radius: 4px;
+
+                            >a {
+                                font-weight: bold;
+                            }
+                        }
+
+                        .menu-second-level {
+                            padding: 1rem;
+                        }
+                    }
+                }
+                .revendedor {
+                    padding-top: 2rem;
+
+                    a {
+                        padding: 0.35rem 1rem;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
