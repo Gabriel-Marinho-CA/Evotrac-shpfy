@@ -25,6 +25,7 @@
           "settings": {
             "alt": "Banner",
             "image_slide": "shopify://shop_images/Frame_2608634_8b13dd5c-9dca-4aca-b273-9073970afa87.png",
+            "image_slide_mob": "shopify://shop_images/Frame_2608633_2.png",
             "link_banner": ""
           }
         }
