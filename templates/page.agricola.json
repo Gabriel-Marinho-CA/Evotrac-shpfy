@@ -11,13 +11,33 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "main_banner_hero_kfnemk": {
+      "type": "main-banner-hero",
+      "blocks": {
+        "custom_group_74hpXV": {
+          "type": "custom-group",
+          "settings": {
+            "alt": "Banner",
+            "image_slide": "shopify://shop_images/Frame_2608853.png",
+            "link_banner": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_group_74hpXV"
+      ],
+      "name": "Banner Hero",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "main_banner_hero_kfnemk"
   ]
 }
