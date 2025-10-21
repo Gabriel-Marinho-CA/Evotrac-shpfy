@@ -200,12 +200,36 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "collection_showcase_iR3Npx": {
+      "type": "collection-showcase",
+      "name": "Coleção destaque",
+      "settings": {
+        "featured_collection": "geral",
+        "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
+        "title": "Mais vendidos",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "collection_showcase_Tibx4a": {
+      "type": "collection-showcase",
+      "name": "Coleção destaque",
+      "settings": {
+        "featured_collection": "geral",
+        "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
+        "title": "Ofertas",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
     "main",
     "main_banner_hero_kfnemk",
     "infocard_caroussel_NQ6WDF",
-    "infocard_caroussel_B8GkUz"
+    "infocard_caroussel_B8GkUz",
+    "collection_showcase_iR3Npx",
+    "collection_showcase_Tibx4a"
   ]
 }
