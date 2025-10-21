@@ -34,10 +34,94 @@
       ],
       "name": "Banner Hero",
       "settings": {}
+    },
+    "infocard_caroussel_NQ6WDF": {
+      "type": "infocard-caroussel",
+      "blocks": {
+        "infocard_rznDFt": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_86e3c504-e794-45f2-802b-040b2d74922a.png",
+            "info": "Peças e Acessórios",
+            "link": "#",
+            "alt": ""
+          }
+        },
+        "infocard_FLpVBk": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_1.png",
+            "info": "Pneus e Câmaras",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_twDEE6": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_2.png",
+            "info": "Lubrificantes e Aditivos",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_Gt9F6F": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_3.png",
+            "info": "Vestuário",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_rPQ7jR": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_4.png",
+            "info": "Colecionáveis",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_LpmyRp": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_5.png",
+            "info": "Lorem ipsum",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_p3UWA9": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_5.png",
+            "info": "Lorem ipsum",
+            "link": "",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "infocard_rznDFt",
+        "infocard_FLpVBk",
+        "infocard_twDEE6",
+        "infocard_Gt9F6F",
+        "infocard_rPQ7jR",
+        "infocard_LpmyRp",
+        "infocard_p3UWA9"
+      ],
+      "name": "Infocard carrossel",
+      "settings": {
+        "title": "Compre por categoria",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "main_banner_hero_kfnemk"
+    "main_banner_hero_kfnemk",
+    "infocard_caroussel_NQ6WDF"
   ]
 }
