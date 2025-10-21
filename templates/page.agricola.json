@@ -111,6 +111,9 @@
         "infocard_LpmyRp",
         "infocard_p3UWA9"
       ],
+      "custom_css": [
+        ".title * {color: #2d2a26;}"
+      ],
       "name": "Infocard carrossel",
       "settings": {
         "title": "Compre por categoria",
@@ -194,6 +197,9 @@
         "infocard_EKfym3",
         "infocard_DyeEUz"
       ],
+      "custom_css": [
+        ".title * {color: #2d2a26;}"
+      ],
       "name": "Infocard",
       "settings": {
         "title": "Compre por marca",
@@ -203,6 +209,9 @@
     },
     "collection_showcase_iR3Npx": {
       "type": "collection-showcase",
+      "custom_css": [
+        ".title * {color: #2d2a26;}"
+      ],
       "name": "Coleção destaque",
       "settings": {
         "featured_collection": "geral",
@@ -214,6 +223,9 @@
     },
     "collection_showcase_Tibx4a": {
       "type": "collection-showcase",
+      "custom_css": [
+        ".title * {color: #2D2A26;}"
+      ],
       "name": "Coleção destaque",
       "settings": {
         "featured_collection": "geral",
