@@ -117,11 +117,95 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "infocard_caroussel_B8GkUz": {
+      "type": "infocard-caroussel",
+      "blocks": {
+        "infocard_MnMheR": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_pYiDTi": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608657.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_CFmRtJ": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608656.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_CcMEMU": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608655.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_JKewpH": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608654.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_EKfym3": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608653.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_DyeEUz": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "infocard_MnMheR",
+        "infocard_pYiDTi",
+        "infocard_CFmRtJ",
+        "infocard_CcMEMU",
+        "infocard_JKewpH",
+        "infocard_EKfym3",
+        "infocard_DyeEUz"
+      ],
+      "name": "Infocard",
+      "settings": {
+        "title": "Compre por marca",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "main_banner_hero_kfnemk",
-    "infocard_caroussel_NQ6WDF"
+    "infocard_caroussel_NQ6WDF",
+    "infocard_caroussel_B8GkUz"
   ]
 }
