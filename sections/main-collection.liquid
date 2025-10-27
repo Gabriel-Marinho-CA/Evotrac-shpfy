@@ -1,0 +1,94 @@
+{{ 'search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'search.js' | asset_url }}" defer></script>
+
+{% assign banner_desk =   'desk-search-banner.png' | asset_url  %}
+{% assign banner_mob =   'mob-search-banner.png' | asset_url  %}
+
+<div id="banner-collection" class="page-width">
+    <div>
+        {% render 'responsive-image', desktop: banner_desk, mobile: banner_mob, full: true %}
+    </div>
+    <h1>{{ collection.title }}</h1>
+</div>
+
+<div class="page-width breadcrumb">
+  <a href="{{ routes.root_url }}" title="home">Home</a>
+  {% render 'ico-arrow-r' %}
+  <p>{{ collection.title  }}</p>
+</div>
+
+<div class="page-width" id="collection-page">
+  <div>
+    <div class="search-result {% if collection.products_count == 0 %}flex-1{% endif %}">
+      {% if collection.products_count == 0 %}
+        <div class="empty-title">
+          <h1>Produtos não encontrados</h1>
+          <p>Modifique os filtros para visualizar produtos.</p>
+        </div>
+      {% else %}
+        <search-filters>
+          <div class="search-items">
+            {% paginate collection.products by 15 %}
+              <div class="wrap-sortby">
+                <h3>Filtrar</h3>
+                {% render 'search-sort-by', collection: collection %}
+              </div>
+
+              <div class="wrap-result">
+                <div class="filters-aside">
+                  <div class="hidden filters-top">
+                    <p>Filtrar por</p>
+                    <button>X</button>
+                  </div>
+                  {% render 'filters-aside', collection_filters: collection.filters %}
+                  <div class="filters-bottom hidden">
+                      <button id="apply-filter">Aplicar</button>
+                  </div>
+                </div>
+
+                  <div>
+                      <ul
+                        data-next-url="{{ paginate.next.url }}"
+                        class="search-result-items main-r-items color-{{ section.settings.section_color_scheme }}"
+                      >
+          
+                        {% for product in collection.products %}
+                          <li>
+                              {% render 'card-component', product: product, section_id: collection.id %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+          
+                      <div
+                        class="paginate"
+                      >
+                        {{- paginate | default_pagination -}}
+                      </div>
+                  </div>
+              </div>
+            {% endpaginate %}
+          </div>
+        </search-filters>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search Page",
+  "tag": "section",
+  "settings": [
+     {
+        "type": "header",
+        "content": "Cores"
+      },
+      {
+        "type": "color_scheme",
+        "id": "section_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      },
+  ]
+}
+{% endschema %}
