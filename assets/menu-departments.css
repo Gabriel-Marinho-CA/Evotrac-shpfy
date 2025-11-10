@@ -20,7 +20,7 @@
             gap: 12rem;
 
             &:hover {
-                .menu-second-level {
+               > .menu-second-level {
                     display: block;
 
 
