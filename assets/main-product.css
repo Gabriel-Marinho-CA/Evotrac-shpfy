@@ -264,27 +264,6 @@ html {
                 }
             }
 
-            .img-wrapper {
-                max-width: 220px;
-
-                @media (max-width:1000px) {
-                    width: 100%;
-                }
-
-                img:first-child {
-                    transform: translateX(0);
-                    opacity: 1 !important;
-                }
-
-                &:hover {
-                    img.second-image {
-                        transform: translateX(-92%);
-                    }
-
-                }
-
-            }
-
             .spot-price,
             .quick-add {
                 display: none;
