@@ -389,11 +389,18 @@
              }
 
              .shipping__response {
+                padding: 1rem 0;
                  &.loading {
                      &::after {
                          content: "Carregando...";
 
                      }
+                 }
+
+                 ul {
+                    li {
+                        padding: .45rem 0;
+                    }
                  }
              }
 
