@@ -1,1 +1,274 @@
-<h1>{{ product.title }}</h1>
+{{ 'main-product.css' | asset_url | stylesheet_tag }}
+{{ 'main-product-info.css' | asset_url | stylesheet_tag }}
+
+{% assign nivel_resistencia = product.metafields.custom.nivel_de_resistencia %}
+{% assign cupons = product.metafields.custom.cupons_de_desconto.value %}
+{% assign modelo = product.metafields.custom.modelo %}
+{% assign marca = product.metafields.custom.marca %}
+{% assign compre_junto = product.metafields.custom.compre_junto %}
+{% assign especificacao_tecnica = product.metafields.custom.especificacao_tecnica %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  }
+
+  .triangle {
+  left: calc((20.16px* {{nivel_resistencia | minus: 1 }}) + 2.76px);
+  }
+{%- endstyle -%}
+<div class="page-width">
+  {% render 'breadcrumb', collection_name: product.title %}
+</div>
+<div class="page-width section-{{ section.id }}-padding">
+  <div id="product">
+    <div class="wrapper-product">
+      <div class="left-side-product">
+        <div class="product-media">
+          <div class="wishlist">
+            <wishlist-btn data-product-handle="{{ product.handle }}">
+              <span class="svg-wrapper">
+                {{- 'wishlist-icon.svg' | inline_asset_content -}}
+              </span>
+            </wishlist-btn>
+          </div>
+          {% render 'product-main-media', product: product %}
+
+          {% if nivel_resistencia != blank %}
+            <div class="nivel-resistencia">
+              <p>Nível de resistência</p>
+              <div class="wrapper">
+                <div class="wrapper-svg">
+                  {{- 'nivel-resistencia.svg' | inline_asset_content -}}
+                </div>
+
+                <div class="triangle">
+                  <div class="svg-wrapper small">
+                    {{- 'triangle.svg' | inline_asset_content -}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        {% if compre_junto %}
+          <div class="desktop">
+            {% render 'buy-together', compre_junto: compre_junto %}
+          </div>
+        {% endif %}
+
+        <div class="desktop">
+          {% render 'product-extra-info',
+            description: product.description,
+            especificacao_tecnica: especificacao_tecnica
+          %}
+        </div>
+      </div>
+      <div class="right-side-product">
+        {% render 'cupons-area', cupons: cupons %}
+
+        <div class="title-product">
+          <h1>{{ product.title }}</h1>
+        </div>
+        <div class="brand-code-model-product">
+          <div class="code">
+            <p>
+              Código:
+              <span>{{ product.first_available_variant.id }}</span>
+            </p>
+          </div>
+          {% if modelo != blank %}
+            <div class="model">
+              <p>
+                Módelo:
+                <span>
+                  {{ modelo }}
+                </span>
+              </p>
+            </div>
+          {% endif %}
+          {% if marca != blank %}
+            <div class="brand">
+              <p>
+                Marca:
+                <span>
+                  {{ marca }}
+                </span>
+              </p>
+            </div>
+          {% endif %}
+        </div>
+        <div class="app-full-desk">
+          {% for block in section.blocks %}
+            {% if block.type == '@app' %}
+              {% render block %}
+            {% endif %}
+          {% endfor %}
+          <a class="desktop" href="#descricao-completa">Ver descrição completa</a>
+        </div>
+
+        <div class="price-area">
+          {% render 'price-product', product: product %}
+        </div>
+        <div id="more-payments">
+          <ul>
+            <li>
+              {% render 'pay-1-pdp' %}
+            </li>
+            <li>
+              {% render 'pay-2-pdp' %}
+            </li>
+            <li>
+              {% render 'pay-3-pdp' %}
+            </li>
+            <li>
+              {% render 'pay-4-pdp' %}
+            </li>
+            <li class="more-pay">
+              <p class="">
+                <span>mais formas de pagamento</span>
+              </p>
+              {% render 'r-arrow-b' %}
+            </li>
+          </ul>
+        </div>
+
+        {% if product.variants.size > 0 %}
+          <div class="variants">
+            {% for option in product.options_with_values %}
+              <legend>
+                {% if option.name == 'Voltagem' %}
+                  Escolha a voltagem:
+
+                {% else %}
+                  {{ option.name }}
+                {% endif %}
+              </legend>
+              <fieldset is="variant-options" class="variants-fieldset">
+                <div class="options-wrapper">
+                  {% for value in option.values %}
+                    <div class="wrapper-op">
+                      <label
+                        class="option-label"
+                        for="{{ option.name | handleize }}-{{ value | handleize }}"
+                        {% if value.variant.inventory_quantity == 0 %}
+                          data-disabled="true"
+                        {% endif %}
+                      >
+                        {{ value }}
+                      </label>
+                      <input
+                        type="radio"
+                        name="{{ option.name  | handle }}"
+                        value="{{ value.variant.url }}"
+                        class="hidden"
+                        id="{{ option.name | handleize }}-{{ value | handleize }}"
+                      >
+                    </div>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="compra-segura">
+          <span class="svg-wrapper">
+            {{- 'security-green.svg' | inline_asset_content -}}
+          </span>
+          <p>Compra segura</p>
+        </div>
+
+        <div class="buy-area {% if product.first_available_variant.inventory_quantity < 5000 %}last-units{% endif %}">
+          <div class="revendedor">
+            <a href="#" class="button button-secondary" title="Seja um revendedor">Seja um revendedor</a>
+          </div>
+          {%- assign product_form_id = 'product-form-' | append: section.id -%}
+          {% render 'buy-button',
+            product: product,
+            product_form_id: product_form_id,
+            section_id: section.id,
+            buy_label: 'Comprar'
+          %}
+        </div>
+
+        {% render 'shipping-calc' %}
+      </div>
+    </div>
+    {% if compre_junto %}
+      <div class="mobile">
+        {% render 'buy-together', compre_junto: compre_junto %}
+      </div>
+    {% endif %}
+
+    <div class="mobile">
+      {% render 'product-extra-info', description: product.description, especificacao_tecnica: especificacao_tecnica %}
+    </div>
+
+    <div class="mobile">
+      {% render 'payment-methods-product' %}
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  document.getElementById('more-payments').addEventListener('click', function () {
+    document.querySelector('.paymethods_product').classList.add('active');
+  });
+  document.querySelector('.paymethods_product span').addEventListener('click', function () {
+    document.querySelector('.paymethods_product').classList.remove('active');
+  });
+{% endjavascript %}
+
+<script src="{{ 'main-product.js' | asset_url }}" defer></script>
+<script src="{{ 'zoom-main-image.js' | asset_url }}" defer></script>
+<script src="{{ 'wishlist.js' | asset_url }}" defer></script>
+<script src="{{ 'shipping-calculator.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}
