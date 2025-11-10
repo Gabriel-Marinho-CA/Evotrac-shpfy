@@ -1,7 +1,27 @@
 <div class="buy-button">
-    {% if product.first_available_variant.inventory_quantity > 0 %}
-        <button is="add-to-cart" class="add-to-cart button-primary button" data-product-id="{{ product.selected_or_first_available_variant.id }}"> <span class="svg-wrapper">{% render 'ico-buy-cart-shelf' %}</span> Adicionar ao carrinho</button> 
-        {% else %}
-        <button disabled class="add-to-cart button-primary button" data-product-id="{{ product.selected_or_first_available_variant.id }}"> ESGOTADO</button>   
-    {% endif %}
-</div> 
+  {% if product.first_available_variant.inventory_quantity > 0 %}
+    <button
+      is="add-to-cart"
+      class="add-to-cart button-primary button"
+      data-product-id="{{ product.selected_or_first_available_variant.id }}"
+    >
+      <span class="svg-wrapper">
+        {% render 'ico-buy-cart-shelf' %}
+      </span>
+      <span class="mobile">
+        Comprar
+      </span>
+      <div class="desktop">
+          {{ buy_label | default: 'Adicionar ao carrinho' }}
+      </div>
+    </button>
+  {% else %}
+    <button
+      disabled
+      class="add-to-cart button-primary button"
+      data-product-id="{{ product.selected_or_first_available_variant.id }}"
+    >
+      ESGOTADO
+    </button>
+  {% endif %}
+</div>
