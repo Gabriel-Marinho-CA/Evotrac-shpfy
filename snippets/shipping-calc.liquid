@@ -1,0 +1,20 @@
+<div class="shipping-calc">
+  <p>
+    <span class="svg-wrapper">
+      {{- 'truck-icon.svg' | inline_asset_content -}}
+    </span>
+    Calcule o frete e o prazo de entrega
+  </p>
+
+  <shipping-calculator class="shipping__form">
+    <div class="wrapper">
+      <input class="js-zip" type="text" placeholder="Digite o seu CEP">
+      <button class="button button-secondary js-button">CALCULAR</button>
+    </div>
+    <div class="no-cep">
+      <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" title="Nao sei meu cep">Não
+        sei meu CEP</a>
+    </div>
+    <div class="shipping__response"></div>
+  </shipping-calculator>
+</div>
