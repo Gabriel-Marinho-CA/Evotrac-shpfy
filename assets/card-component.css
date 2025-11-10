@@ -6,24 +6,52 @@
     border: 1px solid #E8E1DB;
     padding: 1rem;
     border-radius: 8px;
+    overflow: hidden;
 
     &:hover {
+        .img-wrapper {
+            img:first-child {
+                display: none;
+            }
+
+            .second-image {
+                display: block;
+                animation: transition-display-none 0.5s ease both;
+                opacity: 1;
+            }
+        }
+
         .quick-add {
             opacity: 1;
         }
     }
 
+    .seal {
+        background-color: #388E3B;
+        border-radius: 4px;
+        color: #fff;
+        font-size: clamp(10px, 1.5vw, 13px);
+        padding: .175rem .35rem;
+        width: fit-content;
+        position: absolute;
+        right: 1rem;
+        font-family: 'effra-md';
+    }
+
     .img-wrapper {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
 
         img {
             width: 100%;
             height: auto;
             object-fit: cover;
             max-width: 220px;
+            display: block;
+            transition: all 0.5s ease;
+        }
+
+        .second-image {
+            display: none;
+            opacity: 0;
         }
     }
 
@@ -40,11 +68,78 @@
         height: 62px;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+
+        @media (max-width:547px) {
+            min-height: 57px;
+            max-height: 57px;
+            height: 57px;
+        }
+    }
+
+    .space {
+        height: calc(49px + .65rem);
+    }
+
+    .nivel-resistencia {
+        display: flex;
+        align-items: center;
+        gap: .45rem;
+        height: 49px;
+        justify-content: center;
+        position: relative;
+        margin-bottom: .65rem;
+        z-index: 0;
+
+        &::before {
+            content: "";
+            background: #F4F0EF;
+            width: calc(100% + 2rem);
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+
+        >p {
+            font-size: 14px;
+        }
+
+        .wrapper {
+            position: relative;
+
+            .wrapper-svg {
+                display: flex;
+            }
+
+            .triangle {
+                bottom: -9.5px;
+                position: absolute;
+            }
+        }
+
+
     }
 
     .price-shelf {
         text-align: center;
         padding: 2rem 0 .55rem 0;
+
+        @media (max-width:547px) {
+            padding-top: 1rem;
+        }
+
+        .list-price {
+            padding-bottom: .25rem;
+
+            P {
+                color: #AEAAAA;
+                font-size: 14px;
+
+                span {
+                    text-decoration: line-through;
+                }
+            }
+        }
 
         .spot-price {
             font-size: 16px;
@@ -87,7 +182,11 @@
 
     .quick-add {
         margin-top: auto;
-        opacity: 0;
+        transition: all .35s ease;
+
+        @media (min-width:1000px) {
+            opacity: 0;
+        }
 
         .buy-button {
             button {
@@ -96,8 +195,17 @@
                 border-radius: 12px;
                 font-size: clamp(16px, 2vw, 18px);
                 gap: 1rem;
+
+                @media (max-width:547px) {
+                    gap: .45rem;
+                }
             }
         }
     }
+}
 
+@keyframes transition-display-none {
+    0% {
+        opacity: 0;
+    }
 }
