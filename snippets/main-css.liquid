@@ -1,0 +1,70 @@
+<!-- Change base.css to load asynchronously -->
+<link rel="preload" href="{{ 'base.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'base.css' | asset_url }}"></noscript>
+
+<!-- Apply same pattern to other non-critical CSS -->
+<link
+  rel="preload"
+  href="{{ 'header.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'component-cart-drawer.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'component-price.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'card-component.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'menu-departments.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="{{ 'announcment-bar.css' | asset_url }}"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="preload"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+>
+<link
+  rel="stylesheet"
+  href="{{ 'component-predictive-search.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'"
+>
+
+{% if request.page_type == 'index' %}
+  <link
+    rel="preload"
+    href="{{ 'home.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <link
+    rel="preload"
+    href="{{ 'banner-mosaic.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+ 
+
+{% endif %}
