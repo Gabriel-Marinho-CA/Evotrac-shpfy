@@ -399,6 +399,8 @@
 
                  ul {
                     li {
+                        display: flex;
+                        flex-direction: column;
                         padding: .45rem 0;
                     }
                  }
