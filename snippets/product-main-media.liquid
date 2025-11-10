@@ -1,0 +1,70 @@
+<!-- Thumbnails -->
+<swiper-instance
+    class="swiper swiper-thumbnails"
+    slide-desktop="4"
+    space-between-desk="16"
+    space-between-mob="8"
+    id="thumbs-slider"
+    direction="vertical">
+    <div class="swiper-wrapper">
+        {% for img in product.media %}
+        <div class="swiper-slide" data-media="{{ img.alt | escape }}">
+            {% if img.media_type == 'video' %}
+            <div class="video-thumb">
+                {{ img | video_tag: autoplay: true, loop: true, muted: true }}
+            </div>
+            {% else %}
+            <div class="image-thumb">
+                <img
+                    src="{{ img | image_url }}"
+                    width="48"
+                    height="48"
+                    alt="{{ img.alt | escape }}">
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</swiper-instance>
+
+<!-- Main Swiper -->
+<swiper-instance
+    class="swiper swiper-main"
+    slide-desktop="1"
+    slide-mobile="1"
+    id="main-product-img"
+    thumbs-id="thumbs-slider"
+    have-arrow>
+    <div class="swiper-wrapper">
+        {% if product.images.size > 0 %}
+        {% for img in product.media %}
+        {% if img.media_type == 'video' %}
+        <div class="swiper-slide">
+            {{ img | video_tag: image_size: '547px', autoplay: true, loop: true, muted: true, controls: true }}
+        </div>
+        {% else %}
+        <div class="swiper-slide" data-media="{{ img.alt | escape }}">
+            <div class="zoom-container">
+                <zoom-image
+                    src="{{ img | image_url }}"
+                    alt="{{ img.alt | escape }}"
+                    width="{{ img.width }}"
+                    class="zoom-image"
+                    scale="2"
+                        transition="0.3s ease"
+                    height="{{ img.height }}">
+                </zoom-image>
+            </div>
+
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <div>
+            {{ product.featured_image | image_url: width: 547, height: 547 | image_tag: class: 'product-main-image' }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</swiper-instance>

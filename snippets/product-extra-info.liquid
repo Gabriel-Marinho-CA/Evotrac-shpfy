@@ -1,0 +1,28 @@
+<div class="product-extra-info" id="descricao-completa">
+  {% if description != blank %}
+    <details>
+      <summary>
+        <p>Descrição</p>
+        <span class="svg-wrapper small">
+          {{- 'icon-plus-orange.svg' | inline_asset_content -}}
+        </span>
+      </summary>
+      <div class="content">
+        {{ description }}
+      </div>
+    </details>
+  {% endif %}
+  {% if especificacao_tecnica != blank %}
+    <details>
+      <summary>
+        <p>Especificação Técnica</p>
+        <span class="svg-wrapper small">
+          {{- 'icon-plus-orange.svg' | inline_asset_content -}}
+        </span>
+      </summary>
+      <div class="content">
+        {{ especificacao_tecnica | metafield_tag }}
+      </div>
+    </details>
+  {% endif %}
+</div>

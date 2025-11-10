@@ -4,6 +4,12 @@
     font-weight: 400;
     font-display: swap;
 }
+@font-face {
+    font-family: 'effra-md';
+    src: url('https://cdn.shopify.com/s/files/1/0622/0565/7163/files/effra-md.woff2?v=1761678208');
+    font-weight: 400;
+    font-display: swap;
+}
 
 @font-face {
     font-family: 'effra-b';
@@ -26,7 +32,6 @@
 body {
     margin: 0 !important;
     overflow-x: hidden;
-    transform: translate3d(0, 0, 0);
     background-color: #F4F4F4;
 
     &:has(.drawer.active) {
@@ -212,6 +217,10 @@ ul {
         font-size: 20px !important;
 
     }
+
+    @media (max-width:547px) {
+        display: none;
+    }
 }
 
 .title {
@@ -219,13 +228,13 @@ ul {
     font-family: 'effra-b';
     font-size: 28px;
     padding-bottom: 2rem;
-
+ 
 
     * {
         font-size: inherit;
         font-family: inherit;
         font-weight: inherit;
-        color: #e6722c;
+        color: #2D2A26;
     }
 }
 
@@ -254,4 +263,8 @@ ul {
     @media (min-width:1001px) {
         display: none !important;
     }
+}
+
+.triangle {
+    left: var(--triangle-position);
 }

@@ -9,7 +9,7 @@
   transition: all .3s ease;
   background-color: #fff;
   transform: translateX(130%);
-  padding: 1.3rem;
+  padding: 1.3rem; 
   border-radius: 15px;
   display: none;
 
@@ -192,4 +192,8 @@
       }
     }
   }
+}
+
+close-drawer {
+  cursor: pointer;
 }

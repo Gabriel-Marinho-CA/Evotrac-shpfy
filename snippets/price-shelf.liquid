@@ -18,12 +18,12 @@
     {% if compare_at_price > price %}
         <div class="list-price">
             <p>
-                De <span>{{ price | money }}</span>
+                De <span>{{ compare_at_price | money }}</span>
             </p>
         </div>
         <div class="spot-price">
             <p>
-                Por: <span>{{ compare_at_price | money }}</span>
+                Por: <span>{{ price | money }}</span>
             </p>
         </div>
         {% else %}

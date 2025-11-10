@@ -1,0 +1,30 @@
+{% if cupons != blank %}
+<div class="cupom-area">
+    <p>Usar cupom:</p>
+    <div class="cupons">
+        {% for item in cupons %}
+        <div class="cupom">
+            <button class="copy-cupom"
+                onclick="navigator.clipboard.writeText(this.querySelector('.texto').innerText); this.classList.add('copiado'); setTimeout(() => this.classList.remove('copiado'), 2000)">
+                <span class="texto">{{ item }}</span> 🗐
+            </button>
+
+            {% if forloop.first %}
+            <p class="legenda">
+                Compras acima de R$ 1500
+            </p>
+            {% elsif forloop.rindex0 == 1 %}
+            <p class="legenda">
+                Compras acima de R$ 3000
+            </p>
+            {% else %}
+            <p class="legenda">
+                Compras acima de R$ 5000
+            </p>
+            {% endif %}
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

@@ -36,6 +36,7 @@
             font-size: clamp(14px, 1.8vw, 18px);
             font-weight: 500;
             line-height: 1.5;
+            font-family: 'effra-md';
             text-align: center;
             margin-bottom: auto;
         }

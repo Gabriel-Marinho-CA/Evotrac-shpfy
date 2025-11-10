@@ -1,0 +1,66 @@
+<div class="buy-together">
+  <h3>Aproveite e compre juntos</h3>
+  <div class="wrapper">
+    {% assign count = 0 %}
+    {% assign accumulate_price = 0 %}
+
+    {% if compre_junto %}
+      {% for item in compre_junto.value %}
+        {% if item.available %}
+          {% assign product_id_array = product_id_array
+            | append: item.selected_or_first_available_variant.id
+            | append: ','
+          %}
+          {% render 'card-component', product: item, section_id: section.id %}
+
+          {% if forloop.first %}
+            <span class="svg-wrapper big">
+              {{- 'plus-icon-btg.svg' | inline_asset_content -}}
+            </span>
+
+          {% else %}
+            <span class="svg-wrapper big">
+              {{- 'equal-icon-btg.svg' | inline_asset_content -}}
+            </span>
+          {% endif %}
+        {% endif %}
+        {% assign count = count | plus: 1 %}
+        {% assign accumulate_price = accumulate_price | plus: item.price %}
+      {% endfor %}
+    {% endif %}
+    <div class="info-price-btg desktop">
+      <p>Leve {{ count }} produtos por apenas</p>
+
+      <div class="price-accumulate">
+        <p class="accumulate-value">{{ accumulate_price | times: 0.95 | money }} à vista</p>
+      </div>
+      <div class="buy-area">
+        <button
+          is="add-to-cart-multiple"
+          data-product-id="{{ product_id_array }}"
+          class="button button-primary"
+        >
+          Compra Junto
+        </button>
+      </div>
+    </div>
+    <div class="info-price-btg mobile">
+      <div>
+        <p>Leve {{ count }} produtos por apenas</p>
+
+        <div class="price-accumulate">
+          <p class="accumulate-value">{{ accumulate_price | times: 0.95 | money }} à vista</p>
+        </div>
+      </div>
+      <div class="buy-area">
+        <button
+          is="add-to-cart-multiple"
+          data-product-id="{{ product_id_array }}"
+          class="button button-primary"
+        >
+          Compra Junto
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

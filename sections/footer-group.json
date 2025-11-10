@@ -1,1 +1,13 @@
-{"name":"Footer","type":"footer","sections":{"main-footer":{"type":"main-footer","blocks":{"logo_abpiP6":{"type":"logo","settings":{"logo_image":"shopify:\/\/shop_images\/Frame_2608686.svg","logo_size":160}},"menu_ciTnrf":{"type":"menu","settings":{"heading":"Institucional","menu_links":"institucional"}},"menu_JnhPgY":{"type":"menu","settings":{"heading":"Central de Ajuda","menu_links":"central-de-ajuda"}},"menu_R4PT9f":{"type":"menu","settings":{"heading":"Central de Atendimento","menu_links":"central-de-atendimento-1"}},"payment_icons_Rdcjd4":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-visa_svg.svg"}},"payment_icons_m8ye3c":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-mastercard_svg.svg"}},"payment_icons_EQghzk":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-diners-club_svg.svg"}},"payment_icons_7Fp3LM":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-elo_svg.svg"}},"payment_icons_q8TxUC":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-hipercard_svg.svg"}},"payment_icons_9XCXid":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-american-express_svg.svg"}},"payment_icons_jUJewU":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-hipercard.svg_1.svg"}},"payment_icons_LJqgFQ":{"type":"payment_icons","settings":{"payment_image":"shopify:\/\/shop_images\/Item_Icon-Fgl-hipercard.svg_2.svg"}},"security_badge_gLazd3":{"type":"security_badge","settings":{"security_image":"shopify:\/\/shop_images\/Frame_2608669.svg"}},"security_badge_8DiBiH":{"type":"security_badge","settings":{"security_image":"shopify:\/\/shop_images\/Frame_2608667.svg"}},"security_badge_P3jnbF":{"type":"security_badge","settings":{"security_image":"shopify:\/\/shop_images\/Frame_2608668.svg"}}},"block_order":["logo_abpiP6","menu_ciTnrf","menu_JnhPgY","menu_R4PT9f","payment_icons_Rdcjd4","payment_icons_m8ye3c","payment_icons_EQghzk","payment_icons_7Fp3LM","payment_icons_q8TxUC","payment_icons_9XCXid","payment_icons_jUJewU","payment_icons_LJqgFQ","security_badge_gLazd3","security_badge_8DiBiH","security_badge_P3jnbF"],"settings":{"section_color_scheme":"scheme-9d0566fa-6938-49de-8222-1e3a63f2b9ea","extra_text":"<p>Todas as marcas e suas imagens são de propriedade de seus respectivos donos. É vedada a reprodução, total ou parcial, de qualquer conteúdo sem expressa autorização.<\/p>","copyright":"© Copyright 2025 - Todos os direitos reservados - www.evotrac.com.br","padding_top":36,"padding_bottom":36}}},"order":["main-footer"]}
+{
+    "name": "Footer",
+    "type": "footer",
+    "sections": {
+        "main-footer": {
+            "type": "main-footer",
+            "settings": {}
+        }
+    },
+    "order": [
+        "main-footer",
+    ]
+}
