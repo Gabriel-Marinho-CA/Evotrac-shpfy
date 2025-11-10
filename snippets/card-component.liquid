@@ -1,34 +1,63 @@
-{%- assign product_form_id = 'product-form-' | append: section_id-%}
-<div class="shelf-component">
-    <a href="{{ product.url }}" title="{{ product.title }}">
+{%- assign product_form_id = 'product-form-' | append: section_id -%}
+{% assign nivel_resistencia = product.metafields.custom.nivel_de_resistencia %}
 
- 
-    <div class="img-wrapper">     
-        {% if product.featured_image != blank %}
-            {{ product.featured_image | image_url: width: 220 |  image_tag: loading:'lazy', alt: product.title  }}
+<div class="shelf-component">
+  <a href="{{ product.url }}" title="{{ product.title }}">
+    {% if product.compare_at_price %}
+      <div class="seal">
+       -{{
+          product.compare_at_price
+          | minus: product.price
+          | times: 100.0
+          | divided_by: product.compare_at_price
+          | round
+        }}%
+      </div>
+    {% endif %}
+
+    <div class="img-wrapper">
+      {% if product.featured_image != blank %}
+        {{ product.featured_image | image_url: width: 220 | image_tag: loading: 'lazy', alt: product.title }}
+
+        {% if product.images.size > 1 %}
+           {{ product.images[1] | image_url: width: 220 | image_tag: loading: 'lazy', alt: product.title, fetchpriority: 'low', class: 'second-image' }}
         {% endif %}
+      {% endif %}
     </div>
-    {% if product.metafields.custom.nivel_resistencia != blank %}
-        <div class="resistence-level">
-            <p>Nivel de resistência</p>
-            <div class="img-resistence">
-                <img src="#" alt="Nivel de resistência" width="120" height="20" loading="lazy">
+    {% if nivel_resistencia != blank %}
+      <div class="nivel-resistencia">
+        <p>Nível de resistência</p>
+        <div class="wrapper">
+          <div class="wrapper-svg">
+            {{- 'nivel-resistencia.svg' | inline_asset_content -}}
+          </div>
+
+          <div
+            class="triangle"
+            style="--triangle-position: calc((20.16px* {{ nivel_resistencia | minus: 1 }}) + 2.76px);"
+          >
+            <div class="svg-wrapper small">
+              {{- 'triangle.svg' | inline_asset_content -}}
             </div>
+          </div>
         </div>
+      </div>
+    {% else %}
+      <div class="space"></div>
     {% endif %}
     <div class="title-product">
-        <p>{{ product.title }} </p>
+      <p>{{ product.title }}</p>
     </div>
     <div class="price">
-        {% render 'price-shelf' , product: product %}
+      {% render 'price-shelf', product: product %}
     </div>
-</a>
-<div class="quick-add">
-    
-    {% render 'buy-button' product:product, product_form_id:product_form_id, section_id: section_id%}
-    {% comment %} <button class="button button-primary" aria-label="Adicionar ao carrinho"  data-product-url="{{ product.url }}">
-        COMPRAR
-    </button> {% endcomment %}
-</div>
-
+  </a>
+  <div class="quick-add">
+    {% render 'buy-button', product: product, product_form_id: product_form_id, section_id: section_id %}
+    {% comment %}
+      <button class="button button-primary" aria-label="Adicionar ao carrinho"  data-product-url="{{ product.url }}">
+          COMPRAR
+      </button>
+    {% endcomment %}
+  </div>
 </div>
