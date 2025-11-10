@@ -29,6 +29,7 @@ header {
                 height: auto;
                 display: block;
                 width: 100%;
+                aspect-ratio: 260/48;
             }
         }
 
@@ -126,7 +127,7 @@ header {
                 border-top-right-radius: 6px;
                 border-bottom-right-radius: 6px;
                 padding: 1.5em;
-                z-index: 2;
+                z-index: 5;
                 box-shadow: 0px 3px 6px #cecece;
                 transition: all .3s ease;
 
