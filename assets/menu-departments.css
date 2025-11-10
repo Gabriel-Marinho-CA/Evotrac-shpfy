@@ -19,11 +19,13 @@
             justify-content: center;
             gap: 12rem;
 
-            &:hover {
-               > .menu-second-level {
-                    display: block;
+   
 
-
+            .wrapper-menu-first-level {
+                &:hover {
+                    > .menu-second-level {
+                        display: block;
+                    }
                 }
             }
 
