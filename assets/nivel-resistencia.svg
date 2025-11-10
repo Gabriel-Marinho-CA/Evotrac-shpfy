@@ -1,0 +1,14 @@
+<svg width="121" height="21" viewBox="0 0 121 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 4.25C0.25 2.04086 2.04086 0.25 4.25 0.25H20.25V20.25H4.25C2.04086 20.25 0.25 18.4591 0.25 16.25V4.25Z" fill="#ED1D24"/>
+<path d="M0.25 4.25C0.25 2.04086 2.04086 0.25 4.25 0.25H20.25V20.25H4.25C2.04086 20.25 0.25 18.4591 0.25 16.25V4.25Z" stroke="#2D2A26" stroke-width="0.5"/>
+<rect x="20.25" y="0.25" width="20" height="20" fill="#F76F1E"/>
+<rect x="20.25" y="0.25" width="20" height="20" stroke="#2D2A26" stroke-width="0.5"/>
+<rect x="40.25" y="0.25" width="20" height="20" fill="#FFDF00"/>
+<rect x="40.25" y="0.25" width="20" height="20" stroke="#2D2A26" stroke-width="0.5"/>
+<rect x="60.25" y="0.25" width="20" height="20" fill="#BDD532"/>
+<rect x="60.25" y="0.25" width="20" height="20" stroke="#2D2A26" stroke-width="0.5"/>
+<rect x="80.25" y="0.25" width="20" height="20" fill="#7FB63B"/>
+<rect x="80.25" y="0.25" width="20" height="20" stroke="#2D2A26" stroke-width="0.5"/>
+<path d="M100.25 0.25H116.25C118.459 0.25 120.25 2.04086 120.25 4.25V16.25C120.25 18.4591 118.459 20.25 116.25 20.25H100.25V0.25Z" fill="#00A851"/>
+<path d="M100.25 0.25H116.25C118.459 0.25 120.25 2.04086 120.25 4.25V16.25C120.25 18.4591 118.459 20.25 116.25 20.25H100.25V0.25Z" stroke="#2D2A26" stroke-width="0.5"/>
+</svg>
