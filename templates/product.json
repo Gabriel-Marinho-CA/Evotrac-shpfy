@@ -1,1 +1,35 @@
-{"sections":{"main-product":{"type":"main-product","settings":{}}},"order":["main-product"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related_products_eNAALf": {
+      "type": "related-products",
+      "name": "Produtos Relacionados",
+      "settings": {
+        "featured_collection": "",
+        "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
+        "title": "Você também pode gostar",
+        "padding_top": 84,
+        "padding_bottom": 68
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "related_products_eNAALf"
+  ]
+}
