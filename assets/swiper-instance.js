@@ -16,7 +16,9 @@ class SwiperInstance extends HTMLElement {
     this.autoplay_speed = parseInt(this.getAttribute("autoplay-speed")) || 4500;
     this.center_mode = this.hasAttribute("center-mode");
 
-
+    // 👇 thumbs e direção padrão
+    this.thumbs_id = this.getAttribute("thumbs-id") || null;
+    this.direction = this.getAttribute("direction") || "horizontal";
   }
 
   connectedCallback() {
@@ -24,21 +26,28 @@ class SwiperInstance extends HTMLElement {
   }
 
   initSwiper() {
-    new Swiper(this, {
+    this.swiper = new Swiper(this, {
       loop: this.loop,
-
+      direction: this.direction, // direção inicial (será sobrescrita nos breakpoints)
       slidesPerView: this.slide_mobile,
       spaceBetween: this.space_between_mobile,
 
       centeredSlides: this.center_mode,
       centeredSlidesBounds: this.center_mode,
 
+      // 👇 breakpoints controlam slides e direção
       breakpoints: {
         1024: {
           slidesPerView: this.slide_desktop,
           spaceBetween: this.space_between_desk,
+          direction: this.direction, // mantém a direção original (ex: vertical)
           centeredSlides: false,
           centeredSlidesBounds: false,
+        },
+        // 👇 para telas menores que 1024px
+        0: {
+          spaceBetween: this.space_between_mobile,
+          direction: "horizontal", // muda para horizontal no mobile
         },
       },
 
@@ -71,6 +80,24 @@ class SwiperInstance extends HTMLElement {
           }
         : false,
     });
+
+    // 👇 conecta thumbs se houver
+    if (this.thumbs_id) {
+      const thumbsEl = document.getElementById(this.thumbs_id);
+
+      const waitThumbs = () => {
+        if (thumbsEl?.swiper) {
+          this.swiper.thumbs.swiper = thumbsEl.swiper;
+          this.swiper.thumbs.init();
+          this.swiper.thumbs.update();
+        } else {
+          requestAnimationFrame(waitThumbs);
+        }
+      };
+
+      waitThumbs();
+    }
   }
 }
+
 customElements.define("swiper-instance", SwiperInstance);
