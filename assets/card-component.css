@@ -44,7 +44,7 @@
             width: 100%;
             height: auto;
             object-fit: cover;
-            max-width: 220px;
+           /* max-width: 220px;*/
             display: block;
             transition: all 0.5s ease;
         }
