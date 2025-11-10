@@ -1,0 +1,25 @@
+        <div class="paymethods_product">
+          <h3 class="">
+            Formas de pagamento <span class="">X</span>
+          </h3>
+          <div class="wrapper-methods">
+            <ul class="">
+              {% assign enabled_payment_types =
+              'visa,master,diners_club,elo,hipercard,jcb,discover,american_express,boleto,pix'
+              | split: ','
+              %}
+              {% for payment in enabled_payment_types %}
+              <li class="">
+                {{ payment | payment_type_svg_tag }}
+                {% liquid
+                      assign installment_number = 8
+                      assign installment_price = product.price | divided_by: installment_number
+                %}   
+              <div class="installments">
+                  <p>Ou <span>{{ price | money }}</span> em {{ installment_number }}x de {{ installment_price | money }} sem juros </p>
+              </div> 
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
