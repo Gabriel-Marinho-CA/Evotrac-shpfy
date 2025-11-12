@@ -312,7 +312,7 @@
     "collection_showcase_WnQUJW": {
       "type": "collection-showcase",
       "custom_css": [
-        ".title * {color: #2D2A26;}"
+        ".title * {color: #2d2a26;}"
       ],
       "name": "Coleção destaque",
       "settings": {
