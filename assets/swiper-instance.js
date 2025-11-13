@@ -79,17 +79,9 @@ class SwiperInstance extends HTMLElement {
             disableOnInteraction: false,
           }
         : false,
-      on: {
-        init: () => {
-          publish("swiper:ready", {
-            id: this.id,
-            element: this,
-            swiper: this.swiper,
-          });
-        },
-      },
     });
 
+    // 👇 conecta thumbs se houver
     if (this.thumbs_id) {
       const thumbsEl = document.getElementById(this.thumbs_id);
 
@@ -98,13 +90,6 @@ class SwiperInstance extends HTMLElement {
           this.swiper.thumbs.swiper = thumbsEl.swiper;
           this.swiper.thumbs.init();
           this.swiper.thumbs.update();
-
-          // 👇 publish especial para thumbs
-          publish("swiper:thumbs-ready", {
-            main: this.id,
-            thumbs: this.thumbs_id,
-            swiper: this.swiper,
-          });
         } else {
           requestAnimationFrame(waitThumbs);
         }
