@@ -69,11 +69,11 @@ customElements.define("variant-options", ProductVariantes, {
 document.addEventListener("DOMContentLoaded", () => {
   if(window.innerWidth > 1000) return;
   const productMedia = document.querySelector(".product-media");
-  if (productMedia) {
+  /*if (productMedia) {
     setTimeout(() => {
          const height = productMedia.offsetHeight + 111;
     productMedia.style.height = `${height}px`;
     }, 750);
  
-  }
+  }*/
 }); 
