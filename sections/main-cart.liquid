@@ -39,116 +39,47 @@
         </thead>
         <tbody>
           {% for item in cart.items %}
-        <tr class="line-item cart-drawer-item" data-line-item-key="{{ item.key }}">
+        <tr is="cart-item" data-line-item-key="{{ item.key }}">
+
   <td class="image-item">
-    <img
-      style="max-width: 108px;"
-      src="{{ item.image | image_url }}"
-      alt="{{ item.image.alt }}"
-      loading="lazy"
-    >
+    ...
   </td>
 
   <td class="url-item">
-    <a href="{{ item.url }}" class="text-base text-custom-black font-black">
-      {{ item.product.title }}
-    </a>
+    <a href="{{ item.url }}">{{ item.product.title }}</a>
   </td>
 
-  <!-- QUANTIDADE — idêntico ao cart-drawer -->
   <td class="actions-btn-item">
-    <div class="cart-quantity-selector">
-      <quantity-popover class="action">
+    <cart-qty data-line-item-key="{{ item.key }}">
+      <button class="minus svg-wrapper" data-minus>
+        {{ 'icon-minus.svg' | inline_asset_content }}
+      </button>
 
-        <!-- minus -->
-        <button
-          class="minus svg-wrapper"
-          name="minus"
-          {% if item.quantity <= 1 %}disabled{% endif %}
-        >
-          {{- 'icon-minus.svg' | inline_asset_content -}}
-        </button>
-
-        <!-- input -->
-        <input
-          class="quantity__input"
-          type="number"
-          name="updates[]"
-          value="{{ item.quantity }}"
-
-          data-quantity-variant-id="{{ item.key }}"
-          data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-          min="1"
-          data-min="{{ item.variant.quantity_rule.min }}"
-
-          {% if item.variant.quantity_rule.max != null %}
-            max="{{ item.variant.quantity_rule.max }}"
-          {% endif %}
-
-          step="{{ item.variant.quantity_rule.increment }}"
-
-          aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-          id="Cart-Quantity-{{ item.index | plus: 1 }}"
-          data-index="{{ item.index | plus: 1 }}"
-          {% if item.instructions and item.instructions.can_update_quantity == false %}
-            disabled
-          {% endif %}
-        >
-
-        <!-- plus -->
-        <button
-          class="plus svg-wrapper"
-          name="plus"
-        >
-          {{- 'icon-plus.svg' | inline_asset_content -}}
-        </button>
-
-      </quantity-popover>
-    </div>
-
-    <!-- Avisos de estoque (mantive os seus) -->
-    <div class="exceed">
-      {% if plusButtonEnable == 'disabled' %}
-        <p style="padding-top: .5rem; color:red; font-size: 12px;">Quantidade máxima atingida</p>
-      {% endif %}
-    </div>
-    <div class="exceed-2" style="display:none">
-      <p style="padding-top: .5rem; color:red; font-size: 12px;">
-        {% if item.quantity > 1 %}
-          Estoque insuficiente.<br>Temos apenas {{ maxValue }} disponíveis
-        {% else %}
-          Estoque insuficiente.<br>Temos apenas {{ maxValue }} disponível
-        {% endif %}
-      </p>
-    </div>
-  </td>
-
-  <!-- PREÇO -->
-  <td class="price-item">
-    <div class="cart-item-price">
-      {% if item.variant.compare_at_price != blank %}
-        {% assign listTotal = item.variant.compare_at_price | times: item.quantity %}
-        <span class="line-through text-[#999999] text-base">
-          {{ listTotal | money }}
-        </span>
-      {% endif %}
-
-      <span class="font-black text-[#BA1A1A]">
-        {{ item.final_line_price | money }}
-      </span>
-    </div>
-  </td>
-
-  <!-- REMOVER ITEM — igual ao minicart -->
-  <td class="cart-remove-item">
-    <div class="cart-drawer-item-remove">
-      <cart-remove-item 
-        data-remove-item-id="{{ item.key }}"
-        class="svg-wrapper small"
+      <input
+        data-qty-input
+        class="quantity__input"
+        type="number"
+        value="{{ item.quantity }}"
       >
-        {{- 'ico-trash.svg' | inline_asset_content -}}
-      </cart-remove-item>
-    </div>
+
+      <button class="plus svg-wrapper" data-plus>
+        {{ 'icon-plus.svg' | inline_asset_content }}
+      </button>
+    </cart-qty>
+  </td>
+
+  <td class="price-item">
+    {{ item.final_line_price | money }}
+  </td>
+
+  <td class="cart-remove-item">
+    <cart-remove 
+      class="svg-wrapper small"
+      data-remove-item-id="{{ item.key }}"
+      data-remove
+    >
+      {{ 'ico-trash.svg' | inline_asset_content }}
+    </cart-remove>
   </td>
 
 </tr>
@@ -185,6 +116,100 @@
     {% endform %}
   {% endif %}
 </div>
+
+<script>
+    class CartPage extends HTMLElement {
+  constructor() {
+    super();
+    subscribe(PUB_SUB_EVENTS.cartUpdateUi, this._replacePage.bind(this));
+  }
+
+  connectedCallback() {
+    // poderia iniciar algo aqui depois se quiser
+  }
+
+  _replacePage({ responseText }) {
+    const html = new DOMParser().parseFromString(responseText, "text/html");
+    const newPage = html.querySelector("#cart-template");
+
+    if (newPage) {
+      this.replaceWith(newPage);
+    }
+  }
+}
+
+customElements.define("cart-page", CartPage);
+
+class CartItem extends HTMLElement {
+  connectedCallback() {
+    this.lineId = this.dataset.lineItemKey;
+
+    this.minusBtn = this.querySelector("[data-minus]");
+    this.plusBtn = this.querySelector("[data-plus]");
+    this.qtyInput = this.querySelector("[data-qty-input]");
+    this.removeBtn = this.querySelector("[data-remove]");
+
+    if (this.minusBtn)
+      this.minusBtn.addEventListener("click", () => this._change(-1));
+
+    if (this.plusBtn)
+      this.plusBtn.addEventListener("click", () => this._change(1));
+
+    if (this.qtyInput)
+      this.qtyInput.addEventListener("change", () =>
+        cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
+      );
+
+    if (this.removeBtn)
+      this.removeBtn.addEventListener("click", () =>
+        cartService.removeItem(this.lineId)
+      );
+  }
+
+  _change(delta) {
+    const newQty = parseInt(this.qtyInput.value) + delta;
+    if (newQty <= 0) return;
+    cartService.updateQuantity(this.lineId, newQty);
+  }
+}
+
+customElements.define("cart-item", CartItem);
+
+class CartRemove extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener("click", () => {
+      const id = this.dataset.removeItemId;
+      cartService.removeItem(id);
+    });
+  }
+}
+customElements.define("cart-remove", CartRemove);
+
+class CartQty extends HTMLElement {
+  connectedCallback() {
+    this.lineId = this.dataset.lineItemKey;
+
+    this.minus = this.querySelector("[data-minus]");
+    this.plus = this.querySelector("[data-plus]");
+    this.input = this.querySelector("[data-qty-input]");
+
+    this.minus.addEventListener("click", () => this._update(-1));
+    this.plus.addEventListener("click", () => this._update(1));
+
+    this.input.addEventListener("change", () =>
+      cartService.updateQuantity(this.lineId, parseInt(this.input.value))
+    );
+  }
+
+  _update(delta) {
+    const newValue = parseInt(this.input.value) + delta;
+    if (newValue > 0) cartService.updateQuantity(this.lineId, newValue);
+  }
+}
+
+customElements.define("cart-qty", CartQty);
+
+</script>
 {% schema %}
 {
   "name": "Cart",
