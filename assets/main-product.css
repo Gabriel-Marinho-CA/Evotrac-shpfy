@@ -113,13 +113,13 @@ html {
 
                 @media (max-width:1000px) {
                     &:has(.nivel-resistencia) {
-                        padding-bottom:58px;
-                        #thumbs-slider {
-                            bottom: 58px;
-                        }
+                        padding-bottom:111px;
                     }
                 &:not(:has(.nivel-resistencia)) {
-                    padding-bottom: 111px;
+                    padding-bottom: 58px;
+                      #thumbs-slider {
+                            bottom: 58px;
+                        }
                     }
                 }
 
