@@ -68,12 +68,15 @@ customElements.define("variant-options", ProductVariantes, {
 
 document.addEventListener("DOMContentLoaded", () => {
   if(window.innerWidth > 1000) return;
+  if(document.querySelector('.nivel-resistencia')) {
   const productMedia = document.querySelector(".product-media");
-  /*if (productMedia) {
-    setTimeout(() => {
+  if (productMedia) {
+   
          const height = productMedia.offsetHeight + 111;
     productMedia.style.height = `${height}px`;
-    }, 750);
+
  
-  }*/
+  }
+  }
+
 }); 
