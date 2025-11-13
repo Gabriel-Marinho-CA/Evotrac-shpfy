@@ -149,6 +149,8 @@ class CartItem extends HTMLElement {
     this.qtyInput = this.querySelector("[data-qty-input]");
     this.removeBtn = this.querySelector("[data-remove]");
 
+    console.log(this.lineId)
+
     if (this.minusBtn)
       this.minusBtn.addEventListener("click", () => this._change(-1));
 
