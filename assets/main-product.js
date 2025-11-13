@@ -70,7 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if(window.innerWidth > 1000) return;
   const productMedia = document.querySelector(".product-media");
   if (productMedia) {
-    const height = productMedia.offsetHeight + 111;
+    setTimeout(() => {
+         const height = productMedia.offsetHeight + 111;
     productMedia.style.height = `${height}px`;
+    }, 750);
+ 
   }
 }); 
