@@ -67,7 +67,7 @@ customElements.define("variant-options", ProductVariantes, {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  if(window.innerWidth < 1000) return;
+  if(window.innerWidth > 1000) return;
   const productMedia = document.querySelector(".product-media");
   if (productMedia) {
     const height = productMedia.offsetHeight + 111;
