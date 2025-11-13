@@ -118,7 +118,9 @@ html {
                             bottom: 58px;
                         }
                     }
-                     padding-bottom:111px;
+                &:not(:has(.nivel-resistencia)) {
+                    padding-bottom: 111px;
+                    }
                 }
 
                 #thumbs-slider {
