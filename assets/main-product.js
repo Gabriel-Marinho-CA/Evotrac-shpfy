@@ -66,6 +66,7 @@ customElements.define("variant-options", ProductVariantes, {
 });
 
 
+/*
 document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth > 1000) return;
   const productMedia = document.querySelector(".product-media");
@@ -80,4 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
   }
+});
+
+*/
+subscribe("swiper:thumbs-ready", ({ main, thumbs, swiper }) => {
+  console.log("Thumbs conectados!", main, thumbs);
 });
