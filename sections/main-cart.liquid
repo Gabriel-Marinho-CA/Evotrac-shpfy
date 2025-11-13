@@ -39,104 +39,120 @@
         </thead>
         <tbody>
           {% for item in cart.items %}
-            <tr class="line-item cart-drawer-item" data-line-item-key="{{ item.key }}">
-              <td class="image-item">
-                <img
-                  style="max-width: 108px;"
-                  src="{{ item.image | image_url }}"
-                  alt="{{ item.image.alt }}"
-                  loading="lazy"
-                >
-              </td>
-              <td class="url-item">
-                <a href="{{ item.url }}" class="text-base text-custom-black font-black ">{{ item.product.title }}</a>
-              </td>
-              <td class="actions-btn-item">
-                <div class="cart-quantity-selector">
-<quantity-popover class="action">
-                <button {% if item.quantity> 1 %} {% else %}disabled{% endif %}
-                  class="minus svg-wrapper" name="minus">
-                  {{- 'icon-minus.svg' | inline_asset_content -}}
-                </button>
-                <input
-                  class="quantity__input"
-                  type="number"
-                  data-quantity-variant-id="{{ item.key }}"
-                  name="updates[]"
-                  value="{{ item.quantity }}"
-                  {% # theme-check-disable %}
-                  data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                  min="1"
-                  data-min="{{ item.variant.quantity_rule.min }}"
-                  {% if item.variant.quantity_rule.max !=null %}
-                  max="{{ item.variant.quantity_rule.max }}"
-                  {% endif %}
-                  step="{{ item.variant.quantity_rule.increment }}"
-                  {% # theme-check-enable %}
-                  aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-                  id="Drawer-quantity-{{ item.index | plus: 1 }}"
-                  data-index="{{ item.index | plus: 1 }}"
-                  {% if item.instructions and item.instructions.can_update_quantity==false %}
-                  disabled
-                  {% endif %}>
-                <button class="plus svg-wrapper" name="plus">
-                  {{- 'icon-plus.svg' | inline_asset_content -}}
-                </button>
-              </quantity-popover>
-                </div>
-                <div class="exceed">
-                  {% if plusButtonEnable == 'disabled' %}
-                    <p style="padding-top: .5rem; color:red; font-size: 12px;">Quantidade máxima atingida</p>
-                  {% endif %}
-                </div>
-                <div class="exceed-2" style="display:none">
-                  <p style="padding-top: .5rem; color:red; font-size: 12px;">
-                    {% if item.quantity > 1 %}
-                      Estoque insuficiente.<br>
-                      Temos apenas {{ maxValue }} disponíveis
-                    {% else %}
-                      Estoque insuficiente.<br>
-                      Temos apenas {{ maxValue }} disponível
-                    {% endif %}
-                  </p>
-                </div>
-              </td>
-              <td class="price-item">
-                <div class="cart-item-price">
-                  <span class="line-through text-[#999999] text-base">
-                    {% if item.variant.compare_at_price != blank %}
-                      {% assign quantity = item.quantity %}
-                      {% assign listPrice = item.variant.compare_at_price %}
-                      {% capture listPriceUnit %}
-                                        {{ listPrice | times: quantity }}
-                                      {% endcapture %}
+        <tr class="line-item cart-drawer-item" data-line-item-key="{{ item.key }}">
+  <td class="image-item">
+    <img
+      style="max-width: 108px;"
+      src="{{ item.image | image_url }}"
+      alt="{{ item.image.alt }}"
+      loading="lazy"
+    >
+  </td>
 
-                      {% comment %} {% if item.variant.compare_at_price > item.final_line_price %} {% endcomment %}
-                      {{ listPriceUnit | money }}
-                      {% comment %} {% endif %} {% endcomment %}
-                    {% endif %}
-                  </span>
-                  <span class="font-black text-[#BA1A1A]">
-                    {{ item.final_line_price | money }}
-                  </span>
-                </div>
-              </td>
-              <td class="cart-remove-item">
-                <div class="cart-drawer-item-remove">
-                    <button
-                        aria-label="remover item"
-                        class="text-sm text-gray-500 hover:text-red-500 mt-2 underline"
-                        {% comment %} onclick="removeItemFromCart('{{ item.key }}')" {% endcomment %}
-                         type="submit"
-                        name="updates[{{ item.key }}]"
-                        value="0"
+  <td class="url-item">
+    <a href="{{ item.url }}" class="text-base text-custom-black font-black">
+      {{ item.product.title }}
+    </a>
+  </td>
 
-                      >
-                        {% render 'ico-trash' %}
-                      </button>
-                </div>
-              </td>
-            </tr>
+  <!-- QUANTIDADE — idêntico ao cart-drawer -->
+  <td class="actions-btn-item">
+    <div class="cart-quantity-selector">
+      <quantity-popover class="action">
+
+        <!-- minus -->
+        <button
+          class="minus svg-wrapper"
+          name="minus"
+          {% if item.quantity <= 1 %}disabled{% endif %}
+        >
+          {{- 'icon-minus.svg' | inline_asset_content -}}
+        </button>
+
+        <!-- input -->
+        <input
+          class="quantity__input"
+          type="number"
+          name="updates[]"
+          value="{{ item.quantity }}"
+
+          data-quantity-variant-id="{{ item.key }}"
+          data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+          min="1"
+          data-min="{{ item.variant.quantity_rule.min }}"
+
+          {% if item.variant.quantity_rule.max != null %}
+            max="{{ item.variant.quantity_rule.max }}"
+          {% endif %}
+
+          step="{{ item.variant.quantity_rule.increment }}"
+
+          aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+          id="Cart-Quantity-{{ item.index | plus: 1 }}"
+          data-index="{{ item.index | plus: 1 }}"
+          {% if item.instructions and item.instructions.can_update_quantity == false %}
+            disabled
+          {% endif %}
+        >
+
+        <!-- plus -->
+        <button
+          class="plus svg-wrapper"
+          name="plus"
+        >
+          {{- 'icon-plus.svg' | inline_asset_content -}}
+        </button>
+
+      </quantity-popover>
+    </div>
+
+    <!-- Avisos de estoque (mantive os seus) -->
+    <div class="exceed">
+      {% if plusButtonEnable == 'disabled' %}
+        <p style="padding-top: .5rem; color:red; font-size: 12px;">Quantidade máxima atingida</p>
+      {% endif %}
+    </div>
+    <div class="exceed-2" style="display:none">
+      <p style="padding-top: .5rem; color:red; font-size: 12px;">
+        {% if item.quantity > 1 %}
+          Estoque insuficiente.<br>Temos apenas {{ maxValue }} disponíveis
+        {% else %}
+          Estoque insuficiente.<br>Temos apenas {{ maxValue }} disponível
+        {% endif %}
+      </p>
+    </div>
+  </td>
+
+  <!-- PREÇO -->
+  <td class="price-item">
+    <div class="cart-item-price">
+      {% if item.variant.compare_at_price != blank %}
+        {% assign listTotal = item.variant.compare_at_price | times: item.quantity %}
+        <span class="line-through text-[#999999] text-base">
+          {{ listTotal | money }}
+        </span>
+      {% endif %}
+
+      <span class="font-black text-[#BA1A1A]">
+        {{ item.final_line_price | money }}
+      </span>
+    </div>
+  </td>
+
+  <!-- REMOVER ITEM — igual ao minicart -->
+  <td class="cart-remove-item">
+    <div class="cart-drawer-item-remove">
+      <cart-remove-item 
+        data-remove-item-id="{{ item.key }}"
+        class="svg-wrapper small"
+      >
+        {{- 'ico-trash.svg' | inline_asset_content -}}
+      </cart-remove-item>
+    </div>
+  </td>
+
+</tr>
+
           {% endfor %}
         </tbody>
       </table>
@@ -152,18 +168,17 @@
             <h3 class="text-custom-black text-lg">Subtotal</h3>
             <span class="text-custom-black">{{ cart.items_subtotal_price | money }}</span>
           </div>
-            <button
-              aria-label="Ir para checkout"
-              type="submit"
-              name="checkout"
-              class="w-full bg-[#35735A] text-white p-4"
-            >
-              FECHAR PEDIDO
-            </button>
+          <button
+            aria-label="Ir para checkout"
+            type="submit"
+            name="checkout"
+            class="w-full bg-[#35735A] text-white p-4"
+          >
+            FECHAR PEDIDO
+          </button>
 
           {% if section.settings.active_discount_quantity %}
-            <div class="quantity-pdp-wrapper">
-            </div>
+            <div class="quantity-pdp-wrapper"></div>
           {% endif %}
         </div>
       </footer>
