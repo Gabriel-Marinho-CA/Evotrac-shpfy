@@ -18,7 +18,7 @@
             "alt": "Banner",
             "image_slide": "shopify://shop_images/Frame_2608633.png",
             "image_slide_mob": "shopify://shop_images/Frame_2608633_80c5da27-67cb-4bf3-bf72-b5ecfae26709.png",
-            "link_banner": ""
+            "link_banner": "shopify://pages/agricola"
           }
         },
         "custom_group_QDWzMq": {
@@ -27,13 +27,23 @@
             "alt": "Banner",
             "image_slide": "shopify://shop_images/Frame_2608633.png",
             "image_slide_mob": "shopify://shop_images/Frame_2608633_d95f0c82-33b2-43a7-8c80-3044d670547b.png",
-            "link_banner": ""
+            "link_banner": "shopify://pages/construcao"
+          }
+        },
+        "custom_group_JfTrfq": {
+          "type": "custom-group",
+          "settings": {
+            "alt": "Banner",
+            "image_slide": "shopify://shop_images/Frame_2608633.png",
+            "image_slide_mob": "shopify://shop_images/Frame_2608633_d95f0c82-33b2-43a7-8c80-3044d670547b.png",
+            "link_banner": "shopify://pages/empilhadeiras"
           }
         }
       },
       "block_order": [
         "custom_group_tTd84F",
-        "custom_group_QDWzMq"
+        "custom_group_QDWzMq",
+        "custom_group_JfTrfq"
       ],
       "settings": {}
     },
