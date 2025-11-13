@@ -1,3 +1,210 @@
-<div id="cart-page">
-    {% render 'cart-drawer' %}
+{{ 'cartPage.css' | asset_url | stylesheet_tag }}
+{% assign remainingAmount = section.settings.frete_gratis | minus: cart.total_price %}
+{% assign remainingAmountFormatted = remainingAmount | money %}
+{% assign textBar = section.settings.text_bar | split: '/' %}
+<style>
+  .shipping-bar {
+    padding-bottom: 1.8rem;
+  }
+  #free-shipping-bar p {
+    padding-top: 1rem;
+    font-size: 14px;
+    text-align: center;
+    line-height: 2rem;
+  }
+</style>
+<div class="container" id="cart-template">
+  <h1>Meu Carrinho</h1>
+  {% if cart.empty? %}
+    <div class="empty-cart-page">
+      <h2>Seu Carrinho Está vazio :(</h2>
+      <a href="/">Escolher Produtos</a>
+    </div>
+
+  {% else %}
+    {% form 'cart', cart, class: 'cart-page-form' %}
+      <table style="width: 100%;" class="wrapper_items">
+        <thead>
+          <tr>
+            <th style="text-align: start;" class="title-1" colspan="2" scope="col">Produto</th>
+            <th
+              class="title-2"
+              colspan="1"
+              scope="col"
+            >
+              Quantidade
+            </th>
+            <th class="title-3" colspan="1" scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+            <tr class="line-item cart-drawer-item" data-line-item-key="{{ item.key }}">
+              <td class="image-item">
+                <img
+                  style="max-width: 108px;"
+                  src="{{ item.image | image_url }}"
+                  alt="{{ item.image.alt }}"
+                  loading="lazy"
+                >
+              </td>
+              <td class="url-item">
+                <a href="{{ item.url }}" class="text-base text-custom-black font-black ">{{ item.product.title }}</a>
+              </td>
+              <td class="actions-btn-item">
+                <div class="cart-quantity-selector">
+                  <div class="border border-[#EBEBEB] h-10 flex items-center max-w-20 rounded py-[5px] px-3.5">
+                    <button onclick="stepDownInput(this, '{{ item.key }}', '{{ item.quantity }}')">-</button>
+                    <input
+                        name="updates[{{ item.key }}]"
+                        min="1"
+                        type="number"
+                        value="{{ item.quantity }}"
+                        class="text-center w-full outline-none [appearance:textfield]"
+                      >
+                    <button onclick="stepUpInput(this, '{{ item.key }}', '{{ item.quantity }}' )">+</button>
+                  </div>
+                </div>
+                <div class="exceed">
+                  {% if plusButtonEnable == 'disabled' %}
+                    <p style="padding-top: .5rem; color:red; font-size: 12px;">Quantidade máxima atingida</p>
+                  {% endif %}
+                </div>
+                <div class="exceed-2" style="display:none">
+                  <p style="padding-top: .5rem; color:red; font-size: 12px;">
+                    {% if item.quantity > 1 %}
+                      Estoque insuficiente.<br>
+                      Temos apenas {{ maxValue }} disponíveis
+                    {% else %}
+                      Estoque insuficiente.<br>
+                      Temos apenas {{ maxValue }} disponível
+                    {% endif %}
+                  </p>
+                </div>
+              </td>
+              <td class="price-item">
+                <div class="cart-item-price">
+                  <span class="line-through text-[#999999] text-base">
+                    {% if item.variant.compare_at_price != blank %}
+                      {% assign quantity = item.quantity %}
+                      {% assign listPrice = item.variant.compare_at_price %}
+                      {% capture listPriceUnit %}
+                                        {{ listPrice | times: quantity }}
+                                      {% endcapture %}
+
+                      {% comment %} {% if item.variant.compare_at_price > item.final_line_price %} {% endcomment %}
+                      {{ listPriceUnit | money }}
+                      {% comment %} {% endif %} {% endcomment %}
+                    {% endif %}
+                  </span>
+                  <span class="font-black text-[#BA1A1A]">
+                    {{ item.final_line_price | money }}
+                  </span>
+                </div>
+              </td>
+              <td class="cart-remove-item">
+                <div class="cart-drawer-item-remove">
+                    <button
+                        aria-label="remover item"
+                        class="text-sm text-gray-500 hover:text-red-500 mt-2 underline"
+                        {% comment %} onclick="removeItemFromCart('{{ item.key }}')" {% endcomment %}
+                         type="submit"
+                        name="updates[{{ item.key }}]"
+                        value="0"
+
+                      >
+                        {% render 'ico-trash' %}
+                      </button>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <footer class="cart-footer">
+        <div class="wrapper-footer-cart">
+          {% if cart.total_discounts > 0 %}
+            <div class="cart-totalizer">
+              <h3>Descontos</h3>
+              <span>{{ cart.total_discounts | money }}</span>
+            </div>
+          {% endif %}
+          <div class="cart-totalizer">
+            <h3 class="text-custom-black text-lg">Subtotal</h3>
+            <span class="text-custom-black">{{ cart.items_subtotal_price | money }}</span>
+          </div>
+            <button
+              aria-label="Ir para checkout"
+              type="submit"
+              name="checkout"
+              class="w-full bg-[#35735A] text-white p-4"
+            >
+              FECHAR PEDIDO
+            </button>
+
+          {% if section.settings.active_discount_quantity %}
+            <div class="quantity-pdp-wrapper">
+            </div>
+          {% endif %}
+        </div>
+      </footer>
+    {% endform %}
+  {% endif %}
 </div>
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Valor Frete gratis"
+    },
+    {
+      "type": "checkbox",
+      "label": "active shipping bar",
+      "id": "active_shipping_bar",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "frete_gratis",
+      "label": "ex: 10000 = R$100",
+      "default": 10000
+    },
+    {
+      "type": "text",
+      "id": "text_bar",
+      "label": "[Primeira parte da frase]/[Segunda parte da frase]",
+      "default": "Compre mais/para conseguir frete grátis"
+    },
+    {
+      "type": "header",
+      "content": "Número de produtos para descount"
+    },
+    {
+      "type": "checkbox",
+      "label": "active discount quantity ",
+      "id": "active_discount_quantity",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "product_number",
+      "label": "Quantitdade para se ter desconto ex: 5",
+      "default": 3
+    },
+    {
+      "type": "number",
+      "id": "percent_discount",
+      "label": "Porcentagem do desconto ex: 10",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "text_free_shipping",
+      "label": "ex: Parabéns você possui <strong>frete grátis :) </strong> ",
+      "default": "Parabéns você possui <strong>frete grátis :) </strong>"
+    }
+  ]
+}
+{% endschema %}

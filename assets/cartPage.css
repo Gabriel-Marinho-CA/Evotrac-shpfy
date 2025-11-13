@@ -1,0 +1,255 @@
+#cart-template {
+    padding: 6rem 0
+}
+
+@media (max-width:767px) {
+    #cart-template {
+        max-width: 400px
+    }
+
+    #cart-template .cart-page-form,
+    #cart-template h1 {
+        margin-inline: 1rem
+    }
+}
+
+#cart-template .empty-cart-page {
+    padding: 5rem 0
+}
+
+#cart-template .empty-cart-page a {
+    background-color: #35735A;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: inline-block;
+    border-radius: 4px;
+    margin-top: 3rem
+}
+
+#cart-template table.wrapper_items {
+    margin-top: 4rem;
+    width: 100%;
+    background: #fff;
+    border-radius: 4px
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items {
+        width: 100%;
+        margin-inline: auto;
+        padding: 1rem;
+        display: block
+    }
+}
+
+#cart-template table.wrapper_items thead {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #fff
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items thead {
+        display: none
+    }
+}
+
+#cart-template table.wrapper_items thead th {
+    padding-bottom: 2.4rem
+}
+
+#cart-template table.wrapper_items thead th.title-1 {
+    text-align: start;
+    padding-left: 2rem;
+    padding-top: 2rem
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody {
+        display: block
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item {
+    border-bottom: 1px solid #cecece
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(3, auto);
+        padding-bottom: 3rem;
+        padding-top: 2rem
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item:last-child {
+    border-bottom: none
+}
+
+#cart-template table.wrapper_items tbody .line-item td {
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td {
+        display: flex;
+        padding: 0
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.image-item {
+    text-align: start;
+    width: 108px
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.image-item {
+        grid-area: 1/1/1/1
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.url-item {
+    text-align: start;
+    padding-left: 1.5rem
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.url-item {
+        grid-area: 1/2/1/2;
+        align-items: center
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.url-item a {
+    color: #000;
+    font-size: 18px
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.actions-btn-item {
+        grid-area: 3/1/3/1;
+        width: fit-content
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector {
+    display: inline-flex;
+    /* border: 1px solid #e7e7e7; */
+    border-radius: 4px;
+    margin-top: 10px
+}
+
+#cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector button {
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none
+}
+
+/* #cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector input {
+    width: 100px;
+    font-size: 13px;
+    text-align: center;
+    line-height: 24px;
+    border-left: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+    border-top: none;
+    border-bottom: none
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector input {
+        width: 50px
+    }
+} */
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.price-item {
+        grid-area: 3/2/3/3;
+        width: auto;
+        justify-content: center
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.price-item .cart-item-price {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem
+}
+
+#cart-template table.wrapper_items tbody .line-item td.price-item .cart-item-price .list-price-minicart {
+    text-decoration: line-through;
+    color: #afafaf
+}
+
+#cart-template table.wrapper_items tbody .line-item td.price-item .cart-item-price .best-price-minicart {
+    font-size: 20px;
+    font-weight: 700
+}
+
+#cart-template table.wrapper_items tbody .line-item td.cart-remove-item {
+    padding-right: 2rem
+}
+
+@media (max-width:767px) {
+    #cart-template table.wrapper_items tbody .line-item td.cart-remove-item {
+        width: fit-content;
+        grid-area: 1/3/1/3;
+        align-items: center
+    }
+}
+
+#cart-template table.wrapper_items tbody .line-item td.cart-remove-item button {
+    font-size: 16px;
+    color: red;
+    width: 100%;
+}
+
+#cart-template .cart-footer {
+    margin-top: 6rem
+}
+
+#cart-template .cart-footer .wrapper-footer-cart {
+    width: 100%;
+    margin-left: auto;
+    max-width: fit-content;
+    background-color: #fff;
+    padding: 3rem 2rem 2rem 2rem;
+    border-radius: 4px
+}
+
+@media (max-width:767px) {
+    #cart-template .cart-footer .wrapper-footer-cart {
+        max-width: 100%
+    }
+}
+
+#cart-template .cart-footer .wrapper-footer-cart .cart-totalizer {
+    display: flex;
+    padding-bottom: 2rem;
+    justify-content: space-between;
+    gap: 2rem
+}
+
+#cart-template .cart-footer .wrapper-footer-cart .cart-totalizer h3,
+#cart-template .cart-footer .wrapper-footer-cart .cart-totalizer span {
+    font-size: 20px
+}
+
+#cart-template .cart-footer .wrapper-footer-cart .cart-totalizer.total-price-minicar span {
+    font-weight: 700
+}
+
+#cart-template .cart-footer .wrapper-footer-cart .cart-drawer-button {
+    width: 100%;
+    background-color: #52ae32;
+    color: #fff;
+    border-radius: 4px;
+    padding: 1rem 0;
+    font: normal normal 600 14px/16px var(--font-body)
+}
