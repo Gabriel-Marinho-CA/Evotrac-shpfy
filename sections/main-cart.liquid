@@ -210,6 +210,19 @@
     }
 
     customElements.define('cart-qty', CartQty);
+
+     class CartPageUI {
+    constructor() {
+      subscribe(PUB_SUB_EVENTS.cartUpdateUi, this.updateUI.bind(this));
+    }
+
+    updateUI(data) {
+      const html = new DOMParser().parseFromString(data.responseText, 'text/html');
+      console.log(html)[]
+    }
+
+  }
+  const CartPageUI = new CartPageUI();
 </script>
 {% schema %}
 {
