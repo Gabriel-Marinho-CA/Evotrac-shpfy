@@ -157,7 +157,8 @@ class CartItem extends HTMLElement {
 
     if (this.qtyInput)
       this.qtyInput.addEventListener("change", () =>
-        cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
+      console.log(this.lineId, parseInt(this.qtyInput.value))
+        //cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
       );
 
     if (this.removeBtn)
