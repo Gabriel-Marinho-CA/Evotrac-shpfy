@@ -204,8 +204,8 @@
 
       _update(delta) {
         const newValue = parseInt(this.input.value) + delta;
-        console.log(this.lineId, newValue);
-        {% comment %} if (newValue > 0) cartService.updateQuantity(this.lineId, newValue); {% endcomment %}
+        cartService.updateQuantity(this.lineId, newValue);
+      
       }
     }
 
