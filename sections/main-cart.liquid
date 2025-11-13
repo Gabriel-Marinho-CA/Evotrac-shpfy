@@ -39,51 +39,46 @@
         </thead>
         <tbody>
           {% for item in cart.items %}
-        <tr is="cart-item" data-line-item-key="{{ item.key }}">
+            <tr is="cart-item" data-line-item-key="{{ item.key }}">
+              <td class="image-item">...</td>
 
-  <td class="image-item">
-    ...
-  </td>
+              <td class="url-item">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+              </td>
 
-  <td class="url-item">
-    <a href="{{ item.url }}">{{ item.product.title }}</a>
-  </td>
+              <td class="actions-btn-item">
+                <cart-qty data-line-item-key="{{ item.key }}">
+                  <button class="minus svg-wrapper" data-minus>
+                    {{ 'icon-minus.svg' | inline_asset_content }}
+                  </button>
 
-  <td class="actions-btn-item">
-    <cart-qty data-line-item-key="{{ item.key }}">
-      <button class="minus svg-wrapper" data-minus>
-        {{ 'icon-minus.svg' | inline_asset_content }}
-      </button>
+                  <input
+                    data-qty-input
+                    class="quantity__input"
+                    type="number"
+                    value="{{ item.quantity }}"
+                  >
 
-      <input
-        data-qty-input
-        class="quantity__input"
-        type="number"
-        value="{{ item.quantity }}"
-      >
+                  <button class="plus svg-wrapper" data-plus>
+                    {{ 'icon-plus.svg' | inline_asset_content }}
+                  </button>
+                </cart-qty>
+              </td>
 
-      <button class="plus svg-wrapper" data-plus>
-        {{ 'icon-plus.svg' | inline_asset_content }}
-      </button>
-    </cart-qty>
-  </td>
+              <td class="price-item">
+                {{ item.final_line_price | money }}
+              </td>
 
-  <td class="price-item">
-    {{ item.final_line_price | money }}
-  </td>
-
-  <td class="cart-remove-item">
-    <cart-remove 
-      class="svg-wrapper small"
-      data-remove-item-id="{{ item.key }}"
-      data-remove
-    >
-      {{ 'ico-trash.svg' | inline_asset_content }}
-    </cart-remove>
-  </td>
-
-</tr>
-
+              <td class="cart-remove-item">
+                <cart-remove
+                  class="svg-wrapper small"
+                  data-remove-item-id="{{ item.key }}"
+                  data-remove
+                >
+                  {{ 'ico-trash.svg' | inline_asset_content }}
+                </cart-remove>
+              </td>
+            </tr>
           {% endfor %}
         </tbody>
       </table>
@@ -118,99 +113,103 @@
 </div>
 
 <script>
-    class CartPage extends HTMLElement {
-  constructor() {
-    super();
-    subscribe(PUB_SUB_EVENTS.cartUpdateUi, this._replacePage.bind(this));
-  }
+      class CartPage extends HTMLElement {
+    constructor() {
+      super();
+      subscribe(PUB_SUB_EVENTS.cartUpdateUi, this._replacePage.bind(this));
+    }
 
-  connectedCallback() {
-    // poderia iniciar algo aqui depois se quiser
-  }
+    connectedCallback() {
+      // poderia iniciar algo aqui depois se quiser
+    }
 
-  _replacePage({ responseText }) {
-    const html = new DOMParser().parseFromString(responseText, "text/html");
-    const newPage = html.querySelector("#cart-template");
+    _replacePage({ responseText }) {
+      const html = new DOMParser().parseFromString(responseText, "text/html");
+      const newPage = html.querySelector("#cart-template");
 
-    if (newPage) {
-      this.replaceWith(newPage);
+      if (newPage) {
+        this.replaceWith(newPage);
+      }
     }
   }
-}
 
-customElements.define("cart-page", CartPage);
+  customElements.define("cart-page", CartPage);
 
-class CartItem extends HTMLElement {
-  connectedCallback() {
-    this.lineId = this.dataset.lineItemKey;
+  class CartItem extends HTMLElement {
+    connectedCallback() {
+      this.lineId = this.dataset.lineItemKey;
 
-    this.minusBtn = this.querySelector("[data-minus]");
-    this.plusBtn = this.querySelector("[data-plus]");
-    this.qtyInput = this.querySelector("[data-qty-input]");
-    this.removeBtn = this.querySelector("[data-remove]");
+      this.minusBtn = this.querySelector("[data-minus]");
+      this.plusBtn = this.querySelector("[data-plus]");
+      this.qtyInput = this.querySelector("[data-qty-input]");
+      this.removeBtn = this.querySelector("[data-remove]");
 
-    console.log(this.lineId)
+      console.log(this.lineId)
 
-    if (this.minusBtn)
-      this.minusBtn.addEventListener("click", () => this._change(-1));
+      if (this.minusBtn)
+        this.minusBtn.addEventListener("click", () => this._change(-1));
 
-    if (this.plusBtn)
-      this.plusBtn.addEventListener("click", () => this._change(1));
+      if (this.plusBtn)
+        this.plusBtn.addEventListener("click", () => this._change(1));
 
-    if (this.qtyInput)
-      this.qtyInput.addEventListener("change", () =>
-        cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
-      );
+      if (this.qtyInput)
+        this.qtyInput.addEventListener("change", () =>
+          cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
+        );
 
-    if (this.removeBtn)
-      this.removeBtn.addEventListener("click", () =>
-        cartService.removeItem(this.lineId)
-      );
+      if (this.removeBtn)
+        this.removeBtn.addEventListener("click", () =>
+          cartService.removeItem(this.lineId)
+        );
+    }
+
+    _change(delta) {
+      const newQty = parseInt(this.qtyInput.value) + delta;
+      if (newQty <= 0) return;
+      cartService.updateQuantity(this.lineId, newQty);
+    }
   }
 
-  _change(delta) {
-    const newQty = parseInt(this.qtyInput.value) + delta;
-    if (newQty <= 0) return;
-    cartService.updateQuantity(this.lineId, newQty);
+  customElements.define("cart-item", CartItem);
+
+  class CartRemove extends HTMLElement {
+    connectedCallback() {
+      this.addEventListener("click", () => {
+        const id = this.dataset.removeItemId;
+        cartService.removeItem(id);
+      });
+    }
   }
-}
+  customElements.define("cart-remove", CartRemove);
 
-customElements.define("cart-item", CartItem);
+    class CartQty extends HTMLElement {
+      connectedCallback() {
+        this.lineId = this.dataset.lineItemKey;
 
-class CartRemove extends HTMLElement {
-  connectedCallback() {
-    this.addEventListener("click", () => {
-      const id = this.dataset.removeItemId;
-      cartService.removeItem(id);
-    });
-  }
-}
-customElements.define("cart-remove", CartRemove);
+        this.minus = this.querySelector('[data-minus]');
+        this.plus = this.querySelector('[data-plus]');
+        this.input = this.querySelector('[data-qty-input]');
 
-class CartQty extends HTMLElement {
-  connectedCallback() {
-    this.lineId = this.dataset.lineItemKey;
+        this.minus.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          this._update(-1);
+        });
+        this.plus.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          this._update(1);
+        });
 
-    this.minus = this.querySelector("[data-minus]");
-    this.plus = this.querySelector("[data-plus]");
-    this.input = this.querySelector("[data-qty-input]");
+        this.input.addEventListener('change', () => cartService.updateQuantity(this.lineId, parseInt(this.input.value)));
+      }
 
-    this.minus.addEventListener("click", () => this._update(-1));
-    this.plus.addEventListener("click", () => this._update(1));
+      _update(delta) {
+        const newValue = parseInt(this.input.value) + delta;
+        console.log(this.lineId, newValue);
+        {% comment %} if (newValue > 0) cartService.updateQuantity(this.lineId, newValue); {% endcomment %}
+      }
+    }
 
-    this.input.addEventListener("change", () =>
-      cartService.updateQuantity(this.lineId, parseInt(this.input.value))
-    );
-  }
-
-  _update(delta) {
-    const newValue = parseInt(this.input.value) + delta;
-    if (newValue > 0) cartService.updateQuantity(this.lineId, newValue);
-  }
-}
-
-customElements.define("cart-qty", CartQty);
-
+    customElements.define('cart-qty', CartQty);
 </script>
 {% schema %}
 {
