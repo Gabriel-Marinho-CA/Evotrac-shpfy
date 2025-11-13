@@ -1,1 +1,151 @@
-sdksaopdksoap
+<div class="cart-page">
+  <h1 class="cart-title">
+    Seu carrinho <span class="buble-quantity">{{ cart.item_count }}</span>
+  </h1>
+
+  {% if cart != empty %}
+
+  <form action="{{ routes.cart_url }}" method="post" id="Cart-Form">
+
+    <div class="cart-items">
+      {% for item in cart.items %}
+      <div class="wrapper-cart-item">
+
+        <div class="product-image">
+          {{ item.image | image_url: width: 90 | image_tag: alt: item.title }}
+        </div>
+
+        <div class="content">
+
+          <p class="item-title">{{ item.title }}</p>
+
+          <div class="wrapper-quantity-price">
+
+            <!-- Preço -->
+            <div class="price-wrapper">
+              {% if item.original_price != item.final_price %}
+              <div class="cart-item__discounted-prices">
+                <s class="cart-item__old-price product-option">
+                  {{ item.original_price | money }}
+                </s>
+                <strong class="cart-item__final-price product-option">
+                  {{ item.final_price | money }}
+                </strong>
+              </div>
+              {% else %}
+              <div class="product-option">
+                {{ item.original_price | money }}
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Quantidade -->
+            <quantity-popover class="action">
+              <button 
+                class="minus svg-wrapper" 
+                name="minus"
+                {% if item.quantity <= 1 %}disabled{% endif %}
+              >
+                {{- 'icon-minus.svg' | inline_asset_content -}}
+              </button>
+
+              <input
+                class="quantity__input"
+                type="number"
+                name="updates[]"
+                value="{{ item.quantity }}"
+                min="1"
+                data-quantity-variant-id="{{ item.key }}"
+                data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                step="{{ item.variant.quantity_rule.increment }}"
+                {% if item.instructions and item.instructions.can_update_quantity == false %}
+                disabled
+                {% endif %}
+              >
+
+              <button class="plus svg-wrapper" name="plus">
+                {{- 'icon-plus.svg' | inline_asset_content -}}
+              </button>
+            </quantity-popover>
+          </div>
+
+          <!-- Remover item -->
+          <div class="remove-button">
+            <cart-remove-item 
+              data-remove-item-id="{{ item.key }}"
+              class="svg-wrapper small"
+            >
+              {{- 'ico-trash.svg' | inline_asset_content -}}
+            </cart-remove-item>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Notes -->
+    {% if settings.show_cart_note %}
+    <details class="cart-note">
+      <summary>
+        <span>{{ 'sections.cart.note' | t }}</span>
+        <div class="svg-wrapper small">
+          {{- 'ico-arrow-d-b.svg' | inline_asset_content -}}
+        </div>
+      </summary>
+
+      <cart-note class="cart__note field">
+        <textarea
+          name="note"
+          class="text-area field__input"
+          placeholder="{{ 'sections.cart.note' | t }}"
+        >{{ cart.note }}</textarea>
+      </cart-note>
+    </details>
+    {% endif %}
+
+    <!-- Totais -->
+    <div class="cart-page-footer">
+
+      {% if cart.cart_level_discount_applications.size > 0 %}
+      <ul class="discounts list-unstyled">
+        {% for discount in cart.cart_level_discount_applications %}
+        <li class="discounts__discount discounts__discount--end">
+          {{ discount.title }} (-{{ discount.total_allocated_amount | money }})
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <div class="totals">
+        <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
+        <p class="totals__total-value">{{ cart.total_price | money }}</p>
+      </div>
+
+      <div class="cart__ctas">
+        <button
+          type="submit"
+          class="cart__checkout-button button"
+          name="checkout"
+          {% if cart == empty %}disabled{% endif %}
+        >
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  {% else %}
+
+  <!-- Empty cart -->
+  <div class="empty-cart-page">
+    <p>Seu carrinho está vazio</p>
+
+    <a href="/collections/all" class="button button-primary" title="continuar comprando">
+      Continuar comprando
+    </a>
+  </div>
+
+  {% endif %}
+</div>
