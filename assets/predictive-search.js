@@ -39,7 +39,7 @@ class SearchForm extends HTMLElement {
     if (this.shouldResetForm()) {
       this.input.value = '';
       this.input.focus();
-      // this.toggleResetButton();
+      this.toggleResetButton();
     }
   }
 }
