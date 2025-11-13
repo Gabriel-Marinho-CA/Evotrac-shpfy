@@ -111,6 +111,12 @@ html {
                     }
                 }
 
+                @media (max-width:1000px) {
+                    &:has(.nivel-resistencia) #thumbs-slider {
+                        bottom: 58px;
+                    }
+                }
+
                 #thumbs-slider {
                     position: absolute;
 
@@ -118,7 +124,7 @@ html {
                     @media (max-width:1000px) {
                         width: 100%;
                         z-index: 2;
-                        bottom: 58px;
+                        bottom: 1rem;
                         left: 0;
 
                         .swiper-wrapper {

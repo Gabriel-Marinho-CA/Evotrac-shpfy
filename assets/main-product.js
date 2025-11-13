@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       const height = productMedia.offsetHeight + 60;
       productMedia.style.height = `${height}px`;
+
     }
   }
 });
