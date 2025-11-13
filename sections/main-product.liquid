@@ -214,9 +214,9 @@
       {% render 'product-extra-info', description: product.description, especificacao_tecnica: especificacao_tecnica %}
     </div>
 
-    <div class="mobile">
+    {% comment %} <div class="mobile"> {% endcomment %}
       {% render 'payment-methods-product' %}
-    </div>
+    {% comment %} </div> {% endcomment %}
   </div>
 </div>
 
