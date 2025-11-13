@@ -44,6 +44,7 @@ class CartService {
     }
   }
   async updateQuantity(line_id, qtd) {
+    console.log(line_id,qtd)
     const body = JSON.stringify({
       id: line_id,
       quantity: qtd,

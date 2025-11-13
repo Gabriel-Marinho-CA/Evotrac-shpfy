@@ -159,8 +159,7 @@ class CartItem extends HTMLElement {
 
     if (this.qtyInput)
       this.qtyInput.addEventListener("change", () =>
-      console.log(this.lineId, parseInt(this.qtyInput.value))
-        //cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
+        cartService.updateQuantity(this.lineId, parseInt(this.qtyInput.value))
       );
 
     if (this.removeBtn)
@@ -172,8 +171,7 @@ class CartItem extends HTMLElement {
   _change(delta) {
     const newQty = parseInt(this.qtyInput.value) + delta;
     if (newQty <= 0) return;
-    console.log(this.lineId, newQty)
-    //cartService.updateQuantity(this.lineId, newQty);
+    cartService.updateQuantity(this.lineId, newQty);
   }
 }
 
