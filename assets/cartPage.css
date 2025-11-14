@@ -16,6 +16,7 @@ cart-qty {
   margin-top: 1rem;
   justify-content: space-around;
   padding-inline: .55rem;
+  margin-inline: auto;
 
   input {
     border: none;
