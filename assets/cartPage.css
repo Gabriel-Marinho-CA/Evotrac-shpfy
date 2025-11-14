@@ -32,7 +32,9 @@ cart-qty {
 td.price-item {
     text-align: center;
 }
-
+td.cart-remove-item {
+    cursor:pointer;
+}
 @media (max-width:767px) {
     #cart-template {
         max-width: 400px
