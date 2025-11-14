@@ -63,7 +63,7 @@
           </div>
           <a
             href="https://shopify.com/62205657163/account"
-            class="login-link"
+            class="login-link {%  if customer %}logged{% endif %}"
             title="
               {%  if customer %}
                 Ola, {{ customer.name }}
