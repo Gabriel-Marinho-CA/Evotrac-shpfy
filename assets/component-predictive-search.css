@@ -96,6 +96,10 @@ predictive-search[loading] .predictive-search {
         color: #B0AAA4;
         font-size: clamp(13px, 1.4vw, 16px);
 
+        &::-webkit-search-cancel-button {
+              appearance: none
+        }
+
         @media (max-width:1000px) {
           height: 41px;
         }
