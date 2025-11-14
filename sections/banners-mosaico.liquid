@@ -23,7 +23,7 @@
           {% assign b = item.settings %}
           {% if b.banner != blank %}
             {% assign alt_banner = b.banner.alt | default: b.alt %}
-
+            <a href="{{  b.link }}" title="{{  alt_banner }}">
             <picture>
               <source media="(min-width:767px)" srcset="{{ b.banner | image_url }}">
               <source media="(max-width:766px)" srcset="{{ b.banner_mob |  default: b.banner | image_url }}">
@@ -34,6 +34,8 @@
                 height="{{ b.banner.height }}"
                 loading="lazy">
             </picture>
+            </a>
+
           {% endif %}
         </div>
 
@@ -89,6 +91,11 @@
             "id": "alt",
             "label": "Alt",
             "default": "Banner"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
           }
         ]
       }
