@@ -76,7 +76,7 @@ header {
                 gap: .3rem;
 
                 &.logged {
-                    width: min-content;
+                   width: min-content;
                 }
                 .login-link {
                     @media (max-width:1000px) {
