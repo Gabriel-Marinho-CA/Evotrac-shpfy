@@ -143,6 +143,25 @@
     margin-top: 10px
 }
 
+cart-qty {
+    border: 1px solid #000;
+  border-radius: 300px;
+  max-width: 97px;
+  display: flex;
+  height: 30px;
+  margin-top: 1rem;
+  justify-content: space-around;
+  padding-inline: .55rem;
+
+  input {
+    border: none;
+  text-align: center;
+  width: 35px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  }
+}
+
 #cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector button {
     width: 28px;
     display: flex;
