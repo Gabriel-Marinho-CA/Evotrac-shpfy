@@ -146,7 +146,7 @@ cart-qty {
 }
 
 @media (min-width:768px) {
-    #cart-template table.wrapper_items tbody .line-item td.url-item {
+    td.url-item {
         width: 40%;
     }
 }
