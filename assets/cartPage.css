@@ -29,6 +29,9 @@ cart-qty {
     cursor:pointer;
   }
 }
+td.price-item {
+    text-align: center;
+}
 
 @media (max-width:767px) {
     #cart-template {
