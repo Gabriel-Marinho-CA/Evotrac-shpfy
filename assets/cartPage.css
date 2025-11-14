@@ -149,6 +149,9 @@ cart-qty {
     td.url-item {
         width: 40%;
     }
+    td.image-item {
+        width:108px;
+    }
 }
 
 #cart-template table.wrapper_items tbody .line-item td.url-item {
