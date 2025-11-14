@@ -436,6 +436,10 @@
          box-shadow: 0px 3px 6px #cecece;
          transform: translate(-50%, -50%);
 
+         @media (max-width:768px) {
+            width:94%;
+         }
+
          &.active {
              display: block;
          }
