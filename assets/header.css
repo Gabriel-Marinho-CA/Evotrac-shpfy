@@ -75,12 +75,11 @@ header {
                 align-items: center;
                 gap: .3rem;
 
-                &.logged {
-                   width: fit-content;
-                   max-width:91px;
-                   overflow: hidden;
-                }
+ 
                 .login-link {
+                &.logged {
+                   width: min-content;
+                }
                     @media (max-width:1000px) {
                         display: none;
                     }
