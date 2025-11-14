@@ -107,21 +107,24 @@
           "type": "banner",
           "settings": {
             "banner": "shopify://shop_images/Frame_2608831.png",
-            "alt": ""
+            "alt": "",
+            "link": "shopify://pages/agricola"
           }
         },
         "banner_J7fGXU": {
           "type": "banner",
           "settings": {
             "banner": "shopify://shop_images/Conheca_a_linha_de_produtos_Tracbel.png",
-            "alt": ""
+            "alt": "",
+            "link": "shopify://pages/construcao"
           }
         },
         "banner_HtcVFg": {
           "type": "banner",
           "settings": {
             "banner": "shopify://shop_images/Conheca_a_linha_de_produtos_Tracbel_-1.png",
-            "alt": ""
+            "alt": "",
+            "link": "shopify://pages/empilhadeiras"
           }
         }
       },
