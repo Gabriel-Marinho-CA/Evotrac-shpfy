@@ -67,9 +67,10 @@ predictive-search[loading] .predictive-search {
 
     &:focus,
     &:hover {
-      .search-modal__close-button {
+      /*.search-modal__close-button {
         visibility: visible;
       }
+        */
     }
 
     .search.search-modal__form {
