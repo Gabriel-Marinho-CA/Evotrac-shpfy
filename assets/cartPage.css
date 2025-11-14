@@ -246,7 +246,7 @@
         height: 40px;
         display: flex;
         align-items: center;
-        justify-items: center;
+        justify-content: center;
         text-align: center;
         color: #fff;
         border-radius: 6px;
