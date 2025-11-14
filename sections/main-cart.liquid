@@ -42,7 +42,13 @@
         <tbody>
           {% for item in cart.items %}
             <tr is="cart-item" data-line-item-key="{{ item.key }}">
-              <td class="image-item">...</td>
+              <td class="image-item">
+                <img
+                  src="{{ item.image | image_url }}"
+                  alt="{{ item.image.alt }}"
+                  loading="lazy"
+                >
+              </td>
 
               <td class="url-item">
                 <a href="{{ item.url }}">{{ item.product.title }}</a>
