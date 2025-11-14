@@ -30,21 +30,41 @@ class CartService {
       console.error("Error in addToCart", error.message);
     }
   }
+async cartUpdate() {
+  try {
+    const isCartPage = this.isOnCartPage();
+    const sectionToFetch = isCartPage ? "main-cart" : "cart-drawer";
 
-  async cartUpdate() {
-    try {
-      const request = await fetch(`${routes.cart_url}?section_id=cart-drawer`);
+    const request = await fetch(
+      `${routes.cart_url}?section_id=${sectionToFetch}`,
+      { signal: this._setupRequest() }
+    );
 
-      if (request.ok) {
-        const responseText = await request.text();
-        publish(PUB_SUB_EVENTS.cartUpdateUi, { responseText: responseText });
-      }
-    } catch (error) {
+    if (!request.ok) return;
+
+    const htmlString = await request.text();
+
+    // Publica para onde está
+    if (isCartPage) {
+      publish(PUB_SUB_EVENTS.cartPageUpdateUi, { responseText: htmlString });
+    } else {
+      publish(PUB_SUB_EVENTS.cartUpdateUi, { responseText: htmlString });
+    }
+
+    // 🌟 E AQUI está o hack: atualiza o outro contexto usando a mesma resposta
+    publish(PUB_SUB_EVENTS.syncOtherContext, {
+      responseText: htmlString,
+      source: sectionToFetch,
+    });
+
+  } catch (error) {
+    if (error.name !== "AbortError") {
       console.error("Error in cartUpdate", error.message);
     }
   }
+}
+
   async updateQuantity(line_id, qtd) {
-    console.log(line_id,qtd)
     const body = JSON.stringify({
       id: line_id,
       quantity: qtd,
@@ -92,9 +112,30 @@ class CartService {
 
 class CartUI {
   constructor() {
+    subscribe(PUB_SUB_EVENTS.syncOtherContext, this.syncOtherContext.bind(this));
     subscribe(PUB_SUB_EVENTS.cartUpdateUi, this.updateUI.bind(this));
+    subscribe(PUB_SUB_EVENTS.cartPageUpdateUi, this.updateUICartPage.bind(this));
   }
+    syncOtherContext({ responseText, source }) {
+      const html = new DOMParser().parseFromString(responseText, "text/html");
 
+      if (source === "main-cart") {
+        // estamos na página → atualizar minicart se o elemento existir
+        const drawer = html.querySelector("#CartDrawer");
+        const target = document.querySelector("#CartDrawer");
+        if (drawer && target) target.replaceWith(drawer);
+
+      } else if (source === "cart-drawer") {
+        // estamos fora da página → atualizar cart page apenas se o elemento existir
+        const cart = html.querySelector("#cart-template");
+        const target = document.querySelector("#cart-template");
+        if (cart && target) target.replaceWith(cart);
+      }
+
+      // Atualiza badge
+      const qty = html.querySelector(".buble-quantity")?.innerText;
+      if (qty) this.updateQuantityBubble(qty);
+    }
   updateUI(data) {
     const html = new DOMParser().parseFromString(
       data.responseText,
@@ -120,6 +161,27 @@ class CartUI {
     // = html.querySelector("#CartDrawer .buble-quantity").innerText;
   }
 
+  updateUICartPage(data) {
+    const html = new DOMParser().parseFromString(
+      data.responseText,
+      "text/html"
+    );
+
+    const replaceSelectors = ["#cart-template", ".cart-totals", ".cart-items"];
+
+    for (const selector of replaceSelectors) {
+      const target = document.querySelector(selector);
+      const source = html.querySelector(selector);
+      if (target && source) {
+        target.replaceWith(source);
+      }
+    }
+
+    // Atualiza badge
+    const quantity = html.querySelector(".buble-quantity")?.innerText;
+    if (quantity) this.updateQuantityBubble(quantity);
+  }
+
   updateQuantityBubble(quantity_value) {
     document.querySelector(".cart-count-span").innerText = quantity_value;
   }
@@ -129,5 +191,3 @@ const cartService = new CartService();
 window.cartService = cartService;
 
 const cartUI = new CartUI();
-
-
