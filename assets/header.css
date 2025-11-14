@@ -75,6 +75,9 @@ header {
                 align-items: center;
                 gap: .3rem;
 
+                &.logged {
+                    width: min-content;
+                }
                 .login-link {
                     @media (max-width:1000px) {
                         display: none;
