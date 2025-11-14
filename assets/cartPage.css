@@ -7,6 +7,28 @@
     }
 }
 
+cart-qty {
+    border: 1px solid #000;
+  border-radius: 300px;
+  max-width: 97px;
+  display: flex;
+  height: 30px;
+  margin-top: 1rem;
+  justify-content: space-around;
+  padding-inline: .55rem;
+
+  input {
+    border: none;
+  text-align: center;
+  width: 35px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  }
+  button {
+    cursor:pointer;
+  }
+}
+
 @media (max-width:767px) {
     #cart-template {
         max-width: 400px
