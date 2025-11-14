@@ -40,7 +40,7 @@ td.cart-remove-item {
     tbody {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
 
         tr[is="cart-item"] {
             display: flex;
@@ -48,6 +48,7 @@ td.cart-remove-item {
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid #cecece;
+            padding-bottom: 1rem;
 
 
             .image-item {
