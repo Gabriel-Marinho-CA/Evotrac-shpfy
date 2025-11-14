@@ -44,8 +44,10 @@
             <tr is="cart-item" data-line-item-key="{{ item.key }}">
               <td class="image-item">
                 <img
-                  src="{{ item.image | image_url }}"
+                  src="{{ item.image | image_url: 80 }}"
                   alt="{{ item.image.alt }}"
+                  width="80"
+                  height="80"
                   loading="lazy"
                 >
               </td>
