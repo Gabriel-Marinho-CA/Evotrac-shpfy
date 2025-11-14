@@ -160,6 +160,10 @@ cart-qty {
   -webkit-appearance: none;
   -moz-appearance: textfield;
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 #cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector button {
