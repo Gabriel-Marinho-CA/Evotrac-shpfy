@@ -1,5 +1,10 @@
 #cart-template {
-    padding: 6rem 0
+    padding: 6rem 0;
+
+    .page-width {
+        max-width: 1000px;
+
+    }
 }
 
 @media (max-width:767px) {
@@ -30,7 +35,11 @@
     margin-top: 4rem;
     width: 100%;
     background: #fff;
-    border-radius: 4px
+    border-radius: 4px;
+
+    @media (min-width:768px) {
+        padding: 1rem;
+    }
 }
 
 @media (max-width:767px) {
@@ -101,14 +110,22 @@
     }
 }
 
-#cart-template table.wrapper_items tbody .line-item td.image-item {
-    text-align: start;
-    width: 108px
+#cart-template table.wrapper_items tbody .line-item td {
+    &.image-item {
+        text-align: start;
+        width: 108px
+    }
 }
 
 @media (max-width:767px) {
     #cart-template table.wrapper_items tbody .line-item td.image-item {
         grid-area: 1/1/1/1
+    }
+}
+
+@media (min-width:768px) {
+    #cart-template table.wrapper_items tbody .line-item td.url-item {
+        width: 40%;
     }
 }
 
@@ -141,30 +158,6 @@
     /* border: 1px solid #e7e7e7; */
     border-radius: 4px;
     margin-top: 10px
-}
-
-cart-qty {
-    border: 1px solid #000;
-  border-radius: 300px;
-  max-width: 97px;
-  display: flex;
-  height: 30px;
-  margin-top: 1rem;
-  justify-content: space-around;
-  padding-inline: .55rem;
-  margin-inline: auto;
-
-  input {
-    border: none;
-  text-align: center;
-  width: 35px;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  }
-
-  button {
-    cursor: pointer;
-  }
 }
 
 #cart-template table.wrapper_items tbody .line-item td.actions-btn-item .cart-quantity-selector button {
@@ -217,7 +210,8 @@ cart-qty {
 }
 
 #cart-template table.wrapper_items tbody .line-item td.cart-remove-item {
-    padding-right: 2rem
+    padding-right: 2rem;
+    cursor: pointer
 }
 
 @media (max-width:767px) {
@@ -244,7 +238,21 @@ cart-qty {
     max-width: fit-content;
     background-color: #fff;
     padding: 3rem 2rem 2rem 2rem;
-    border-radius: 4px
+    border-radius: 4px;
+
+    button {
+        width: 100%;
+        background-color: #35735A;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+    }
 }
 
 @media (max-width:767px) {
