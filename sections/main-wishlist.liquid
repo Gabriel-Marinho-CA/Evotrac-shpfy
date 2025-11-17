@@ -87,8 +87,32 @@ class WishlistProducts extends HTMLElement {
       const card = document.createElement("div");
       card.classList.add("wishlist-card");
 
-      card.innerHTML = `{% render 'card-component', product: product, section_id: section.id %}`
-      
+      card.innerHTML = `
+        <div class="wishlist-card__image">
+          <a href="${product.url}">
+            <img src="${product.featured_image}" alt="${product.title}">
+          </a>
+        </div>
+
+        <div class="wishlist-card__info">
+          <h3 class="wishlist-card__title">
+            <a href="${product.url}">${product.title}</a>
+          </h3>
+
+          <div class="wishlist-card__price">
+            ${this.formatPrice(product.price)}
+          </div>
+
+          <button class="wishlist-remove" data-handle="${product.handle}">
+            Remover
+          </button>
+        </div>
+      `;
+
+      card
+        .querySelector(".wishlist-remove")
+        .addEventListener("click", (e) => this.removeFromWishlist(e));
+
       this.container.appendChild(card);
     });
   }
