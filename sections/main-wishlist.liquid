@@ -87,7 +87,7 @@ class WishlistProducts extends HTMLElement {
       const card = document.createElement("div");
       card.classList.add("wishlist-card");
 
-      card.innerHTML = {% include 'card-component', product: product %}
+      card.innerHTML = `{% include 'card-component', product: product %}`
 
       card
         .querySelector(".wishlist-remove")
