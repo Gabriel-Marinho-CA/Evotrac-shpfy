@@ -1,11 +1,12 @@
+ .wishlistS h1 {
+    margin-bottom: 2rem;
+  }
+
 .wishlist-products-wrapper {
     display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 2rem;
 
-  h1 {
-    margin-bottom: 2rem;
-  }
 
   .wishlist-card {
     display: flex;
