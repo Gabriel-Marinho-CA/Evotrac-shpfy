@@ -63,7 +63,6 @@ class WishlistList extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("ola")
     this.innerHTML = `
       <div class="wishlist-wrapper">
         <div class="wishlist-items"></div>
