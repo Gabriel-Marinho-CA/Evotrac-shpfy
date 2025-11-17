@@ -18,9 +18,117 @@
     <h1>Minha Lista de Desejos</h1>
     <p>Infelizmente nenhum produto foi adicionado :(</p>
 
-    <wishlist-list></wishlist-list>
+  <wishlist-products 
+    data-section-id="{{ section.id }}">
+  </wishlist-products>
   </div>
 </div>
+
+<wishlist-products data-section-id="{{ section.id }}"></wishlist-products>
+
+<script>
+class WishlistProducts extends HTMLElement {
+  constructor() {
+    super();
+    this.sectionId = this.dataset.sectionId;
+    this.container = document.createElement("div");
+    this.container.classList.add("wishlist-products-wrapper");
+    this.appendChild(this.container);
+  }
+
+  connectedCallback() {
+    this.loadWishlist();
+  }
+
+  async loadWishlist() {
+    const stored = localStorage.getItem("wishlist");
+    let handles = [];
+
+    try {
+      handles = stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      console.error("Wishlist inválida", e);
+    }
+
+    if (!handles.length) {
+      this.container.innerHTML = `<p class="empty-wishlist">Sua lista está vazia.</p>`;
+      return;
+    }
+
+    const products = await Promise.all(
+      handles.map(async (handle) => {
+        try {
+          const res = await fetch(`/products/${handle}.js`);
+          if (!res.ok) throw new Error("Produto não encontrado");
+          return await res.json();
+        } catch (err) {
+          console.error("Erro carregando", handle, err);
+          return null;
+        }
+      })
+    );
+
+    const validProducts = products.filter((p) => p);
+
+    this.renderProducts(validProducts);
+  }
+
+  renderProducts(products) {
+    this.container.innerHTML = "";
+
+    products.forEach((product) => {
+      const card = document.createElement("div");
+      card.classList.add("wishlist-card");
+
+      card.innerHTML = `
+        <div class="wishlist-card__image">
+          <a href="${product.url}">
+            <img src="${product.featured_image}" alt="${product.title}">
+          </a>
+        </div>
+
+        <div class="wishlist-card__info">
+          <h3 class="wishlist-card__title">
+            <a href="${product.url}">${product.title}</a>
+          </h3>
+
+          <div class="wishlist-card__price">
+            ${this.formatPrice(product.price)}
+          </div>
+
+          <button class="wishlist-remove" data-handle="${product.handle}">
+            Remover
+          </button>
+        </div>
+      `;
+
+      card
+        .querySelector(".wishlist-remove")
+        .addEventListener("click", (e) => this.removeFromWishlist(e));
+
+      this.container.appendChild(card);
+    });
+  }
+
+  removeFromWishlist(e) {
+    const handle = e.target.dataset.handle;
+    const stored = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    const newList = stored.filter((h) => h !== handle);
+    localStorage.setItem("wishlist", JSON.stringify(newList));
+
+    this.loadWishlist();
+  }
+
+  formatPrice(cents) {
+    return (cents / 100).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+  }
+}
+
+customElements.define("wishlist-products", WishlistProducts);
+</script>
 
 
 {% schema %}
