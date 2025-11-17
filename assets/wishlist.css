@@ -3,6 +3,10 @@
   grid-template-columns: repeat(3,1fr);
   gap: 2rem;
 
+  h1 {
+    margin-bottom: 2rem;
+  }
+
   .wishlist-card {
     display: flex;
   flex-direction: column;
@@ -12,6 +16,7 @@
   padding: 1rem;
   border-radius: 8px;
   overflow: hidden;
+  justify-content: space-between;
   }
   img {
     display: block;
