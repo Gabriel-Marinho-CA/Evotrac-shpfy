@@ -128,7 +128,7 @@
         "infocard_MnMheR": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647.png",
+            "banner": "shopify://shop_images/Jumil.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -137,7 +137,7 @@
         "infocard_pYiDTi": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608657.png",
+            "banner": "shopify://shop_images/Massey_Ferguson.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -146,7 +146,7 @@
         "infocard_CFmRtJ": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608656.png",
+            "banner": "shopify://shop_images/new_holland.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -155,7 +155,7 @@
         "infocard_CcMEMU": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608655.png",
+            "banner": "shopify://shop_images/Baldan.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -164,7 +164,7 @@
         "infocard_JKewpH": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608654.png",
+            "banner": "shopify://shop_images/Pireli.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -173,16 +173,7 @@
         "infocard_EKfym3": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608653.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_DyeEUz": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Frame_2608647.png",
+            "banner": "shopify://shop_images/Jacto.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -195,8 +186,7 @@
         "infocard_CFmRtJ",
         "infocard_CcMEMU",
         "infocard_JKewpH",
-        "infocard_EKfym3",
-        "infocard_DyeEUz"
+        "infocard_EKfym3"
       ],
       "custom_css": [
         ".title * {color: #2d2a26;}"
