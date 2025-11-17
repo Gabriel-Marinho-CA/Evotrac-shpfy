@@ -1,0 +1,11 @@
+.wishlist-products-wrapper {
+    display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+
+  img {
+    display: block;
+    height:auto;
+    width:100%;
+  }
+}
