@@ -1,3 +1,4 @@
+{{ 'wishlist.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'wishlist.js' | asset_url }}" defer></script>
 {% style %}
   .section-{{ section.id }}-padding {
@@ -16,7 +17,11 @@
 <div class="section-{{ section.id }}-padding wishlist color-{{ section.settings.section_color_scheme }} gradient" id="wishlist-sec">
   <div class="page-width">
     <h1>Minha Lista de Desejos</h1>
+
+    <div class="wrapper-title">
     <p>Infelizmente nenhum produto foi adicionado :(</p>
+    </div>
+   
 
   <wishlist-products 
     data-section-id="{{ section.id }}">
@@ -53,6 +58,8 @@ class WishlistProducts extends HTMLElement {
     if (!handles.length) {
       this.container.innerHTML = `<p class="empty-wishlist">Sua lista está vazia.</p>`;
       return;
+    } else {
+        document.querySelector('.wrapper-title').classList.add('hidden')
     }
 
     const products = await Promise.all(
