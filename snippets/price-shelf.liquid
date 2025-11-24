@@ -16,12 +16,12 @@
 <div class="price-shelf">
 
     {% if compare_at_price > price %}
-        <div class="list-price">
+        <div class="list-price" data-compare="{{  price }}">
             <p>
                 De <span>{{ price | money }}</span>
             </p>
         </div>
-        <div class="spot-price">
+        <div class="spot-price" data-spot="{{  compare_at_price }}">
             <p>
                 Por: <span>{{ compare_at_price | money }}</span>
             </p>
