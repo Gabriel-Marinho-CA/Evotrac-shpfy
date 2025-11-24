@@ -97,7 +97,13 @@ predictive-search[loading] .predictive-search {
         font-size: clamp(13px, 1.4vw, 16px);
 
         &::-webkit-search-cancel-button {
-              appearance: none
+              appearance: none;
+        }
+
+        &::focus {
+          &::placeholder {
+            display:none;
+          }
         }
 
         @media (max-width:1000px) {
