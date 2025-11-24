@@ -100,11 +100,9 @@ predictive-search[loading] .predictive-search {
               appearance: none;
         }
 
-        &::focus {
-          &::placeholder {
-            display:none;
-          }
-        }
+ &:focus::placeholder {
+  color: transparent;
+}
 
         @media (max-width:1000px) {
           height: 41px;
