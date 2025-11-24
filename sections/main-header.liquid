@@ -53,8 +53,8 @@
           <a
             title="Seja um revendedor"
             class="button button-secondary"
-            href="#">
-            Seja um revendedor
+            href="{{  section.settings.link_revendedor }}">
+            {{  section.settings.revendedor }}
           </a>
         </div>
         <div class="login">
@@ -123,6 +123,17 @@
     "tag": "header",
     "class": "header",
     "settings": [
+      {
+        "type": "text",
+        "id":"revendedor",
+        "label": "Texto Revendedor",
+        "default":"Seja um revendedor "
+      },
+      {
+        "type": "url",
+        "id": "link_revendedor",
+        "label": "Link revendedor"
+      },
       {
         "type": "checkbox",
         "id": "full_w",
