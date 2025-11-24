@@ -1,1 +1,60 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"custom_group_Cw9hxA":{"type":"custom-group","settings":{"content":"FRETE GRÁTIS","link_content":"\/"}},"custom_group_4iEGde":{"type":"custom-group","settings":{"content":"FRETE GRÁTIS","link_content":""}}},"block_order":["custom_group_Cw9hxA","custom_group_4iEGde"],"settings":{"full_w":true,"section_color_scheme":"","padding_top":8,"padding_bottom":8}},"main-header":{"type":"main-header","settings":{"full_w":false,"menu":"menu-header","section_color_scheme":"scheme-a7da5d02-97b2-4138-9583-6dd989b6fce4","padding_top":36,"padding_bottom":36}}},"order":["announcement-bar","main-header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "custom_group_Cw9hxA": {
+          "type": "custom-group",
+          "settings": {
+            "content": "FRETE GRÁTIS",
+            "link_content": "/"
+          }
+        },
+        "custom_group_4iEGde": {
+          "type": "custom-group",
+          "settings": {
+            "content": "FRETE GRÁTIS",
+            "link_content": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_group_Cw9hxA",
+        "custom_group_4iEGde"
+      ],
+      "settings": {
+        "full_w": true,
+        "section_color_scheme": "",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "main-header": {
+      "type": "main-header",
+      "settings": {
+        "revendedor": "Seja um revendedor",
+        "link_revendedor": "#",
+        "full_w": false,
+        "menu": "menu-header",
+        "section_color_scheme": "scheme-a7da5d02-97b2-4138-9583-6dd989b6fce4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "main-header"
+  ]
+}
