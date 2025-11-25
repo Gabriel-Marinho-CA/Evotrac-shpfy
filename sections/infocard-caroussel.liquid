@@ -11,7 +11,7 @@
   }
 {% endstyle %}
 
-<div class="section-{{ section.id }}-padding infocard-caroussel-section  arrows-outside">
+<div class="section-{{ section.id }}-padding infocard-caroussel-section  arrows-outside" {% if section.settings.id_sec != blank %}id="{{  section.settings.id_sec }}"{% endif %}>
   <div class="page-width">
     <div class="title">
       <h2>
@@ -71,6 +71,11 @@
   "name": "Infocard",
   "class": "brands",
   "settings": [
+    {
+      "type": "text",
+      "id": "id_sec",
+      "label": "ID seção"
+    },
     {
       "type": "text",
       "id": "title",
