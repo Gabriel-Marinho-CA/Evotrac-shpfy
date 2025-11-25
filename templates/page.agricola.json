@@ -36,92 +36,6 @@
       "name": "Banner Hero",
       "settings": {}
     },
-    "infocard_caroussel_mjQkfq": {
-      "type": "infocard-caroussel",
-      "blocks": {
-        "infocard_JWVexj": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Jumil.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_hUibqx": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Massey_Ferguson.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_zzmQy4": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/new_holland.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_LbytHm": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Baldan.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_CUfDB9": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Pireli.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_kwnxdd": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Jacto.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_WpbhJ3": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Jumil_273ec4e6-5fc0-451c-809c-cde2575b0e70.png",
-            "info": "",
-            "link": "",
-            "alt": ""
-          }
-        }
-      },
-      "block_order": [
-        "infocard_JWVexj",
-        "infocard_hUibqx",
-        "infocard_zzmQy4",
-        "infocard_LbytHm",
-        "infocard_CUfDB9",
-        "infocard_kwnxdd",
-        "infocard_WpbhJ3"
-      ],
-      "name": "Infocard",
-      "settings": {
-        "id_sec": "brands-caroussel",
-        "title": "Compre por marca",
-        "desk_column": "6",
-        "mob_column": "2.7",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "infocard_caroussel_NQ6WDF": {
       "type": "infocard-caroussel",
       "blocks": {
@@ -206,6 +120,92 @@
         "id_sec": "",
         "title": "Compre por categoria",
         "desk_column": "6",
+        "mob_column": "2.7",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "infocard_caroussel_mjQkfq": {
+      "type": "infocard-caroussel",
+      "blocks": {
+        "infocard_JWVexj": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Jumil.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_hUibqx": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Massey_Ferguson.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_zzmQy4": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/new_holland.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_LbytHm": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Baldan.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_CUfDB9": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Pireli.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_kwnxdd": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Jacto.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "infocard_WpbhJ3": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Jumil_273ec4e6-5fc0-451c-809c-cde2575b0e70.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "infocard_JWVexj",
+        "infocard_hUibqx",
+        "infocard_zzmQy4",
+        "infocard_LbytHm",
+        "infocard_CUfDB9",
+        "infocard_kwnxdd",
+        "infocard_WpbhJ3"
+      ],
+      "name": "Infocard",
+      "settings": {
+        "id_sec": "brands-caroussel",
+        "title": "Compre por marca",
+        "desk_column": "5",
         "mob_column": "2.7",
         "padding_top": 36,
         "padding_bottom": 36
