@@ -203,7 +203,7 @@
       ],
       "name": "Infocard",
       "settings": {
-        "id_sec": "",
+        "id_sec": "brands-caroussel",
         "title": "Compre por marca",
         "desk_column": "6",
         "mob_column": "2.7",
