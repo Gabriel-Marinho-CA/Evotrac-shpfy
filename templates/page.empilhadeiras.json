@@ -116,15 +116,18 @@
       ],
       "name": "Infocard carrossel",
       "settings": {
+        "id_sec": "",
         "title": "Compre por categoria",
+        "desk_column": "6",
+        "mob_column": "2.7",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "infocard_caroussel_B8GkUz": {
+    "infocard_caroussel_PtnKAk": {
       "type": "infocard-caroussel",
       "blocks": {
-        "infocard_MnMheR": {
+        "infocard_Qr3BaJ": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Jumil.png",
@@ -133,7 +136,7 @@
             "alt": ""
           }
         },
-        "infocard_pYiDTi": {
+        "infocard_wxNrzD": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Massey_Ferguson.png",
@@ -142,7 +145,7 @@
             "alt": ""
           }
         },
-        "infocard_CFmRtJ": {
+        "infocard_dKYDbg": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/new_holland.png",
@@ -151,7 +154,7 @@
             "alt": ""
           }
         },
-        "infocard_CcMEMU": {
+        "infocard_ztWY6b": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Baldan.png",
@@ -160,7 +163,7 @@
             "alt": ""
           }
         },
-        "infocard_JKewpH": {
+        "infocard_aG6xdY": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Pireli.png",
@@ -169,7 +172,7 @@
             "alt": ""
           }
         },
-        "infocard_EKfym3": {
+        "infocard_MCRDUm": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
@@ -177,22 +180,32 @@
             "link": "",
             "alt": ""
           }
+        },
+        "infocard_AtyN8c": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Jumil_273ec4e6-5fc0-451c-809c-cde2575b0e70.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
         }
       },
       "block_order": [
-        "infocard_MnMheR",
-        "infocard_pYiDTi",
-        "infocard_CFmRtJ",
-        "infocard_CcMEMU",
-        "infocard_JKewpH",
-        "infocard_EKfym3"
-      ],
-      "custom_css": [
-        ".title * {color: #2d2a26;}"
+        "infocard_Qr3BaJ",
+        "infocard_wxNrzD",
+        "infocard_dKYDbg",
+        "infocard_ztWY6b",
+        "infocard_aG6xdY",
+        "infocard_MCRDUm",
+        "infocard_AtyN8c"
       ],
       "name": "Infocard",
       "settings": {
+        "id_sec": "brands-caroussel",
         "title": "Compre por marca",
+        "desk_column": "6",
+        "mob_column": "2.7",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -230,7 +243,7 @@
     "main",
     "main_banner_hero_kfnemk",
     "infocard_caroussel_NQ6WDF",
-    "infocard_caroussel_B8GkUz",
+    "infocard_caroussel_PtnKAk",
     "collection_showcase_iR3Npx",
     "collection_showcase_Tibx4a"
   ]
