@@ -9,6 +9,14 @@
     }
 }
 
+
+#brands-caroussel {
+     .swiper-button-next,
+    .swiper-button-prev {
+        transform: translateY(25%);
+    }
+}
+
 .infocard-caroussel-section {
 
     .swiper-button-next,
