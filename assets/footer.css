@@ -154,3 +154,10 @@
         }
     }
 }
+
+
+.wpp-link{
+    position: fixed;
+    right: 4%;
+    bottom: 5%;
+}
