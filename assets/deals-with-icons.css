@@ -38,6 +38,16 @@
                     font-weight: 600;
                 }
             }
+
+            &:last-child {
+                .content {
+                    font-size: 12px;
+
+                    strong {
+                        font-size:14px;
+                    }
+                }
+            }
         }
     }
 }
