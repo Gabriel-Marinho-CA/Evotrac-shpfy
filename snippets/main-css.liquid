@@ -52,7 +52,7 @@
   onload="this.media='all'"
 >
 
-{% if request.page_type == 'index' %}
+{% if request.page_type !== 'product' %}
   <link
     rel="preload"
     href="{{ 'home.css' | asset_url }}"
