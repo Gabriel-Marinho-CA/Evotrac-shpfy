@@ -117,15 +117,18 @@
       ],
       "name": "Infocard carrossel",
       "settings": {
+        "id_sec": "",
         "title": "Compre por categoria",
+        "desk_column": "6",
+        "mob_column": "2.7",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "infocard_caroussel_B8GkUz": {
+    "infocard_caroussel_PtyJbL": {
       "type": "infocard-caroussel",
       "blocks": {
-        "infocard_MnMheR": {
+        "infocard_L4WJfj": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Jumil.png",
@@ -134,7 +137,7 @@
             "alt": ""
           }
         },
-        "infocard_pYiDTi": {
+        "infocard_PRD4Fb": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Massey_Ferguson.png",
@@ -143,7 +146,7 @@
             "alt": ""
           }
         },
-        "infocard_CFmRtJ": {
+        "infocard_Hcw6qe": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/new_holland.png",
@@ -152,7 +155,7 @@
             "alt": ""
           }
         },
-        "infocard_CcMEMU": {
+        "infocard_jm4PMz": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Baldan.png",
@@ -161,7 +164,7 @@
             "alt": ""
           }
         },
-        "infocard_JKewpH": {
+        "infocard_EVXKN8": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Pireli.png",
@@ -170,7 +173,7 @@
             "alt": ""
           }
         },
-        "infocard_EKfym3": {
+        "infocard_fMXBbL": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
@@ -179,10 +182,10 @@
             "alt": ""
           }
         },
-        "infocard_DyeEUz": {
+        "infocard_9ekRrM": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647.png",
+            "banner": "shopify://shop_images/Jumil_273ec4e6-5fc0-451c-809c-cde2575b0e70.png",
             "info": "",
             "link": "",
             "alt": ""
@@ -190,20 +193,20 @@
         }
       },
       "block_order": [
-        "infocard_MnMheR",
-        "infocard_pYiDTi",
-        "infocard_CFmRtJ",
-        "infocard_CcMEMU",
-        "infocard_JKewpH",
-        "infocard_EKfym3",
-        "infocard_DyeEUz"
-      ],
-      "custom_css": [
-        ".title * {color: #2d2a26;}"
+        "infocard_L4WJfj",
+        "infocard_PRD4Fb",
+        "infocard_Hcw6qe",
+        "infocard_jm4PMz",
+        "infocard_EVXKN8",
+        "infocard_fMXBbL",
+        "infocard_9ekRrM"
       ],
       "name": "Infocard",
       "settings": {
+        "id_sec": "brands-caroussel",
         "title": "Compre por marca",
+        "desk_column": "6",
+        "mob_column": "2.7",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -241,7 +244,7 @@
     "main",
     "main_banner_hero_kfnemk",
     "infocard_caroussel_NQ6WDF",
-    "infocard_caroussel_B8GkUz",
+    "infocard_caroussel_PtyJbL",
     "collection_showcase_iR3Npx",
     "collection_showcase_Tibx4a"
   ]
