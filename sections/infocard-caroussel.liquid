@@ -1,4 +1,3 @@
-
 {% style %}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
@@ -22,8 +21,8 @@
 
     <swiper-instance
       class="swiper"
-      slide-desktop="6"
-      slide-mobile="2.7"
+      slide-desktop="{{  section.settings.desk_column }}"
+      slide-mobile="{{  section.settings.mob_column }}"
       space-between-desk="20"
       space-between-mob="12"
       arrows-outside="true"
@@ -77,6 +76,18 @@
       "id": "title",
       "label": "Titulo",
       "default": "Compre por marca"
+    },
+    {
+      "type": "text",
+      "id": "desk_column",
+      "label": "Numero de colunas desktop",
+      "default": "6"
+    },
+    {
+      "type": "text",
+      "id": "mob_column",
+      "label": "Numero de colunas mobile",
+      "default": "2.7"
     },
     {
       "type": "header",
