@@ -123,6 +123,12 @@
   {% endif %}
 </div>
 
+<div class="wpp-link">
+  <a href="{{  section.settings.wpp_link }}" title="Whatsapp">
+     {{- 'btn-wpp.svg' | inline_asset_content -}}
+  </a>
+</div>
+
 {% javascript %}
   document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".link-list-footer").forEach((el) => {
@@ -143,6 +149,11 @@
     "tag": "footer",
     "class": "footer-section",
     "settings": [
+      {
+        "type": "url",
+        "id": "wpp_link",
+        "label":"Link do whatsapp"
+      },
       {
         "type": "color_scheme",
         "id": "section_color_scheme",
