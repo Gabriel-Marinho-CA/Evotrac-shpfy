@@ -160,4 +160,5 @@
     position: fixed;
     right: 4%;
     bottom: 5%;
+    z-index: 8;
 }
