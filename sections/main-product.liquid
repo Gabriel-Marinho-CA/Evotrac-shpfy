@@ -190,7 +190,7 @@
 
         <div class="buy-area {% if product.first_available_variant.inventory_quantity < 5000 %}last-units{% endif %}">
           <div class="revendedor">
-            <a href="#" class="button button-secondary" title="Seja um revendedor">Seja um revendedor</a>
+            <a href="{{  section.settings.link_revendedor }}" class="button button-secondary" title="{{  section.settings.revendedor }}">{{  section.settings.revendedor }}</a>
           </div>
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           {% render 'buy-button',
@@ -238,6 +238,17 @@
   "tag": "section",
   "class": "section",
   "settings": [
+      {
+        "type": "text",
+        "id":"revendedor",
+        "label": "Texto Revendedor",
+        "default":"Seja um revendedor "
+      },
+      {
+        "type": "url",
+        "id": "link_revendedor",
+        "label": "Link revendedor"
+      },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
