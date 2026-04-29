@@ -36,7 +36,7 @@
             "alt": "Banner",
             "image_slide": "shopify://shop_images/Frame_2608633.png",
             "image_slide_mob": "shopify://shop_images/Frame_2608633_d95f0c82-33b2-43a7-8c80-3044d670547b.png",
-            "link_banner": "shopify://pages/empilhadeiras"
+            "link_banner": "shopify://pages/fps"
           }
         }
       },
@@ -124,7 +124,7 @@
           "settings": {
             "banner": "shopify://shop_images/Conheca_a_linha_de_produtos_Tracbel_-1.png",
             "alt": "",
-            "link": "shopify://pages/empilhadeiras"
+            "link": "shopify://pages/fps"
           }
         }
       },
