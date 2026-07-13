@@ -232,9 +232,9 @@
       ],
       "name": "Coleção destaque",
       "settings": {
-        "featured_collection": "geral",
+        "featured_collection": "ofertas-evotrac",
         "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
-        "title": "Ofertas",
+        "title": "Ofertas Evotrac",
         "padding_top": 72,
         "padding_bottom": 72
       }
