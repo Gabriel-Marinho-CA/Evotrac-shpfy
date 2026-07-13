@@ -255,8 +255,8 @@
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_1.png",
-            "info": "Pneus e Câmaras",
-            "link": "shopify://collections/pneus",
+            "info": "Pneus Agrícolas",
+            "link": "shopify://collections/pneus-agricolas",
             "alt": ""
           }
         },
