@@ -247,7 +247,7 @@
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_86e3c504-e794-45f2-802b-040b2d74922a.png",
             "info": "Peças e Acessórios",
-            "link": "#",
+            "link": "shopify://collections/pecas-e-acessorios",
             "alt": ""
           }
         },
