@@ -303,6 +303,7 @@
         },
         "infocard_46rp9e": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_4.png",
             "info": "Colecionáveis",
@@ -310,17 +311,18 @@
             "alt": ""
           }
         },
-        "infocard_V9DQ7R": {
+        "infocard_9pXfJF": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_5.png",
+            "banner": "shopify://shop_images/icone_categoria_pneus_agriculas.png",
             "info": "Lorem ipsum",
             "link": "",
             "alt": ""
           }
         },
-        "infocard_9pXfJF": {
+        "infocard_V9DQ7R": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_5.png",
             "info": "Lorem ipsum",
@@ -335,8 +337,8 @@
         "infocard_LCcBwi",
         "infocard_dgi6ri",
         "infocard_46rp9e",
-        "infocard_V9DQ7R",
-        "infocard_9pXfJF"
+        "infocard_9pXfJF",
+        "infocard_V9DQ7R"
       ],
       "custom_css": [
         ".title * {color: #2d2a26;}"
