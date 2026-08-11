@@ -180,7 +180,6 @@
         },
         "infocard_acV64R": {
           "type": "infocard",
-          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/logomarca_Rodaco_shop.png",
             "info": "",
