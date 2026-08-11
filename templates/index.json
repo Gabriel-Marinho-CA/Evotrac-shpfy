@@ -147,7 +147,7 @@
           "settings": {
             "banner": "shopify://shop_images/logomarca_Rodguider_shop.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/rodguider",
             "alt": ""
           }
         },
