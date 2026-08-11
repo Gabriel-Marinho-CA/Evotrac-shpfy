@@ -151,6 +151,15 @@
             "alt": ""
           }
         },
+        "infocard_yjw7kU": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Baldan.png",
+            "info": "",
+            "link": "shopify://collections/pecas-genuinas-baldan",
+            "alt": ""
+          }
+        },
         "infocard_Vw9fb7": {
           "type": "infocard",
           "disabled": true,
@@ -178,15 +187,6 @@
             "banner": "shopify://shop_images/new_holland.png",
             "info": "",
             "link": "",
-            "alt": ""
-          }
-        },
-        "infocard_yjw7kU": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Baldan.png",
-            "info": "",
-            "link": "shopify://collections/pecas-genuinas-baldan",
             "alt": ""
           }
         },
@@ -223,10 +223,10 @@
       },
       "block_order": [
         "infocard_KG76kH",
+        "infocard_yjw7kU",
         "infocard_Vw9fb7",
         "infocard_acV64R",
         "infocard_4fzGQA",
-        "infocard_yjw7kU",
         "infocard_q7pxmp",
         "infocard_68tBpL",
         "infocard_AUPYma"
