@@ -189,11 +189,10 @@
         },
         "infocard_4fzGQA": {
           "type": "infocard",
-          "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/new_holland.png",
+            "banner": "shopify://shop_images/logomarca_Metisa_shop.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/metisa",
             "alt": ""
           }
         },
