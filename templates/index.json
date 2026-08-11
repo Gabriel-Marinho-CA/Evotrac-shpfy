@@ -142,6 +142,15 @@
     "infocard_caroussel_DV3p7w": {
       "type": "infocard-caroussel",
       "blocks": {
+        "infocard_RtcyqE": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/logomarca_Rodguider_shop.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
         "infocard_KG76kH": {
           "type": "infocard",
           "settings": {
@@ -222,6 +231,7 @@
         }
       },
       "block_order": [
+        "infocard_RtcyqE",
         "infocard_KG76kH",
         "infocard_yjw7kU",
         "infocard_Vw9fb7",
