@@ -171,11 +171,10 @@
         },
         "infocard_Vw9fb7": {
           "type": "infocard",
-          "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/Jumil.png",
+            "banner": "shopify://shop_images/logomarca_Petlas_shop.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/petlas",
             "alt": ""
           }
         },
