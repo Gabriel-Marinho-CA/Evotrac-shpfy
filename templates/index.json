@@ -265,21 +265,21 @@
     "infocard_caroussel_MpYDKN": {
       "type": "infocard-caroussel",
       "blocks": {
-        "infocard_QfGkMV": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_86e3c504-e794-45f2-802b-040b2d74922a.png",
-            "info": "Peças e Acessórios",
-            "link": "shopify://collections/pecas-e-acessorios",
-            "alt": ""
-          }
-        },
         "infocard_GYCeqH": {
           "type": "infocard",
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_1.png",
             "info": "Pneus Industriais",
             "link": "shopify://collections/pneus-industriais",
+            "alt": ""
+          }
+        },
+        "infocard_QfGkMV": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/Frame_2608647_86e3c504-e794-45f2-802b-040b2d74922a.png",
+            "info": "Peças e Acessórios",
+            "link": "shopify://collections/pecas-e-acessorios",
             "alt": ""
           }
         },
@@ -294,6 +294,7 @@
         },
         "infocard_dgi6ri": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_3.png",
             "info": "Vestuário",
@@ -303,6 +304,7 @@
         },
         "infocard_46rp9e": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Frame_2608647_4.png",
             "info": "Colecionáveis",
@@ -321,8 +323,8 @@
         }
       },
       "block_order": [
-        "infocard_QfGkMV",
         "infocard_GYCeqH",
+        "infocard_QfGkMV",
         "infocard_LCcBwi",
         "infocard_dgi6ri",
         "infocard_46rp9e",
