@@ -142,6 +142,15 @@
     "infocard_caroussel_DV3p7w": {
       "type": "infocard-caroussel",
       "blocks": {
+        "infocard_KG76kH": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/logomarca_sunf_shop.png",
+            "info": "",
+            "link": "",
+            "alt": ""
+          }
+        },
         "infocard_Vw9fb7": {
           "type": "infocard",
           "settings": {
@@ -207,6 +216,7 @@
         }
       },
       "block_order": [
+        "infocard_KG76kH",
         "infocard_Vw9fb7",
         "infocard_acV64R",
         "infocard_4fzGQA",
