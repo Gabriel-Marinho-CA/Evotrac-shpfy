@@ -192,6 +192,7 @@
         },
         "infocard_q7pxmp": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Pireli.png",
             "info": "",
@@ -201,6 +202,7 @@
         },
         "infocard_68tBpL": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
             "info": "",
@@ -210,6 +212,7 @@
         },
         "infocard_AUPYma": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jumil_273ec4e6-5fc0-451c-809c-cde2575b0e70.png",
             "info": "",
