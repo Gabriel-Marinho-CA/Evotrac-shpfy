@@ -182,9 +182,9 @@
           "type": "infocard",
           "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/Massey_Ferguson.png",
+            "banner": "shopify://shop_images/logomarca_Rodaco_shop.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/rodaco",
             "alt": ""
           }
         },
