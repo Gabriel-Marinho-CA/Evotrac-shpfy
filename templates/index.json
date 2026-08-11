@@ -153,6 +153,7 @@
         },
         "infocard_Vw9fb7": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jumil.png",
             "info": "",
@@ -162,6 +163,7 @@
         },
         "infocard_acV64R": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Massey_Ferguson.png",
             "info": "",
@@ -171,6 +173,7 @@
         },
         "infocard_4fzGQA": {
           "type": "infocard",
+          "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/new_holland.png",
             "info": "",
@@ -183,7 +186,7 @@
           "settings": {
             "banner": "shopify://shop_images/Baldan.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/pecas-genuinas-baldan",
             "alt": ""
           }
         },
