@@ -198,11 +198,10 @@
         },
         "infocard_q7pxmp": {
           "type": "infocard",
-          "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/Pireli.png",
+            "banner": "shopify://shop_images/logomarca_Maggion_shop.png",
             "info": "",
-            "link": "",
+            "link": "shopify://collections/maggion",
             "alt": ""
           }
         },
