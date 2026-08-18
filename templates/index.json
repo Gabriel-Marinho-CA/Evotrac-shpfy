@@ -349,7 +349,7 @@
       ],
       "name": "Coleção destaque",
       "settings": {
-        "featured_collection": "geral",
+        "featured_collection": "mais-vendidos",
         "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
         "title": "Mais vendidos",
         "padding_top": 72,
