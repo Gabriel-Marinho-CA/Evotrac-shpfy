@@ -19,16 +19,13 @@
 
 <div class="page-width" id="collection-page">
   <div>
-    <div class="search-result {% if collection.products_count == 0 %}
-  <div class="empty-title">
-    {% if collection.description != blank %}
-      {{ collection.description }}
-    {% else %}
-      <h1>Produtos não encontrados</h1>
-      <p>Modifique os filtros para visualizar produtos.</p>
-    {% endif %}
-  </div>
-{% else %}
+    <div class="search-result {% if collection.products_count == 0 %}flex-1{% endif %}">
+      {% if collection.products_count == 0 %}
+        <div class="empty-title">
+          <h1>Produtos não encontrados</h1>
+          <p>Modifique os filtros para visualizar produtos.</p>
+        </div>
+      {% else %}
         <search-filters>
           <div class="search-items">
             {% paginate collection.products by 15 %}
