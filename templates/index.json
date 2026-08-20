@@ -218,6 +218,16 @@
           "type": "infocard",
           "disabled": true,
           "settings": {
+            "banner": "shopify://shop_images/logomarca_Texa_Lubirficantes_shop.png",
+            "info": "",
+            "link": "shopify://collections/texsas-lubrificantes",
+            "alt": ""
+          }
+        },
+        "infocard_3zmhD7": {
+          "type": "infocard",
+          "disabled": true,
+          "settings": {
             "banner": "shopify://shop_images/Jacto.png",
             "info": "",
             "link": "",
@@ -245,6 +255,7 @@
         "infocard_q7pxmp",
         "infocard_68tBpL",
         "infocard_NpJj7A",
+        "infocard_3zmhD7",
         "infocard_AUPYma"
       ],
       "name": "Infocard",
