@@ -207,6 +207,15 @@
         },
         "infocard_68tBpL": {
           "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/logomarca_Lumagi_shop.png",
+            "info": "",
+            "link": "shopify://collections/lumagi",
+            "alt": ""
+          }
+        },
+        "infocard_NpJj7A": {
+          "type": "infocard",
           "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
@@ -235,6 +244,7 @@
         "infocard_4fzGQA",
         "infocard_q7pxmp",
         "infocard_68tBpL",
+        "infocard_NpJj7A",
         "infocard_AUPYma"
       ],
       "name": "Infocard",
