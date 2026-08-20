@@ -27,7 +27,7 @@
       <h1>Produtos não encontrados</h1>
       <p>Modifique os filtros para visualizar produtos.</p>
     {% endif %}
-  </div>
+  </div>{% else %}
         <search-filters>
           <div class="search-items">
             {% paginate collection.products by 15 %}
