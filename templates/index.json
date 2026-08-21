@@ -234,6 +234,15 @@
         },
         "infocard_XpjRr8": {
           "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/logomarca_Tire_Advancer_shop.png",
+            "info": "",
+            "link": "shopify://collections/tyre-advance",
+            "alt": ""
+          }
+        },
+        "infocard_UHHeVh": {
+          "type": "infocard",
           "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
@@ -265,6 +274,7 @@
         "infocard_NpJj7A",
         "infocard_3zmhD7",
         "infocard_XpjRr8",
+        "infocard_UHHeVh",
         "infocard_AUPYma"
       ],
       "name": "Infocard",
