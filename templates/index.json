@@ -225,6 +225,15 @@
         },
         "infocard_3zmhD7": {
           "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/logomarca_MRL_shop.png",
+            "info": "",
+            "link": "shopify://collections/mrl-malhotra",
+            "alt": ""
+          }
+        },
+        "infocard_XpjRr8": {
+          "type": "infocard",
           "disabled": true,
           "settings": {
             "banner": "shopify://shop_images/Jacto.png",
@@ -255,6 +264,7 @@
         "infocard_68tBpL",
         "infocard_NpJj7A",
         "infocard_3zmhD7",
+        "infocard_XpjRr8",
         "infocard_AUPYma"
       ],
       "name": "Infocard",
