@@ -126,6 +126,7 @@
         "security_badge_8DiBiH",
         "security_badge_P3jnbF"
       ],
+      "name": "Roda pé",
       "settings": {
         "wpp_link": "https://api.whatsapp.com/send/?phone=2799653-8707&text&type=phone_number&app_absent=0",
         "section_color_scheme": "scheme-9d0566fa-6938-49de-8222-1e3a63f2b9ea",

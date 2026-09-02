@@ -277,7 +277,7 @@
         "infocard_UHHeVh",
         "infocard_AUPYma"
       ],
-      "name": "Infocard",
+      "name": "Compre por marcas",
       "settings": {
         "id_sec": "brands-caroussel",
         "title": "Compre por marca",
@@ -372,7 +372,7 @@
       "custom_css": [
         ".title * {color: #2d2a26;}"
       ],
-      "name": "Infocard carrossel",
+      "name": "Compre por categoria",
       "settings": {
         "id_sec": "",
         "title": "Compre por categoria",
@@ -387,7 +387,7 @@
       "custom_css": [
         ".title * {color: #2d2a26;}"
       ],
-      "name": "Coleção destaque",
+      "name": "Mais vendidos",
       "settings": {
         "featured_collection": "mais-vendidos",
         "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
