@@ -33,12 +33,11 @@
                   {%- for link in block.settings.menu_links.links -%}
                     <li>
                       <a
-                        <a
-  href="{{ link.url }}"
-  class="link-footer"
-  alt="{{ link.title }}"
-  title="{{ link.title }}"
-  {% if link.url contains 'whatsapp' or link.url contains 'wa.me' %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                        href="{{ link.url }}"
+                        class="link-footer"
+                        alt="{{ link.title }}"
+                        title="{{ link.title }}">
+                        {{ link.title }}
                       </a>
                     </li>
                   {%- endfor -%}
