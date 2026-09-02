@@ -36,7 +36,7 @@
             "alt": "Banner",
             "image_slide": "shopify://shop_images/Banner_Hero_Home_FPS.jpg",
             "image_slide_mob": "shopify://shop_images/Banner_Hero_FPS_Mobile.jpg",
-            "link_banner": "shopify://pages/fps"
+            "link_banner": "shopify://collections/fps"
           }
         }
       },
