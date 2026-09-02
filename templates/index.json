@@ -25,8 +25,8 @@
           "type": "custom-group",
           "settings": {
             "alt": "Banner",
-            "image_slide": "shopify://shop_images/Frame_2608633.png",
-            "image_slide_mob": "shopify://shop_images/Frame_2608633_d95f0c82-33b2-43a7-8c80-3044d670547b.png",
+            "image_slide": "shopify://shop_images/Banner_Hero_Home.jpg",
+            "image_slide_mob": "shopify://shop_images/Banner_Hero_Home_Mobile.jpg",
             "link_banner": "shopify://pages/discos-grade"
           }
         },
@@ -34,8 +34,8 @@
           "type": "custom-group",
           "settings": {
             "alt": "Banner",
-            "image_slide": "shopify://shop_images/Frame_2608633.png",
-            "image_slide_mob": "shopify://shop_images/Frame_2608633_d95f0c82-33b2-43a7-8c80-3044d670547b.png",
+            "image_slide": "shopify://shop_images/Banner_Hero_Home_FPS.jpg",
+            "image_slide_mob": "shopify://shop_images/Banner_Hero_FPS_Mobile.jpg",
             "link_banner": "shopify://pages/fps"
           }
         }
