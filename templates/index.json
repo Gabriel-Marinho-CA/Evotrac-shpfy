@@ -16,9 +16,9 @@
           "type": "custom-group",
           "settings": {
             "alt": "Banner",
-            "image_slide": "shopify://shop_images/Frame_2608633.png",
-            "image_slide_mob": "shopify://shop_images/Frame_2608633_80c5da27-67cb-4bf3-bf72-b5ecfae26709.png",
-            "link_banner": "shopify://pages/pneus"
+            "image_slide": "shopify://shop_images/Banner_Hero_Home_Pneus.jpg",
+            "image_slide_mob": "shopify://shop_images/Banner_Hero_Home_Mobile_Pneus.jpg",
+            "link_banner": "shopify://collections/pneus"
           }
         },
         "custom_group_QDWzMq": {
