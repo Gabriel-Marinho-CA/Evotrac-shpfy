@@ -1,9 +1,3 @@
-<style>
-  .product-extra-info .product-description p + p {
-    margin-top: 1em;
-  }
-</style>
-
 <div class="product-extra-info" id="descricao-completa">
   {% if description != blank %}
     <details>
@@ -13,12 +7,11 @@
           {{- 'icon-plus-orange.svg' | inline_asset_content -}}
         </span>
       </summary>
-      <div class="content product-description">
+      <div class="content">
         {{ description }}
       </div>
     </details>
   {% endif %}
-
   {% if especificacao_tecnica != blank %}
     <details>
       <summary>
