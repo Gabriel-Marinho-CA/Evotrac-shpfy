@@ -17,9 +17,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12rem;
-
-   
+            gap: 3rem;
 
             .wrapper-menu-first-level {
                 &:hover {
@@ -29,7 +27,6 @@
                 }
             }
 
-
             @media (min-width:1000px) {
                 .menu-second-level {
                     position: absolute;
@@ -37,7 +34,6 @@
                     width: fit-content;
                     padding: 1rem;
                     display: none;
-
                     max-height: 40dvh;
                     overflow-y: auto;
                     z-index: 2;
@@ -49,8 +45,6 @@
                     }
                 }
             }
-
         }
-
     }
 }
