@@ -49,7 +49,8 @@
     const button = event.target.closest(selector);
     if (!button) return;
 
-    event.preventDefault();
+        event.preventDefault();
+    event.stopImmediatePropagation();
 
     const handle = button.dataset.productHandle;
     if (!handle) return;
@@ -76,7 +77,7 @@
         "Não foi possível atualizar seus favoritos neste navegador. Tente novamente."
       );
     }
-  });
+    }, true);
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", updateButtons);
