@@ -204,6 +204,8 @@
     }
   },
   "platform_customizations": {
-    "custom_css": []
+    "custom_css": [
+      ".shelf-component .quick-add {opacity: 1;}"
+    ]
   }
 }
