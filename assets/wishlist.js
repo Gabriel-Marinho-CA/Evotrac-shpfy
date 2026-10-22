@@ -2,7 +2,7 @@
   if (window.evotracWishlistInitialized) return;
   window.evotracWishlistInitialized = true;
 
-  const selector = 'button[is="wishlist-btn"]';
+  const selector = 'button[is="wishlist-btn"], wishlist-btn';
 
   function readWishlist() {
     const value = JSON.parse(
