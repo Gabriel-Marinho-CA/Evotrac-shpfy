@@ -33,12 +33,19 @@
     <div class="wrapper-product">
       <div class="left-side-product">
         <div class="product-media">
-          <div class="wishlist">
-            <wishlist-btn data-product-handle="{{ product.handle }}">
+                    <div class="wishlist">
+            <button
+              type="button"
+              is="wishlist-btn"
+              data-product-handle="{{ product.handle }}"
+              data-wishlist="false"
+              aria-pressed="false"
+              aria-label="Adicionar à lista de favoritos"
+            >
               <span class="svg-wrapper">
                 {{- 'wishlist-icon.svg' | inline_asset_content -}}
               </span>
-            </wishlist-btn>
+            </button>
           </div>
           {% render 'product-main-media', product: product %}
 
