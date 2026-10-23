@@ -48,3 +48,6 @@
         }
     }
 }
+menu-mob .category-menu a {
+  text-transform: uppercase;
+}
