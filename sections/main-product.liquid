@@ -10,24 +10,26 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-  .section-{{ section.id }}-padding {
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
   }
 
   .triangle {
-  left: calc((20.16px* {{nivel_resistencia | minus: 1 }}) + 2.76px);
+    left: calc((20.16px * {{ nivel_resistencia | minus: 1 }}) + 2.76px);
   }
 {%- endstyle -%}
+
 <div class="page-width">
   {% render 'breadcrumb', collection_name: product.title %}
 </div>
+
 <div class="page-width section-{{ section.id }}-padding">
   <div id="product">
     <div class="wrapper-product">
@@ -40,6 +42,7 @@
               </span>
             </wishlist-btn>
           </div>
+
           {% render 'product-main-media', product: product %}
 
           {% if nivel_resistencia != blank %}
@@ -73,19 +76,22 @@
           %}
         </div>
       </div>
+
       <div class="right-side-product">
         {% render 'cupons-area', cupons: cupons %}
 
         <div class="title-product">
           <h1>{{ product.title }}</h1>
         </div>
+
         <div class="brand-code-model-product">
           <div class="code">
             <p>
               Código:
-              <span>{{ product.first_available_variant.sku }}</span>
+              <span>{{ product.selected_or_first_available_variant.sku }}</span>
             </p>
           </div>
+
           {% if modelo != blank %}
             <div class="model">
               <p>
@@ -96,6 +102,7 @@
               </p>
             </div>
           {% endif %}
+
           {% if marca != blank %}
             <div class="brand">
               <p>
@@ -107,18 +114,21 @@
             </div>
           {% endif %}
         </div>
+
         <div class="app-full-desk">
           {% for block in section.blocks %}
             {% if block.type == '@app' %}
               {% render block %}
             {% endif %}
           {% endfor %}
+
           <a class="desktop" href="#descricao-completa">Ver descrição completa</a>
         </div>
 
         <div class="price-area">
           {% render 'price-product', product: product %}
         </div>
+
         <div id="more-payments">
           <ul>
             <li>
@@ -148,11 +158,11 @@
               <legend>
                 {% if option.name == 'Voltagem' %}
                   Escolha a voltagem:
-
                 {% else %}
                   {{ option.name }}
                 {% endif %}
               </legend>
+
               <fieldset is="variant-options" class="variants-fieldset">
                 <div class="options-wrapper">
                   {% for value in option.values %}
@@ -166,9 +176,10 @@
                       >
                         {{ value }}
                       </label>
+
                       <input
                         type="radio"
-                        name="{{ option.name  | handle }}"
+                        name="{{ option.name | handle }}"
                         value="{{ value.variant.url }}"
                         class="hidden"
                         id="{{ option.name | handleize }}-{{ value | handleize }}"
@@ -190,9 +201,17 @@
 
         <div class="buy-area {% if product.first_available_variant.inventory_quantity < 5000 %}last-units{% endif %}">
           <div class="revendedor">
-            <a href="{{  section.settings.link_revendedor }}" class="button button-secondary" title="{{  section.settings.revendedor }}">{{  section.settings.revendedor }}</a>
+            <a
+              href="{{ section.settings.link_revendedor }}"
+              class="button button-secondary"
+              title="{{ section.settings.revendedor }}"
+            >
+              {{ section.settings.revendedor }}
+            </a>
           </div>
+
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
           {% render 'buy-button',
             product: product,
             product_form_id: product_form_id,
@@ -204,6 +223,7 @@
         {% render 'shipping-calc' %}
       </div>
     </div>
+
     {% if compre_junto %}
       <div class="mobile">
         {% render 'buy-together', compre_junto: compre_junto %}
@@ -211,10 +231,13 @@
     {% endif %}
 
     <div class="mobile">
-      {% render 'product-extra-info', description: product.description, especificacao_tecnica: especificacao_tecnica %}
+      {% render 'product-extra-info',
+        description: product.description,
+        especificacao_tecnica: especificacao_tecnica
+      %}
     </div>
 
-      {% render 'payment-methods-product' %}
+    {% render 'payment-methods-product' %}
   </div>
 </div>
 
@@ -222,6 +245,7 @@
   document.getElementById('more-payments').addEventListener('click', function () {
     document.querySelector('.paymethods_product').classList.add('active');
   });
+
   document.querySelector('.paymethods_product span').addEventListener('click', function () {
     document.querySelector('.paymethods_product').classList.remove('active');
   });
@@ -238,17 +262,17 @@
   "tag": "section",
   "class": "section",
   "settings": [
-      {
-        "type": "text",
-        "id":"revendedor",
-        "label": "Texto Revendedor",
-        "default":"Seja um revendedor "
-      },
-      {
-        "type": "url",
-        "id": "link_revendedor",
-        "label": "Link revendedor"
-      },
+    {
+      "type": "text",
+      "id": "revendedor",
+      "label": "Texto Revendedor",
+      "default": "Seja um revendedor "
+    },
+    {
+      "type": "url",
+      "id": "link_revendedor",
+      "label": "Link revendedor"
+    },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
