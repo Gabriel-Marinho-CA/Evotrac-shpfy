@@ -6,6 +6,7 @@
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_top }}px;
   }
+
   @media (max-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.55 | round }}px;
@@ -16,13 +17,12 @@
 
 {% assign collection = collections[section.settings.featured_collection] %}
 
-<div class="section-{{ section.id }}-padding featured-collection arrows-outside  color-{{ section.settings.section_color_scheme }}">
+<div class="section-{{ section.id }}-padding featured-collection arrows-outside color-{{ section.settings.section_color_scheme }}">
   <div class="page-width">
     <div class="title">
-      <h2>
-        {{ section.settings.title }}
-      </h2>
+      <h2>{{ section.settings.title }}</h2>
     </div>
+
     <swiper-instance
       class="swiper"
       slide-desktop="4"
@@ -30,76 +30,100 @@
       space-between-desk="20"
       space-between-mob="12"
       arrows-outside="true"
-      have-arrow="true">
-
+      have-arrow="true"
+    >
       <div class="swiper-wrapper">
+        {% assign displayed_products = 0 %}
 
-        {% for product in collection.products limit: 15 %}
-          <div class="swiper-slide">
-            {% render 'card-component'
-              , product: product
-              , section_id: section.id %}
-          </div>
+        {% for product in collection.products %}
+          {% assign show_product = true %}
+
+          {% if section.id == 'template--17221967708235__collection_showcase_QAWkKc' %}
+            {% assign show_product = false %}
+
+            {% for variant in product.variants %}
+              {% if variant.inventory_management != blank and variant.inventory_quantity > 0 and variant.available %}
+                {% assign show_product = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% if show_product %}
+            <div class="swiper-slide">
+              {% render 'card-component',
+                product: product,
+                section_id: section.id
+              %}
+            </div>
+
+            {% assign displayed_products = displayed_products | plus: 1 %}
+
+            {% if displayed_products >= 15 %}
+              {% break %}
+            {% endif %}
+          {% endif %}
         {% endfor %}
-
       </div>
-
     </swiper-instance>
   </div>
+
   <div class="swiper-button-next">.</div>
   <div class="swiper-button-prev">.</div>
 </div>
 
 {% schema %}
-  {
-    "name": "Coleção Destaque",
-    "tag": "section",
-    "class": "featured-collection",
-    "settings": [
-      {
-        "type": "collection",
-        "id": "featured_collection",
-        "label": "Coleção"
-      },
-      {
-        "type": "color_scheme",
-        "id": "section_color_scheme",
-        "label": "t:sections.all.colors.label",
-        "default": "scheme-1"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Titulo",
-        "default": "Compre por marca"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.all.padding.section_padding_heading"
-      }, {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_top",
-        "default": 36
-      }, {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_bottom",
-        "default": 36
-      }
-    ],
-    "presets": [
-      {
-        "name": "Coleção destaque"
-      }
-    ]
-  }
+{
+  "name": "Coleção Destaque",
+  "tag": "section",
+  "class": "featured-collection",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Coleção"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titulo",
+      "default": "Compre por marca"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coleção destaque"
+    }
+  ]
+}
 {% endschema %}
