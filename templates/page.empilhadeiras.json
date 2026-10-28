@@ -217,7 +217,7 @@
       ],
       "name": "Coleção destaque",
       "settings": {
-        "featured_collection": "geral",
+        "featured_collection": "linha-agricola",
         "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
         "title": "Mais vendidos",
         "padding_top": 72,
@@ -231,7 +231,7 @@
       ],
       "name": "Coleção destaque",
       "settings": {
-        "featured_collection": "geral",
+        "featured_collection": "linha-agricola",
         "section_color_scheme": "scheme-547992f1-1558-46b9-9281-0ad7fd8f3374",
         "title": "Ofertas",
         "padding_top": 72,
