@@ -354,11 +354,11 @@
         },
         "infocard_46rp9e": {
           "type": "infocard",
-          "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_4.png",
-            "info": "Colecionáveis",
-            "link": "",
+            "banner": "shopify://shop_images/evotrac_filtros.png",
+            "banner_mob": "shopify://shop_images/evotrac_filtros.png",
+            "info": "Filtros",
+            "link": "shopify://collections/filtros",
             "alt": ""
           }
         }
