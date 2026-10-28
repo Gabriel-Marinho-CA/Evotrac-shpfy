@@ -124,8 +124,9 @@
         "banner_HtcVFg": {
           "type": "banner",
           "settings": {
-            "banner": "shopify://shop_images/Conheca_a_linha_de_produtos_Tracbel_-1.png",
-            "alt": "",
+            "banner": "shopify://shop_images/banner-empilhadeiras.png",
+            "banner_mob": "shopify://shop_images/banner-empilhadeiras.png",
+            "alt": "Empilhadeiras",
             "link": "shopify://collections/empilhadeiras"
           }
         }
