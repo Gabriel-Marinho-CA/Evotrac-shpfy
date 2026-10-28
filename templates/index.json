@@ -334,13 +334,13 @@
             "alt": ""
           }
         },
-        "infocard_mbzQxa": {
+        "infocard_dgi6ri": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/evotrac_laminas.png",
-            "banner_mob": "shopify://shop_images/evotrac_laminas.png",
-            "info": "Lâminas",
-            "link": "shopify://collections/laminas",
+            "banner": "shopify://shop_images/evotrac_discos_grade.png",
+            "banner_mob": "shopify://shop_images/evotrac_discos_grade.png",
+            "info": "Discos Grade",
+            "link": "shopify://collections/discos-grade",
             "alt": ""
           }
         },
@@ -354,13 +354,13 @@
             "alt": ""
           }
         },
-        "infocard_dgi6ri": {
+        "infocard_mbzQxa": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/evotrac_discos_grade.png",
-            "banner_mob": "shopify://shop_images/evotrac_discos_grade.png",
-            "info": "Discos Grade",
-            "link": "shopify://collections/discos-grade",
+            "banner": "shopify://shop_images/evotrac_laminas.png",
+            "banner_mob": "shopify://shop_images/evotrac_laminas.png",
+            "info": "Lâminas",
+            "link": "shopify://collections/laminas",
             "alt": ""
           }
         },
@@ -389,9 +389,9 @@
         "infocard_GYCeqH",
         "infocard_QfGkMV",
         "infocard_N9Q7NW",
-        "infocard_mbzQxa",
-        "infocard_V9DQ7R",
         "infocard_dgi6ri",
+        "infocard_V9DQ7R",
+        "infocard_mbzQxa",
         "infocard_LCcBwi",
         "infocard_46rp9e"
       ],
