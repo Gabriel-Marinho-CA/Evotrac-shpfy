@@ -314,6 +314,26 @@
             "alt": ""
           }
         },
+        "infocard_QfGkMV": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
+            "banner_mob": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
+            "info": "Pneus OTR Construção",
+            "link": "shopify://collections/pneus-de-construcao",
+            "alt": ""
+          }
+        },
+        "infocard_N9Q7NW": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_pneus_empilhadeiras.png",
+            "banner_mob": "shopify://shop_images/evotrac_pneus_empilhadeiras.png",
+            "info": "Pneus Empilhadeiras",
+            "link": "shopify://collections/pneus-empilhadeiras",
+            "alt": ""
+          }
+        },
         "infocard_mbzQxa": {
           "type": "infocard",
           "settings": {
@@ -344,16 +364,6 @@
             "alt": ""
           }
         },
-        "infocard_QfGkMV": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
-            "banner_mob": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
-            "info": "Pneus OTR Construção",
-            "link": "shopify://collections/pneus-de-construcao",
-            "alt": ""
-          }
-        },
         "infocard_LCcBwi": {
           "type": "infocard",
           "settings": {
@@ -377,10 +387,11 @@
       },
       "block_order": [
         "infocard_GYCeqH",
+        "infocard_QfGkMV",
+        "infocard_N9Q7NW",
         "infocard_mbzQxa",
         "infocard_V9DQ7R",
         "infocard_dgi6ri",
-        "infocard_QfGkMV",
         "infocard_LCcBwi",
         "infocard_46rp9e"
       ],
