@@ -346,9 +346,10 @@
           "type": "infocard",
           "disabled": true,
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_3.png",
-            "info": "Vestuário",
-            "link": "",
+            "banner": "shopify://shop_images/evotrac_discos_grade.png",
+            "banner_mob": "shopify://shop_images/evotrac_discos_grade.png",
+            "info": "Discos Grade",
+            "link": "shopify://collections/discos-grade",
             "alt": ""
           }
         },
