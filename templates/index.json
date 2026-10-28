@@ -304,6 +304,16 @@
     "infocard_caroussel_MpYDKN": {
       "type": "infocard-caroussel",
       "blocks": {
+        "infocard_mbzQxa": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_laminas.png",
+            "banner_mob": "shopify://shop_images/evotrac_laminas.png",
+            "info": "Lâminas",
+            "link": "shopify://collections/laminas",
+            "alt": ""
+          }
+        },
         "infocard_V9DQ7R": {
           "type": "infocard",
           "settings": {
@@ -364,6 +374,7 @@
         }
       },
       "block_order": [
+        "infocard_mbzQxa",
         "infocard_V9DQ7R",
         "infocard_dgi6ri",
         "infocard_GYCeqH",
