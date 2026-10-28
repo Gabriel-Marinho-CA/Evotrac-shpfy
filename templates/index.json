@@ -106,7 +106,8 @@
         "banner_hUcpCb": {
           "type": "banner",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608831.png",
+            "banner": "shopify://shop_images/banner-linha-agricola.png",
+            "banner_mob": "shopify://shop_images/banner-linha-agricola.png",
             "alt": "",
             "link": "shopify://collections/agricolas"
           }
