@@ -304,6 +304,16 @@
     "infocard_caroussel_MpYDKN": {
       "type": "infocard-caroussel",
       "blocks": {
+        "infocard_V9DQ7R": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_dentes_unhas.png",
+            "banner_mob": "shopify://shop_images/evotrac_dentes_unhas.png",
+            "info": "Dentes e Unhas",
+            "link": "shopify://collections/dentes-e-unhas",
+            "alt": ""
+          }
+        },
         "infocard_GYCeqH": {
           "type": "infocard",
           "settings": {
@@ -351,24 +361,15 @@
             "link": "",
             "alt": ""
           }
-        },
-        "infocard_V9DQ7R": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_5.png",
-            "info": "Lorem ipsum",
-            "link": "",
-            "alt": ""
-          }
         }
       },
       "block_order": [
+        "infocard_V9DQ7R",
         "infocard_GYCeqH",
         "infocard_QfGkMV",
         "infocard_LCcBwi",
         "infocard_dgi6ri",
-        "infocard_46rp9e",
-        "infocard_V9DQ7R"
+        "infocard_46rp9e"
       ],
       "custom_css": [
         ".title * {color: #2d2a26;}"
