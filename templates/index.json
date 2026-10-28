@@ -304,6 +304,16 @@
     "infocard_caroussel_MpYDKN": {
       "type": "infocard-caroussel",
       "blocks": {
+        "infocard_GYCeqH": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_pneus_agricolas.png",
+            "banner_mob": "shopify://shop_images/evotrac_pneus_agricolas.png",
+            "info": "Pneus Agricolas",
+            "link": "shopify://collections/pneus-agricolas",
+            "alt": ""
+          }
+        },
         "infocard_mbzQxa": {
           "type": "infocard",
           "settings": {
@@ -334,22 +344,13 @@
             "alt": ""
           }
         },
-        "infocard_GYCeqH": {
-          "type": "infocard",
-          "settings": {
-            "banner": "shopify://shop_images/evotrac_pneus_agricolas.png",
-            "banner_mob": "shopify://shop_images/evotrac_pneus_agricolas.png",
-            "info": "Pneus Agricolas",
-            "link": "shopify://collections/pneus-agricolas",
-            "alt": ""
-          }
-        },
         "infocard_QfGkMV": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_86e3c504-e794-45f2-802b-040b2d74922a.png",
-            "info": "Peças e Acessórios",
-            "link": "shopify://collections/pecas-e-acessorios",
+            "banner": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
+            "banner_mob": "shopify://shop_images/evotrac_pneus_otr_construcao.png",
+            "info": "Pneus OTR Construção",
+            "link": "shopify://collections/pneus-de-construcao",
             "alt": ""
           }
         },
@@ -375,10 +376,10 @@
         }
       },
       "block_order": [
+        "infocard_GYCeqH",
         "infocard_mbzQxa",
         "infocard_V9DQ7R",
         "infocard_dgi6ri",
-        "infocard_GYCeqH",
         "infocard_QfGkMV",
         "infocard_LCcBwi",
         "infocard_46rp9e"
