@@ -337,9 +337,10 @@
         "infocard_GYCeqH": {
           "type": "infocard",
           "settings": {
-            "banner": "shopify://shop_images/Frame_2608647_1.png",
-            "info": "Pneus Industriais",
-            "link": "shopify://collections/pneus-industriais",
+            "banner": "shopify://shop_images/evotrac_pneus_agricolas.png",
+            "banner_mob": "shopify://shop_images/evotrac_pneus_agricolas.png",
+            "info": "Pneus Agricolas",
+            "link": "shopify://collections/pneus-agricolas",
             "alt": ""
           }
         },
