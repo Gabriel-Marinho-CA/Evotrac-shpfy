@@ -370,7 +370,7 @@
             "banner": "shopify://shop_images/oleos_lubrificantes.png",
             "banner_mob": "shopify://shop_images/oleos_lubrificantes.png",
             "info": "Lubrificantes e Aditivos",
-            "link": "#",
+            "link": "shopify://collections/lubrificante-e-aditivo",
             "alt": ""
           }
         },
