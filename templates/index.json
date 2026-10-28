@@ -108,7 +108,7 @@
           "settings": {
             "banner": "shopify://shop_images/banner-linha-agricola.png",
             "banner_mob": "shopify://shop_images/banner-linha-agricola.png",
-            "alt": "",
+            "alt": "Linha Agrícola",
             "link": "shopify://collections/geral"
           }
         },
