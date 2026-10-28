@@ -314,6 +314,16 @@
             "alt": ""
           }
         },
+        "infocard_dgi6ri": {
+          "type": "infocard",
+          "settings": {
+            "banner": "shopify://shop_images/evotrac_discos_grade.png",
+            "banner_mob": "shopify://shop_images/evotrac_discos_grade.png",
+            "info": "Discos Grade",
+            "link": "shopify://collections/discos-grade",
+            "alt": ""
+          }
+        },
         "infocard_GYCeqH": {
           "type": "infocard",
           "settings": {
@@ -342,17 +352,6 @@
             "alt": ""
           }
         },
-        "infocard_dgi6ri": {
-          "type": "infocard",
-          "disabled": true,
-          "settings": {
-            "banner": "shopify://shop_images/evotrac_discos_grade.png",
-            "banner_mob": "shopify://shop_images/evotrac_discos_grade.png",
-            "info": "Discos Grade",
-            "link": "shopify://collections/discos-grade",
-            "alt": ""
-          }
-        },
         "infocard_46rp9e": {
           "type": "infocard",
           "disabled": true,
@@ -366,10 +365,10 @@
       },
       "block_order": [
         "infocard_V9DQ7R",
+        "infocard_dgi6ri",
         "infocard_GYCeqH",
         "infocard_QfGkMV",
         "infocard_LCcBwi",
-        "infocard_dgi6ri",
         "infocard_46rp9e"
       ],
       "custom_css": [
