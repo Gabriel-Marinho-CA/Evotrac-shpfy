@@ -11,6 +11,7 @@ class SearchFilters extends HTMLElement {
     this.applyButton = null;
     this.filtersAside = null;
     this.sortSelects = [];
+    this.filterHiddenElements = new Map();
   }
 
   connectedCallback() {
@@ -21,7 +22,9 @@ class SearchFilters extends HTMLElement {
     this.form = document.getElementById("formFilter");
     this.applyButton = document.getElementById("apply-filter");
     this.filtersAside = document.querySelector(".filters-aside");
-    this.sortSelects = document.querySelectorAll(".wrapper-select-sort-by select");
+    this.sortSelects = document.querySelectorAll(
+      ".wrapper-select-sort-by select"
+    );
 
     if (!this.form) return;
 
@@ -30,7 +33,6 @@ class SearchFilters extends HTMLElement {
     this.bindResponsiveBehavior();
     this.bindApplyButton();
   }
-
 
   bindSortSelects() {
     this.sortSelects.forEach((select) => {
@@ -43,6 +45,7 @@ class SearchFilters extends HTMLElement {
   redirectUserOrderBy(value) {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
+
     params.set("sort_by", value);
     window.location.search = params.toString();
   }
@@ -68,7 +71,9 @@ class SearchFilters extends HTMLElement {
     formData.set("filter.v.price.gte", minFormatted);
     formData.set("filter.v.price.lte", maxFormatted);
 
-    const newQuery = decodeURIComponent(new URLSearchParams(formData).toString());
+    const newQuery = decodeURIComponent(
+      new URLSearchParams(formData).toString()
+    );
 
     this.redirectWithFilters(newQuery);
   }
@@ -94,30 +99,67 @@ class SearchFilters extends HTMLElement {
   bindResponsiveBehavior() {
     if (window.innerWidth > 1024) {
       const inputs = this.form.querySelectorAll("input");
+
       inputs.forEach((input) => {
         input.addEventListener("change", () => this.form.requestSubmit());
       });
     } else {
-      const toggleElements = document.querySelectorAll(".wrap-sortby h3, .filters-top button");
-      toggleElements.forEach((el) =>
-        el.addEventListener("click", () => this.toggleFilters())
+      const toggleElements = document.querySelectorAll(
+        ".wrap-sortby h3, .filters-top button"
       );
+
+      toggleElements.forEach((element) => {
+        element.addEventListener("click", () => this.toggleFilters());
+      });
     }
   }
 
   toggleFilters() {
-    if (this.filtersAside) {
-      this.filtersAside.classList.toggle("active");
+    if (!this.filtersAside) return;
+
+    const isOpen = this.filtersAside.classList.toggle("active");
+
+    if (isOpen) {
+      this.filterHiddenElements.clear();
+
+      document
+        .querySelectorAll("shopify-chat, .wishlist-heart")
+        .forEach((element) => {
+          this.filterHiddenElements.set(element, {
+            value: element.style.getPropertyValue("display"),
+            priority: element.style.getPropertyPriority("display"),
+          });
+
+          element.style.setProperty("display", "none", "important");
+        });
+    } else {
+      this.filterHiddenElements.forEach((original, element) => {
+        if (original.value) {
+          element.style.setProperty(
+            "display",
+            original.value,
+            original.priority
+          );
+        } else {
+          element.style.removeProperty("display");
+        }
+      });
+
+      this.filterHiddenElements.clear();
     }
   }
 
   bindApplyButton() {
     if (!this.applyButton) return;
-    this.applyButton.addEventListener("click", () => this.form.requestSubmit());
+
+    this.applyButton.addEventListener("click", () => {
+      this.form.requestSubmit();
+    });
   }
 
   formatPrice(price) {
     if (!price && price !== 0) return "";
+
     return this.formatter
       .format(parseFloat(price / 100))
       .replace(/\s/g, "")
