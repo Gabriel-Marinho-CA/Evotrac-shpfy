@@ -2,19 +2,17 @@ class SearchFilters extends HTMLElement {
   constructor() {
     super();
 
-    this.formatter = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-
     this.form = null;
     this.applyButton = null;
     this.filtersAside = null;
     this.sortSelects = [];
     this.filterHiddenElements = new Map();
+    this.initialized = false;
   }
 
   connectedCallback() {
+    if (this.initialized) return;
+
     this.initialize();
   }
 
@@ -22,11 +20,14 @@ class SearchFilters extends HTMLElement {
     this.form = document.getElementById("formFilter");
     this.applyButton = document.getElementById("apply-filter");
     this.filtersAside = document.querySelector(".filters-aside");
+
     this.sortSelects = document.querySelectorAll(
       ".wrapper-select-sort-by select"
     );
 
     if (!this.form) return;
+
+    this.initialized = true;
 
     this.bindSortSelects();
     this.bindFormSubmit();
@@ -36,82 +37,141 @@ class SearchFilters extends HTMLElement {
 
   bindSortSelects() {
     this.sortSelects.forEach((select) => {
-      select.addEventListener("change", (e) => {
-        this.redirectUserOrderBy(e.target.value);
+      select.addEventListener("change", (event) => {
+        this.redirectUserOrderBy(event.target.value);
       });
     });
   }
 
   redirectUserOrderBy(value) {
     const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
 
-    params.set("sort_by", value);
-    window.location.search = params.toString();
+    url.searchParams.set("sort_by", value);
+    url.searchParams.delete("page");
+
+    window.location.assign(url.toString());
   }
 
   bindFormSubmit() {
-    this.form.addEventListener("submit", (e) => {
-      e.preventDefault();
+    this.form.addEventListener("submit", (event) => {
+      event.preventDefault();
       this.handleSubmit();
     });
   }
 
   handleSubmit() {
-    const formData = new FormData(this.form);
-    const minPrice = formData.get("filter.v.price.gte");
-    const maxPrice = formData.get("filter.v.price.lte");
-
-    const priceRange = { minPrice, maxPrice };
-    localStorage.setItem("price-range", JSON.stringify(priceRange));
-
-    const minFormatted = this.formatPrice(minPrice);
-    const maxFormatted = this.formatPrice(maxPrice);
-
-    formData.set("filter.v.price.gte", minFormatted);
-    formData.set("filter.v.price.lte", maxFormatted);
-
-    const newQuery = decodeURIComponent(
-      new URLSearchParams(formData).toString()
+    const minInput = this.form.querySelector(
+      '[name="filter.v.price.gte"]'
     );
 
-    this.redirectWithFilters(newQuery);
-  }
+    const maxInput = this.form.querySelector(
+      '[name="filter.v.price.lte"]'
+    );
 
-  redirectWithFilters(queryString) {
-    const body = document.body;
-    const search = window.location.search;
+    if (minInput) {
+      minInput.setCustomValidity("");
+    }
 
-    if (body.classList.contains("template-collection")) {
-      window.location.search = "?" + queryString;
-    } else if (body.classList.contains("template-search")) {
-      const idx = search.indexOf("products");
-      const base = search.substring(0, idx + 8);
+    if (maxInput) {
+      maxInput.setCustomValidity("");
+    }
 
-      if (search.indexOf("filter") > 0) {
-        window.location.search = base + "&" + queryString;
+    const hasMin = minInput && minInput.value !== "";
+    const hasMax = maxInput && maxInput.value !== "";
+
+    if (
+      hasMin &&
+      hasMax &&
+      Number.isFinite(minInput.valueAsNumber) &&
+      Number.isFinite(maxInput.valueAsNumber) &&
+      minInput.valueAsNumber > maxInput.valueAsNumber
+    ) {
+      maxInput.setCustomValidity(
+        "O preço máximo deve ser maior ou igual ao preço mínimo."
+      );
+    }
+
+    if (!this.form.reportValidity()) return;
+
+    const url = new URL(window.location.href);
+
+    // Remove os filtros anteriores, preservando busca e ordenação.
+    const existingKeys = Array.from(url.searchParams.keys());
+
+    existingKeys.forEach((key) => {
+      if (key.startsWith("filter.")) {
+        url.searchParams.delete(key);
+      }
+    });
+
+    // Volta à primeira página ao alterar os filtros.
+    url.searchParams.delete("page");
+
+    const formData = new FormData(this.form);
+
+    for (const [key, value] of formData.entries()) {
+      if (!key.startsWith("filter.")) continue;
+
+      const text = String(value).trim();
+
+      // Campos vazios não impõem limites.
+      if (text === "") continue;
+
+      if (
+        key === "filter.v.price.gte" ||
+        key === "filter.v.price.lte"
+      ) {
+        const input =
+          key === "filter.v.price.gte" ? minInput : maxInput;
+
+        const amount = input ? input.valueAsNumber : NaN;
+
+        if (!Number.isFinite(amount) || amount < 0) continue;
+
+        // Os campos já estão em reais.
+        // Envia somente o número, sem R$ ou separadores de milhar.
+        url.searchParams.append(key, amount.toFixed(2));
       } else {
-        window.location.search = search + "&" + queryString;
+        url.searchParams.append(key, text);
       }
     }
+
+    window.location.assign(url.toString());
   }
 
   bindResponsiveBehavior() {
-    if (window.innerWidth > 1024) {
-      const inputs = this.form.querySelectorAll("input");
+    const inputs = this.form.querySelectorAll("input");
 
-      inputs.forEach((input) => {
-        input.addEventListener("change", () => this.form.requestSubmit());
-      });
-    } else {
-      const toggleElements = document.querySelectorAll(
-        ".wrap-sortby h3, .filters-top button"
-      );
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        const priceInputs = this.form.querySelectorAll(
+          '[name="filter.v.price.gte"], [name="filter.v.price.lte"]'
+        );
 
-      toggleElements.forEach((element) => {
-        element.addEventListener("click", () => this.toggleFilters());
+        priceInputs.forEach((priceInput) => {
+          priceInput.setCustomValidity("");
+        });
       });
-    }
+
+      input.addEventListener("change", () => {
+        if (window.innerWidth > 1024) {
+          this.form.requestSubmit();
+        }
+      });
+    });
+
+    const toggleElements = document.querySelectorAll(
+      ".wrap-sortby h3, .filters-top button"
+    );
+
+    toggleElements.forEach((element) => {
+      element.addEventListener("click", (event) => {
+        if (window.innerWidth <= 1024) {
+          event.preventDefault();
+          this.toggleFilters();
+        }
+      });
+    });
   }
 
   toggleFilters() {
@@ -133,38 +193,40 @@ class SearchFilters extends HTMLElement {
           element.style.setProperty("display", "none", "important");
         });
     } else {
-      this.filterHiddenElements.forEach((original, element) => {
-        if (original.value) {
-          element.style.setProperty(
-            "display",
-            original.value,
-            original.priority
-          );
-        } else {
-          element.style.removeProperty("display");
-        }
-      });
-
-      this.filterHiddenElements.clear();
+      this.restoreHiddenElements();
     }
+  }
+
+  restoreHiddenElements() {
+    this.filterHiddenElements.forEach((original, element) => {
+      if (original.value) {
+        element.style.setProperty(
+          "display",
+          original.value,
+          original.priority
+        );
+      } else {
+        element.style.removeProperty("display");
+      }
+    });
+
+    this.filterHiddenElements.clear();
   }
 
   bindApplyButton() {
     if (!this.applyButton) return;
 
-    this.applyButton.addEventListener("click", () => {
+    this.applyButton.addEventListener("click", (event) => {
+      event.preventDefault();
       this.form.requestSubmit();
     });
   }
 
-  formatPrice(price) {
-    if (!price && price !== 0) return "";
-
-    return this.formatter
-      .format(parseFloat(price / 100))
-      .replace(/\s/g, "")
-      .replace(",", ".");
+  disconnectedCallback() {
+    this.restoreHiddenElements();
   }
 }
 
-customElements.define("search-filters", SearchFilters);
+if (!customElements.get("search-filters")) {
+  customElements.define("search-filters", SearchFilters);
+}
