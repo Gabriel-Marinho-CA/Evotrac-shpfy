@@ -11,6 +11,7 @@ class SearchFilters extends HTMLElement {
     this.applyButton = null;
     this.filtersAside = null;
     this.sortSelects = [];
+    this.filterHiddenElements = new Map();
   }
 
   connectedCallback() {
@@ -100,9 +101,7 @@ class SearchFilters extends HTMLElement {
       const inputs = this.form.querySelectorAll("input");
 
       inputs.forEach((input) => {
-        input.addEventListener("change", () => {
-          this.form.requestSubmit();
-        });
+        input.addEventListener("change", () => this.form.requestSubmit());
       });
     } else {
       const toggleElements = document.querySelectorAll(
@@ -110,16 +109,43 @@ class SearchFilters extends HTMLElement {
       );
 
       toggleElements.forEach((element) => {
-        element.addEventListener("click", () => {
-          this.toggleFilters();
-        });
+        element.addEventListener("click", () => this.toggleFilters());
       });
     }
   }
 
   toggleFilters() {
-    if (this.filtersAside) {
-      this.filtersAside.classList.toggle("active");
+    if (!this.filtersAside) return;
+
+    const isOpen = this.filtersAside.classList.toggle("active");
+
+    if (isOpen) {
+      this.filterHiddenElements.clear();
+
+      document
+        .querySelectorAll("shopify-chat, .wishlist-heart")
+        .forEach((element) => {
+          this.filterHiddenElements.set(element, {
+            value: element.style.getPropertyValue("display"),
+            priority: element.style.getPropertyPriority("display"),
+          });
+
+          element.style.setProperty("display", "none", "important");
+        });
+    } else {
+      this.filterHiddenElements.forEach((original, element) => {
+        if (original.value) {
+          element.style.setProperty(
+            "display",
+            original.value,
+            original.priority
+          );
+        } else {
+          element.style.removeProperty("display");
+        }
+      });
+
+      this.filterHiddenElements.clear();
     }
   }
 
