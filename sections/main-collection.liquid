@@ -1,5 +1,6 @@
 {{ 'search.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'search.js' | asset_url }}" defer></script>
+<script src="{{ 'wishlist.js' | asset_url }}" defer></script>
 
 {% assign banner_desk = 'desk-search-banner.png' | asset_url %}
 {% assign banner_mob = 'mob-search-banner.png' | asset_url %}
@@ -44,7 +45,9 @@
                     <p>Filtrar por</p>
                     <button>X</button>
                   </div>
+
                   {% render 'filters-aside', collection_filters: collection.filters %}
+
                   <div class="filters-bottom hidden">
                     <button id="apply-filter">Aplicar</button>
                   </div>
