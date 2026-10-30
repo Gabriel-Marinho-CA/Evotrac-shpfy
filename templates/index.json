@@ -107,7 +107,6 @@
           "type": "banner",
           "settings": {
             "banner": "shopify://shop_images/banner-linha-agricola.png",
-            "banner_mob": "shopify://shop_images/banner-linha-agricola.png",
             "alt": "Linha Agrícola",
             "link": "shopify://collections/linha-agricola"
           }
