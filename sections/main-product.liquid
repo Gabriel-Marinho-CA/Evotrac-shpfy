@@ -14,48 +14,68 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel {
     width: 100%;
+    max-width: none;
     min-width: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel #more-payments {
+  .section-{{ section.id }}-padding #product .right-side-product #more-payments {
     width: 100%;
     max-width: none;
     margin: 0;
     box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel #more-payments > ul {
+  .section-{{ section.id }}-padding #product .right-side-product #more-payments > ul {
     width: 100%;
+    margin: 0;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
-  .section-{{ section.id }}-padding .purchase-actions {
+  .section-{{ section.id }}-padding #product .right-side-product #more-payments .more-pay {
+    margin-left: auto;
+  }
+
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions {
     width: 100%;
     min-width: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-actions .buy-area,
-  .section-{{ section.id }}-padding .purchase-actions .buy-button {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .buy-area,
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .buy-button {
     width: 100%;
     max-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .buy-area {
+    display: block;
+  }
+
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .buy-button > button {
+    width: 100%;
     margin: 0;
     box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-actions .buy-button > button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .section-{{ section.id }}-padding .purchase-actions .compra-segura {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .compra-segura {
     width: 100%;
     max-width: none;
     min-height: 0;
@@ -70,45 +90,59 @@
     box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-actions .compra-segura p {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .compra-segura p {
     margin: 0;
+    padding: 0;
     font-size: 13px;
     line-height: 1.4;
   }
 
-  .section-{{ section.id }}-padding .purchase-actions .compra-segura .svg-wrapper {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .compra-segura .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 18px;
     height: 18px;
     flex: 0 0 18px;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel .shipping-calc {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-actions .compra-segura svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping-calc {
     width: 100%;
     max-width: none;
     margin: 0;
     box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel .shipping__form {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping-calc > p {
+    margin: 0 0 10px;
+  }
+
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form {
     display: block;
     width: 100%;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel .shipping__form > .wrapper {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form > .wrapper {
     display: flex;
     width: 100%;
     gap: 12px;
     align-items: stretch;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel .shipping__form .js-zip {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form .js-zip {
     flex: 1 1 0;
     width: 0;
     min-width: 0;
+    max-width: none;
     box-sizing: border-box;
   }
 
-  .section-{{ section.id }}-padding .purchase-panel .shipping__form .js-button {
+  .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form .js-button {
     flex: 0 0 auto;
     width: auto;
     white-space: nowrap;
@@ -120,14 +154,7 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
-    .section-{{ section.id }}-padding .purchase-panel {
-      max-width: 430px;
-      margin-left: 0;
-      margin-right: auto;
-    }
-
-    .section-{{ section.id }}-padding .purchase-actions {
-      width: 100%;
+    .section-{{ section.id }}-padding #product .right-side-product .purchase-actions {
       max-width: 320px;
       margin-left: auto;
       margin-right: 0;
@@ -161,6 +188,7 @@
           {% if nivel_resistencia != blank %}
             <div class="nivel-resistencia">
               <p>Nível de resistência</p>
+
               <div class="wrapper">
                 <div class="wrapper-svg">
                   {{- 'nivel-resistencia.svg' | inline_asset_content -}}
@@ -235,7 +263,9 @@
             {% endif %}
           {% endfor %}
 
-          <a class="desktop" href="#descricao-completa">Ver descrição completa</a>
+          <a class="desktop" href="#descricao-completa">
+            Ver descrição completa
+          </a>
         </div>
 
         <div class="price-area">
@@ -248,15 +278,19 @@
               <li>
                 {% render 'pay-1-pdp' %}
               </li>
+
               <li>
                 {% render 'pay-2-pdp' %}
               </li>
+
               <li>
                 {% render 'pay-3-pdp' %}
               </li>
+
               <li>
                 {% render 'pay-4-pdp' %}
               </li>
+
               <li class="more-pay">
                 <p class="">
                   <span>mais formas de pagamento</span>
