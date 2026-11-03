@@ -364,25 +364,7 @@
             </div>
           </div>
 
-          {% render 'shipping-calc' %}
-        </div>
-      </div>
-    </div>
-
-    {% if compre_junto %}
-      <div class="mobile">
-        {% render 'buy-together', compre_junto: compre_junto %}
-      </div>
-    {% endif %}
-
-    <div class="mobile">
-      {% render 'product-extra-info',
-        description: product.description,
-        especificacao_tecnica: especificacao_tecnica
-      %}
-    </div>
-
-{% assign variante_atual = product.selected_or_first_available_variant %}
+          {% assign variante_atual = product.selected_or_first_available_variant %}
 
 <div
   id="unit-stock-contact-{{ section.id }}"
@@ -469,6 +451,25 @@
   })();
 </script>
 
+
+          {% render 'shipping-calc' %}
+        </div>
+      </div>
+    </div>
+
+    {% if compre_junto %}
+      <div class="mobile">
+        {% render 'buy-together', compre_junto: compre_junto %}
+      </div>
+    {% endif %}
+
+    <div class="mobile">
+      {% render 'product-extra-info',
+        description: product.description,
+        especificacao_tecnica: especificacao_tecnica
+      %}
+    </div>
+    
     {% render 'payment-methods-product' %}
   </div>
 </div>
