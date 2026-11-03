@@ -12,6 +12,8 @@
     "main-product": {
       "type": "main-product",
       "settings": {
+        "revendedor": "",
+        "link_revendedor": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
