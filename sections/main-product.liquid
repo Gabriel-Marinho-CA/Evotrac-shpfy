@@ -130,8 +130,12 @@
   .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form > .wrapper {
     display: flex;
     width: 100%;
+    max-width: 340px;
+    margin-left: 0;
+    margin-right: auto;
     gap: 12px;
     align-items: stretch;
+    box-sizing: border-box;
   }
 
   .section-{{ section.id }}-padding #product .right-side-product .purchase-panel .shipping__form .js-zip {
