@@ -382,6 +382,93 @@
       %}
     </div>
 
+{% assign variante_atual = product.selected_or_first_available_variant %}
+
+<div
+  id="unit-stock-contact-{{ section.id }}"
+  class="unit-stock-contact"
+  {% if variante_atual.available %}hidden{% endif %}
+>
+  <p>Indisponível no site?</p>
+  <p>
+    Consulte a disponibilidade em nossas unidades:
+    <a href="tel:08001270100">0800 127 0100</a>
+  </p>
+</div>
+
+<style>
+  .section-{{ section.id }}-padding #product .unit-stock-contact {
+    padding: 14px 16px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background: #f7f7f7;
+  }
+
+  .section-{{ section.id }}-padding #product .unit-stock-contact[hidden] {
+    display: none;
+  }
+
+  .section-{{ section.id }}-padding #product .unit-stock-contact p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .section-{{ section.id }}-padding #product .unit-stock-contact p + p {
+    margin-top: 4px;
+  }
+
+  .section-{{ section.id }}-padding #product .unit-stock-contact a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  (() => {
+    const contact = document.getElementById(
+      'unit-stock-contact-{{ section.id }}'
+    );
+
+    if (!contact) return;
+
+    const productRoot = contact.closest('#product');
+    if (!productRoot) return;
+
+    const variants = {{ product.variants | json }};
+
+    productRoot.addEventListener('change', (event) => {
+      const input = event.target;
+
+      if (
+        !(input instanceof HTMLInputElement) ||
+        !input.closest('fieldset[is="variant-options"]')
+      ) {
+        return;
+      }
+
+      let variantId;
+
+      try {
+        const variantUrl = new URL(input.value, window.location.origin);
+        variantId = variantUrl.searchParams.get('variant');
+      } catch (error) {
+        return;
+      }
+
+      const variant = variants.find(
+        (item) => String(item.id) === variantId
+      );
+
+      if (variant) {
+        contact.hidden = variant.available;
+      }
+    });
+  })();
+</script>
+
     {% render 'payment-methods-product' %}
   </div>
 </div>
