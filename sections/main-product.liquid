@@ -200,16 +200,6 @@
         </div>
 
         <div class="buy-area {% if product.first_available_variant.inventory_quantity < 5000 %}last-units{% endif %}">
-          <div class="revendedor">
-            <a
-              href="{{ section.settings.link_revendedor }}"
-              class="button button-secondary"
-              title="{{ section.settings.revendedor }}"
-            >
-              {{ section.settings.revendedor }}
-            </a>
-          </div>
-
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
           {% render 'buy-button',
