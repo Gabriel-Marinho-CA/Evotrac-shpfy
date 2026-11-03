@@ -14,27 +14,112 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+  .section-{{ section.id }}-padding .purchase-panel {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel #more-payments {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel #more-payments > ul {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions .buy-area,
+  .section-{{ section.id }}-padding .purchase-actions .buy-button {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions .buy-button > button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions .compra-segura {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions .compra-segura p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .section-{{ section.id }}-padding .purchase-actions .compra-segura .svg-wrapper {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel .shipping-calc {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel .shipping__form {
+    display: block;
+    width: 100%;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel .shipping__form > .wrapper {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel .shipping__form .js-zip {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .section-{{ section.id }}-padding .purchase-panel .shipping__form .js-button {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+  }
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
-    .section-{{ section.id }}-padding .buy-area {
-      width: 100%;
-      max-width: 360px;
+    .section-{{ section.id }}-padding .purchase-panel {
+      max-width: 430px;
       margin-left: 0;
       margin-right: auto;
-    }
-
-    .section-{{ section.id }}-padding .compra-segura {
-      width: 100%;
-      max-width: 360px;
-      margin-left: 0;
-      margin-right: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 
@@ -146,88 +231,92 @@
           {% render 'price-product', product: product %}
         </div>
 
-        <div id="more-payments">
-          <ul>
-            <li>
-              {% render 'pay-1-pdp' %}
-            </li>
-            <li>
-              {% render 'pay-2-pdp' %}
-            </li>
-            <li>
-              {% render 'pay-3-pdp' %}
-            </li>
-            <li>
-              {% render 'pay-4-pdp' %}
-            </li>
-            <li class="more-pay">
-              <p class="">
-                <span>mais formas de pagamento</span>
-              </p>
-              {% render 'r-arrow-b' %}
-            </li>
-          </ul>
-        </div>
-
-        {% if product.variants.size > 1 %}
-          <div class="variants">
-            {% for option in product.options_with_values %}
-              <legend>
-                {% if option.name == 'Voltagem' %}
-                  Escolha a voltagem:
-                {% else %}
-                  {{ option.name }}
-                {% endif %}
-              </legend>
-
-              <fieldset is="variant-options" class="variants-fieldset">
-                <div class="options-wrapper">
-                  {% for value in option.values %}
-                    <div class="wrapper-op">
-                      <label
-                        class="option-label"
-                        for="{{ option.name | handleize }}-{{ value | handleize }}"
-                        {% if value.variant.inventory_quantity == 0 %}
-                          data-disabled="true"
-                        {% endif %}
-                      >
-                        {{ value }}
-                      </label>
-
-                      <input
-                        type="radio"
-                        name="{{ option.name | handle }}"
-                        value="{{ value.variant.url }}"
-                        class="hidden"
-                        id="{{ option.name | handleize }}-{{ value | handleize }}"
-                      >
-                    </div>
-                  {% endfor %}
-                </div>
-              </fieldset>
-            {% endfor %}
+        <div class="purchase-panel">
+          <div id="more-payments">
+            <ul>
+              <li>
+                {% render 'pay-1-pdp' %}
+              </li>
+              <li>
+                {% render 'pay-2-pdp' %}
+              </li>
+              <li>
+                {% render 'pay-3-pdp' %}
+              </li>
+              <li>
+                {% render 'pay-4-pdp' %}
+              </li>
+              <li class="more-pay">
+                <p class="">
+                  <span>mais formas de pagamento</span>
+                </p>
+                {% render 'r-arrow-b' %}
+              </li>
+            </ul>
           </div>
-        {% endif %}
 
-        <div class="compra-segura">
-          <span class="svg-wrapper">
-            {{- 'security-green.svg' | inline_asset_content -}}
-          </span>
-          <p>Compra segura</p>
+          {% if product.variants.size > 1 %}
+            <div class="variants">
+              {% for option in product.options_with_values %}
+                <legend>
+                  {% if option.name == 'Voltagem' %}
+                    Escolha a voltagem:
+                  {% else %}
+                    {{ option.name }}
+                  {% endif %}
+                </legend>
+
+                <fieldset is="variant-options" class="variants-fieldset">
+                  <div class="options-wrapper">
+                    {% for value in option.values %}
+                      <div class="wrapper-op">
+                        <label
+                          class="option-label"
+                          for="{{ option.name | handleize }}-{{ value | handleize }}"
+                          {% if value.variant.inventory_quantity == 0 %}
+                            data-disabled="true"
+                          {% endif %}
+                        >
+                          {{ value }}
+                        </label>
+
+                        <input
+                          type="radio"
+                          name="{{ option.name | handle }}"
+                          value="{{ value.variant.url }}"
+                          class="hidden"
+                          id="{{ option.name | handleize }}-{{ value | handleize }}"
+                        >
+                      </div>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="purchase-actions">
+            <div class="buy-area">
+              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+              {% render 'buy-button',
+                product: product,
+                product_form_id: product_form_id,
+                section_id: section.id,
+                buy_label: 'Comprar'
+              %}
+            </div>
+
+            <div class="compra-segura">
+              <span class="svg-wrapper">
+                {{- 'security-green.svg' | inline_asset_content -}}
+              </span>
+              <p>Compra segura</p>
+            </div>
+          </div>
+
+          {% render 'shipping-calc' %}
         </div>
-
-        <div class="buy-area {% if product.first_available_variant.inventory_quantity < 5000 %}last-units{% endif %}">
-          {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
-          {% render 'buy-button',
-            product: product,
-            product_form_id: product_form_id,
-            section_id: section.id,
-            buy_label: 'Comprar'
-          %}
-        </div>
-
-        {% render 'shipping-calc' %}
       </div>
     </div>
 
